@@ -141,18 +141,21 @@
                         <span class="fp-inum">01</span>
                         <span class="fp-name">노톡</span>
                         <span class="fp-type team">TEAM PROJECT</span>
+                        <span class="fp-status soon">출시예정</span>
                     </div>
-                    <div class="fp-item reveal is-soon" role="button" tabindex="0" aria-disabled="true" aria-label="오늘뽁 프로젝트 — 상세 준비 중">
+                    <div class="fp-item reveal is-link" role="link" tabindex="0" data-target="#today" aria-label="오늘뽁 프로젝트 상세 보기">
                         <!-- 이미지: 앱 아이콘 --><div class="fp-icon img-slot"><img src="images/오늘뽁.png" alt="오늘뽁 앱 아이콘"></div>
                         <span class="fp-inum">02</span>
                         <span class="fp-name">오늘뽁</span>
                         <span class="fp-type personal">PERSONAL PROJECT</span>
+                        <span class="fp-status live">출시완료</span>
                     </div>
                     <div class="fp-item reveal is-soon" role="button" tabindex="0" aria-disabled="true" aria-label="끄숑 프로젝트 — 상세 준비 중">
                         <!-- 이미지: 앱 아이콘 --><div class="fp-icon img-slot"><img src="images/끄숑.png" alt="끄숑 앱 아이콘"></div>
                         <span class="fp-inum">03</span>
                         <span class="fp-name">끄숑</span>
                         <span class="fp-type team green">TEAM PROJECT</span>
+                        <span class="fp-status soon">출시예정</span>
                     </div>
                 </div>
             </div>
@@ -173,7 +176,7 @@
                     <span class="pct"><span class="pct-cap">기여도</span><span class="pct-num">70%</span></span>
                     <div class="im-body">
                         <span class="im-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg><span class="im-label">Project Lead</span></span>
-                        <p class="im-text"><b>기여도 70%</b> — 서비스 기획, UX/UI 설계, 프론트엔드 구현, QA 및 프로젝트 리딩까지 전반을&nbsp;주도했습니다.</p>
+                        <p class="im-text">서비스 기획, UX/UI 설계, 프론트엔드 구현, QA 및 프로젝트 리딩까지 전반을&nbsp;주도했습니다.</p>
                     </div>
                 </div>
 
@@ -222,7 +225,6 @@
                             <p class="ptit">관계 형성 부담</p>
                         </div>
                     </div>
-                    <p class="pdesc">모임 참여가 곧 친밀한 관계를 만들어야 한다는 압박으로 이어집니다.</p>
                 </div>
                 <div class="prob-card t2 reveal">
                     <div class="pc-head">
@@ -234,7 +236,6 @@
                             <p class="ptit">대화 피로감</p>
                         </div>
                     </div>
-                    <p class="pdesc">어색한 대화를 시작하고 지속해야 하는 상황이 참여 장벽이 됩니다.</p>
                 </div>
                 <div class="prob-card t3 reveal">
                     <div class="pc-head">
@@ -246,28 +247,31 @@
                             <p class="ptit">지속성 부담</p>
                         </div>
                     </div>
-                    <p class="pdesc">한 번의 참여가 이후 연락과 반복 모임으로 이어질 것 같은 부담이 있습니다.</p>
                 </div>
             </div>
 
             <div class="problem-flow">
-                <!-- STEP 2 · 데이터 근거 -->
-                <div class="stat-box reveal">
-                    <div class="stat-main">
-                        <p class="cap">시장 근거</p>
-                        <p class="big">36.9<span class="unit">%</span></p>
-                    </div>
-                    <div class="stat-body">
-                        <p class="method"><span class="method-tag">RESEARCH</span>데스크 리서치 · 2차 조사 (통계 · 아티클 · 경쟁 서비스 분석)</p>
-                        <p class="note">1인 가구 증가와 개인 중심 생활 방식 확산으로, 사용자는 깊은 관계보다 <b>선택적이고 가벼운 연결</b>을 선호합니다.</p>
-                        <p class="src"><span class="src-tag">출처</span>2026년 기준 1인 가구 비율 · 통계청 (2026)</p>
-                    </div>
-                </div>
+                <!-- STEP 2+3 · 데이터 근거(왼쪽 디딤돌) + 기존 vs 원하는 대비(오른쪽) -->
+                <div class="evidence-compare">
+                    <!-- 데이터 근거 — 대비를 떠받치는 사이드 패널 -->
+                    <aside class="stat-box reveal">
+                        <div class="stat-main">
+                            <p class="cap">시장 근거</p>
+                            <p class="big">36.9<span class="unit">%</span></p>
+                        </div>
+                        <div class="stat-body">
+                            <p class="note">1인 가구 증가와 개인 중심 생활 방식 확산으로, 사용자는 깊은 관계보다 <b>선택적이고 가벼운 연결</b>을 선호합니다.</p>
+                            <div class="stat-meta">
+                                <span class="meta-ic" tabindex="0" role="button" aria-label="리서치 방법: 데스크 리서치 · 2차 조사 (통계 · 아티클 · 경쟁 서비스 분석)" data-tip="리서치 — 데스크 리서치 · 2차 조사 (통계 · 아티클 · 경쟁 서비스 분석)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                                <span class="meta-ic" tabindex="0" role="button" aria-label="출처: 2026년 기준 1인 가구 비율 · 통계청 (2026)" data-tip="출처 — 2026년 기준 1인 가구 비율 · 통계청 (2026)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+                            </div>
+                        </div>
+                    </aside>
 
-                <!-- STEP 3 · 기존 vs 원하는 대비 -->
-                <div class="compare">
-                    <div class="comp-col reveal">
-                        <p class="ch"><span class="tag">AS-IS</span>모임 방식</p>
+                    <!-- STEP 3 · 기존 vs 원하는 대비 -->
+                    <div class="compare">
+                        <div class="comp-col reveal">
+                        <p class="ch"><span class="tag">AS-IS</span></p>
                         <div class="ci">
                             <p class="h">관계 형성 중심</p>
                             <p class="d">친밀해지는 것을 전제로 참여를 설계합니다.</p>
@@ -285,7 +289,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </span>
                     <div class="comp-col need reveal">
-                        <p class="ch"><span class="tag">TO-BE</span>참여 방식</p>
+                        <p class="ch"><span class="tag">TO-BE</span></p>
                         <div class="ci">
                             <p class="h">경험 중심 참여</p>
                             <p class="d">관계 형성보다 원하는 활동과 경험에 집중하고 싶습니다.</p>
@@ -298,6 +302,7 @@
                             <p class="h">선택적 참여</p>
                             <p class="d">원할 때만 참여하고, 모임 후에는 자연스럽게 종료되길 원합니다.</p>
                         </div>
+                    </div>
                     </div>
                 </div>
 
@@ -734,6 +739,167 @@
             </div>
             </div>
         </section>
+
+        <!-- ================= 02 오늘뽁 · Executive Summary ================= -->
+        <!-- 색 시스템 B: 오늘뽁 = 앰버. 노톡 nt-* 구조 미러링, 색만 앰버 스코프(#today)로 자동 해석 -->
+        <section id="today" class="slide light">
+            <div class="nt-left">
+                <p class="nt-eyebrow reveal"><b>02</b><span>오늘뽁 · Executive Summary</span></p>
+                <div class="nt-title-row reveal">
+                    <h2 class="nt-title">오늘뽁</h2>
+                    <!-- 출시됨이 핵심 강점 → "Live" 또렷이 (노톡은 'QA 진행중') -->
+                    <span class="nt-status nt-status-live">출시 · Live</span>
+                </div>
+                <!-- ▼▼ [사용자 수정] 가치제안 한 줄 — 앱 컨셉 살려 다듬으세요 ▼▼ -->
+                <p class="nt-lead reveal">오늘의 스트레스,<br>뽁뽁 터뜨려 날려버리는 앱</p>
+                <p class="nt-desc reveal">거품과 캐릭터를 손끝으로 터뜨리며 스트레스를 해소합니다. 명상 · 몰입 · 스트레스 터뜨리기 3가지 모드로, 그날의 기분에 맞춰&nbsp;뽁뽁.</p>
+
+                <!-- 임팩트: 개인 프로젝트 → 기여도 100% (Solo Project) -->
+                <div class="nt-impact reveal">
+                    <span class="pct"><span class="pct-cap">기여도</span><span class="pct-num">100%</span></span>
+                    <div class="im-body">
+                        <span class="im-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg><span class="im-label">Solo Project</span></span>
+                        <p class="im-text"><b>1인 전 과정</b> — 컨셉 기획부터 UX/UI 디자인, 개발, 스토어 출시까지 혼자&nbsp;완주한 개인 프로젝트입니다.</p>
+                    </div>
+                </div>
+
+                <!-- ▼▼ [사용자 수정] info 값 placeholder — 합리적 기본값. 실제 값으로 교체하세요 ▼▼ -->
+                <div class="nt-info reveal">
+                    <div class="row"><span class="ic role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="lbl">역할</span><span class="val">기획 · 디자인 · 개발 (1인)</span></div>
+                    <div class="row"><span class="ic team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="lbl">팀 구성</span><span class="val">1인 개인 프로젝트</span></div>
+                    <div class="row"><span class="ic time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span><span class="lbl">기간</span><span class="val">[기간 입력]</span></div>
+                    <div class="row"><span class="ic platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span><span class="lbl">플랫폼</span><span class="val">[iOS / Android 등 입력]</span></div>
+                </div>
+
+                <!-- ▼▼ [사용자 수정] 실제 사용 도구로 교체하세요 ▼▼ -->
+                <div class="nt-tools reveal">
+                    <span class="tl-label">TOOLS</span>
+                    <span class="tool-chip figma">Figma</span>
+                    <span class="tool-chip ps">Ps</span>
+                    <span class="tool-chip">[도구]</span>
+                    <span class="tool-chip">[도구]</span>
+                </div>
+            </div>
+
+            <div class="nt-right reveal">
+                <div class="nt-phone">
+                    <img src="images/오늘뽁/메인1.png" alt="오늘뽁 앱 홈 화면">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 02 오늘뽁 · 화면/경험 쇼케이스 ============ -->
+        <!-- 출시 앱 → 실제 화면이 최고의 증거. 온보딩 3 → 홈 → 3모드 흐름 갤러리 -->
+        <section id="today-screens" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>02</b>오늘뽁 · Screens &amp; Experience</p>
+            <h2 class="nt-sectitle reveal">출시된 화면으로, 컨셉을 그대로 보여줍니다.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <!-- 트랙 1 · 온보딩 → 홈 (컨셉 전달 흐름) -->
+            <div class="svc-track">
+                <p class="svc-track-label reveal"><span class="dot"></span>온보딩 → 홈</p>
+                <div class="svc-steps svc-steps-4">
+                    <div class="svc-step reveal">
+                        <span class="sn">01</span>
+                        <span class="st">컨셉 소개</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/온보딩1.png" alt="온보딩 1 — 컨셉 소개"></div>
+                    </div>
+                    <div class="svc-arrow reveal">»</div>
+                    <div class="svc-step reveal">
+                        <span class="sn">02</span>
+                        <span class="st">3가지 모드 안내</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/온보딩2.png" alt="온보딩 2 — 3가지 모드 안내"></div>
+                    </div>
+                    <div class="svc-arrow reveal">»</div>
+                    <div class="svc-step reveal">
+                        <span class="sn">03</span>
+                        <span class="st">기록 안내</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/온보딩3.png" alt="온보딩 3 — 기록 안내"></div>
+                    </div>
+                    <div class="svc-arrow reveal">»</div>
+                    <div class="svc-step reveal">
+                        <span class="sn">04</span>
+                        <span class="st">홈 · 오늘 N개 터뜨림</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/메인1.png" alt="홈 화면 — 오늘 터뜨린 개수 카운터"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 트랙 2 · 3가지 모드 (핵심 기능) -->
+            <div class="svc-track svc-track-host">
+                <p class="svc-track-label reveal"><span class="dot"></span>3가지 모드</p>
+                <div class="svc-steps">
+                    <div class="svc-step reveal">
+                        <span class="sn">01</span>
+                        <span class="st">명상 모드</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/명상모드.png" alt="명상 모드 — 차분하게 한 단계씩"></div>
+                    </div>
+                    <div class="svc-arrow reveal">»</div>
+                    <div class="svc-step reveal">
+                        <span class="sn">02</span>
+                        <span class="st">몰입 모드</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/몰입모드.png" alt="몰입 모드 — 집중하며 시원하게"></div>
+                    </div>
+                    <div class="svc-arrow reveal">»</div>
+                    <div class="svc-step reveal">
+                        <span class="sn">03</span>
+                        <span class="st">스트레스 터뜨리기</span>
+                        <div class="svc-phone img-slot"><img src="images/오늘뽁/스트레스모드.png" alt="스트레스 모드 — 이름 적고 뿌셔"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 02 오늘뽁 · 결과 · 임팩트 (placeholder) ============ -->
+        <!-- ⚠ 가짜 숫자 금지 — 빈 슬롯 + 안내만. 사용자가 실데이터로 교체 -->
+        <section id="today-result" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>02</b>오늘뽁 · Results &amp; Impact</p>
+            <h2 class="nt-sectitle reveal">출시 결과는 실데이터로 채웁니다.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <div class="today-result-grid">
+                <div class="result-slot reveal">
+                    <span class="rs-cap">다운로드 · 가입자</span>
+                    <span class="rs-ph">[여기에 실제 숫자]</span>
+                    <span class="rs-hint">예: 누적 다운로드 · 가입자 수</span>
+                </div>
+                <div class="result-slot reveal">
+                    <span class="rs-cap">리텐션 · 재방문</span>
+                    <span class="rs-ph">[여기에 실제 숫자]</span>
+                    <span class="rs-hint">예: 7일 리텐션 · DAU/WAU</span>
+                </div>
+                <div class="result-slot reveal">
+                    <span class="rs-cap">스토어 리뷰 · 피드백</span>
+                    <span class="rs-ph">[여기에 평점 · 후기]</span>
+                    <span class="rs-hint">예: 평균 별점 · 인상 깊은 리뷰</span>
+                </div>
+                <div class="result-slot reveal">
+                    <span class="rs-cap">출시 채널 · 일자</span>
+                    <span class="rs-ph">[출시처 · 날짜]</span>
+                    <span class="rs-hint">예: App Store / Google Play · 출시일</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 02 오늘뽁 · 문제·동기 + 배운 점 (placeholder) ============ -->
+        <section id="today-learn" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>02</b>오늘뽁 · Motivation &amp; Learnings</p>
+            <h2 class="nt-sectitle reveal">왜 만들었고, 무엇을 배웠나.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <div class="today-learn-grid">
+                <div class="learn-card reveal">
+                    <span class="lc-tag">왜 만들었나</span>
+                    <!-- ▼ [사용자 수정] 동기 한두 문장으로 ▼ -->
+                    <p class="lc-body">[동기를 적어주세요 — 어떤 스트레스 상황에서, 어떤 해소 경험이 필요하다고 느꼈는지.]</p>
+                </div>
+                <div class="learn-card reveal">
+                    <span class="lc-tag">배운 점</span>
+                    <!-- ▼ [사용자 수정] 1인 전 과정에서 배운 점 ▼ -->
+                    <p class="lc-body">[배운 점을 적어주세요 — 기획·디자인·개발·출시 1인 완주에서 얻은 것.]</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -852,6 +1018,20 @@
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
         });
     });
+
+    // 7. 기여도 도넛 — 화면 진입 시 0 → N% 채우기
+    const pctEls = document.querySelectorAll('.nt-impact .pct');
+    if (pctEls.length) {
+        const pctObserver = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-filled');
+                    pctObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.4 });
+        pctEls.forEach((el) => pctObserver.observe(el));
+    }
 
 </script>
 </body>
