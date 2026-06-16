@@ -316,15 +316,67 @@ body, html {
     box-shadow: 0 18px 38px rgba(36, 60, 159, 0.08);
 }
 #about .stat-num {
+    position: relative;
     font-family: 'Work Sans', sans-serif;
     font-size: 64px;
     font-weight: 700;
     line-height: 1;
     background: var(--metallic);
-    background-size: 200% 100%;
+    background-size: 220% 100%;
+    background-position: 100% 0;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    /* 메탈릭 그라데이션이 숫자 위를 주기적으로 쓸고 지나가는 shine sweep */
+    animation: about-stat-shine 3.6s ease-in-out infinite;
+}
+/* 세 숫자에 stagger — 순차적으로 반짝 */
+#about .stat-item:nth-child(1) .stat-num { animation-delay: 0s; }
+#about .stat-item:nth-child(3) .stat-num { animation-delay: 0.4s; }
+#about .stat-item:nth-child(5) .stat-num { animation-delay: 0.8s; }
+/* 숫자 모서리 미세 글린트 — 과하지 않게 트윙클 */
+#about .stat-num::after {
+    content: "\2726"; /* ✦ */
+    position: absolute;
+    top: -2px;
+    right: -14px;
+    font-size: 15px;
+    line-height: 1;
+    color: #80c7ff;
+    text-shadow: 0 0 6px rgba(128, 199, 255, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    animation: about-stat-glint 3.6s ease-in-out infinite;
+}
+#about .stat-item:nth-child(1) .stat-num::after { animation-delay: 0s; }
+#about .stat-item:nth-child(3) .stat-num::after { animation-delay: 0.4s; }
+#about .stat-item:nth-child(5) .stat-num::after { animation-delay: 0.8s; }
+@keyframes about-stat-shine {
+    0%   { background-position: 100% 0; }
+    55%  { background-position: -60% 0; }
+    100% { background-position: -60% 0; }
+}
+@keyframes about-stat-glint {
+    0%, 18%, 100% { opacity: 0; transform: scale(0.6); }
+    8%            { opacity: 1; transform: scale(1); }
+}
+/* Project Lead 배지 광택 스윕 — 0~50%에 1회 통과, 이후 정지(쉼). 스탯 shine과 동일 호흡 */
+@keyframes im-badge-shine {
+    0%   { transform: translateX(-180%) skewX(-18deg); }
+    50%  { transform: translateX(320%)  skewX(-18deg); }
+    100% { transform: translateX(320%)  skewX(-18deg); }
+}
+/* 왕관 골드 글린트 — 스윕이 왕관을 지날 무렵 한 번 반짝 후 쉼 */
+@keyframes im-badge-glint {
+    0%, 14%, 100% { filter: none; }
+    7%            { filter: drop-shadow(0 0 4px rgba(255, 217, 94, 0.9))
+                            drop-shadow(0 0 2px rgba(255, 217, 94, 0.7)); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #about .stat-num { animation: none; background-position: 50% 0; }
+    #about .stat-num::after { display: none; }
+    #notalk .nt-impact .im-badge::before { display: none; }
+    #notalk .nt-impact .im-badge svg { animation: none; filter: none; }
 }
 #about .stat-cap {
     font-family: 'Work Sans', sans-serif;
@@ -986,6 +1038,9 @@ body, html {
 }
 #notalk .nt-impact .im-badge {
     align-self: flex-start;
+    position: relative;              /* ::before 광택 스윕 기준 */
+    overflow: hidden;                /* 하이라이트 띠를 알약 안으로만 클립 (자식만, 바깥 box-shadow엔 무영향) */
+    isolation: isolate;             /* 스윕 레이어가 자식 위로 새지 않게 */
     display: inline-flex;
     align-items: center;
     padding: 7px 14px;
@@ -997,11 +1052,39 @@ body, html {
     letter-spacing: 0.01em;
     box-shadow: 0 8px 18px rgba(73, 86, 214, 0.26);
 }
+/* 표면 광택 스윕 — 흰 반투명 대각선 띠가 주기적으로 1회 쓸고 지나간 뒤 쉼 (스탯 shine과 동일 톤) */
+#notalk .nt-impact .im-badge::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 60%; height: 100%;
+    background: linear-gradient(
+        100deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 38%,
+        rgba(255, 255, 255, 0.40) 50%,
+        rgba(255, 255, 255, 0.05) 62%,
+        transparent 100%
+    );
+    transform: translateX(-180%) skewX(-18deg);
+    pointer-events: none;
+    z-index: 1;                      /* 배경 위, 왕관·글씨(z-index:2) 아래 */
+    animation: im-badge-shine 3.4s ease-in-out infinite;
+}
+/* 왕관·라벨을 스윕 띠 위로 — 가독성·정렬 유지 */
+#notalk .nt-impact .im-badge .im-label {
+    position: relative;
+    z-index: 2;
+}
 #notalk .nt-impact .im-badge svg {
+    position: relative;
+    z-index: 2;                      /* 스윕 띠 위 */
     width: 15px; height: 15px;
     color: #ffd95e;                  /* 왕관 골드 포인트 */
     margin-right: 7px;
     flex-shrink: 0;
+    /* 왕관 골드 글린트 — 한 번 반짝 후 쉼 (스탯 glint와 동일 타이밍감) */
+    animation: im-badge-glint 3.4s ease-in-out infinite;
 }
 #notalk .nt-impact .im-text {
     font-size: 18px;
@@ -1636,103 +1719,102 @@ body, html {
 
 
 /* ---------- NOTALK Opportunity ---------- */
+/* 스텝 배지(03 기회 발견)는 앞 섹션과 동일한 .nt-badge 시스템 — 카드 인덱스와 의미 분리 */
+#nt-opportunity > .nt-badge {
+    margin-bottom: 14px;
+}
 #nt-opportunity .opp-hero {
-    display: grid;
-    grid-template-columns: 210px minmax(0, 1fr);
-    align-items: start;
-    gap: 34px;
-    margin-bottom: 42px;
+    margin-bottom: 40px;
     max-width: 1180px;
-}
-#nt-opportunity .opp-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 21px;
-    font-weight: 800;
-    color: var(--ink);
-}
-#nt-opportunity .opp-kicker span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--nt), var(--nt-light));
-    color: #fff;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 18px;
-    box-shadow: 0 14px 28px rgba(111, 123, 239, 0.24);
 }
 #nt-opportunity .opp-bridge {
     font-size: 25px;
     line-height: 1.58;
     color: var(--ink-soft);
-    max-width: 930px;
+    max-width: 980px;
+    word-break: keep-all;
+    text-wrap: balance;
 }
 #nt-opportunity .opp-bridge b { color: var(--nt-deep); font-weight: 800; }
+
+/* 4원칙 = 해결책 → 문제 카드(유리/약)와 달리 채워진 보라 톤(액티브) */
 #nt-opportunity .opp-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 26px;
-    margin-bottom: 42px;
+    gap: 22px;
+    margin-bottom: 44px;
 }
 #nt-opportunity .opp-item {
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    align-items: start;
-    gap: 24px;
-    min-height: 184px;
-    background: var(--glass);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    padding: 34px 36px;
+    display: flex;
+    flex-direction: column;
+    min-height: 226px;
+    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
+    border: 1px solid rgba(111, 123, 239, 0.16);
+    border-radius: 16px;
+    padding: 30px 32px 28px;
     box-shadow: var(--shadow-soft);
     position: relative;
     overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 #nt-opportunity .opp-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 36px;
-    right: 36px;
+    top: 0; left: 0; right: 0;
     height: 4px;
-    border-radius: 0 0 8px 8px;
-    background: linear-gradient(90deg, rgba(111,123,239,0), rgba(111,123,239,0.78), rgba(166,176,255,0));
+    background: linear-gradient(90deg, var(--nt-deep), var(--nt) 55%, var(--nt-light));
 }
+#nt-opportunity .opp-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(111, 123, 239, 0.34);
+    box-shadow: 0 20px 44px rgba(36, 60, 159, 0.13);
+}
+/* 헤더 행 — 인덱스 + 영문 라벨(아이콘) 4장 동일 정렬축 */
+#nt-opportunity .opp-item .oh {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+/* 카드 번호 = 고스트 인덱스(외곽선 톤) — 스텝 배지의 솔리드와 명확히 구분 */
 #nt-opportunity .opp-item .oi {
-    width: 66px;
-    height: 66px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--nt), var(--nt-light));
-    color: #fff;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(111, 123, 239, 0.10);
+    border: 1px solid rgba(111, 123, 239, 0.30);
+    color: var(--nt-deep);
     font-family: 'Work Sans', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 16px;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 10px 22px rgba(111, 123, 239, 0.3);
+    box-shadow: none;
 }
 #nt-opportunity .opp-item .olab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-family: 'Work Sans', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
     color: var(--nt-deep);
-    margin-bottom: 8px;
 }
+#nt-opportunity .opp-item .olab svg { width: 17px; height: 17px; }
 #nt-opportunity .opp-item .otit {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 11px;
     color: var(--ink);
+    word-break: keep-all;
 }
 #nt-opportunity .opp-item .odesc {
-    font-size: 18px;
-    line-height: 1.64;
+    font-size: 16.5px;
+    line-height: 1.66;
     color: var(--ink-soft);
+    word-break: keep-all;
 }
 #nt-opportunity .opp-concept {
     display: flex;
@@ -2169,8 +2251,7 @@ body, html {
         gap: 10px;
     }
 
-    #nt-opportunity .opp-hero {
-        grid-template-columns: 1fr;
+    #nt-opportunity .opp-grid {
         gap: 18px;
     }
 
@@ -2246,8 +2327,7 @@ body, html {
     }
 
     #notalk .nt-impact,
-    #nt-problem .prob-card,
-    #nt-opportunity .opp-item {
+    #nt-problem .prob-card {
         flex-direction: column;
     }
 
@@ -2292,9 +2372,10 @@ body, html {
     }
 
     #nt-opportunity .opp-item {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        min-height: auto;
+        padding: 26px 24px 24px;
     }
+    #nt-opportunity .opp-item .otit { font-size: 22px; }
 }
 
 
@@ -2305,7 +2386,6 @@ body, html {
 #career .tl-card,
 #career .now-card,
 #featured .fp-item,
-#nt-opportunity .opp-item,
 #nt-opportunity .opp-concept {
     border-radius: 10px;
 }
