@@ -281,7 +281,12 @@ body, html {
     position: relative;
     flex: 1;
     min-height: 540px;
-    padding: 58px 76px 56px 0;
+    padding: 0 76px 0 0;
+    /* 통계 제거 후 — 텍스트 블록을 사진 높이에 맞춰 세로로 꽉 차게 분산 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 38px;
 }
 #about .about-right > * {
     position: relative;
@@ -289,40 +294,37 @@ body, html {
 }
 #about .about-head {
     max-width: 1040px;
-    font-size: 56px;
+    font-size: 60px;
     font-weight: 800;
-    line-height: 1.36;
-    letter-spacing: 0;
-    margin-bottom: 34px;
+    line-height: 1.34;
+    letter-spacing: -0.01em;
 }
 #about .about-sub {
-    max-width: 720px;
-    font-size: 22px;
+    max-width: 700px;
+    font-size: 23px;
     font-weight: 400;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--ink-soft);
-    margin-bottom: 40px;
 }
 #about .keyword-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 48px;
+    gap: 14px;
 }
 #about .keyword-row span:not(.dot) {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--blue-deep);
     background: rgba(86, 126, 255, 0.10);
     border: 1px solid rgba(86, 126, 255, 0.2);
-    padding: 9px 20px;
+    padding: 11px 22px;
     border-radius: 24px;
 }
 #about .keyword-row .dot { display: none; }
 #about .stat-row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: min(100%, 820px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 540px);
     gap: 18px;
 }
 #about .stat-item {
@@ -410,6 +412,196 @@ body, html {
 }
 
 
+/* ---------- 03 CAREER HIGHLIGHTS ---------- */
+/* 성과 하이라이트 밴드 — 카드 아님(보더·박스 X), 메탈릭 수치가 먼저 읽히는 오픈 레이아웃 */
+/* 첫 콘텐츠 섹션 — 1080 강제 해제. 콘텐츠에 맞춘 적당한 높이로(휑한 여백 제거) */
+#highlights {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 720px;
+}
+#highlights .ch-head {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    margin: 32px 0 60px;
+}
+#highlights .ch-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: 0 36px;
+    width: 100%;
+}
+#highlights .ch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+}
+/* 수치 — About .stat-num 과 동일한 메탈릭 + shine sweep 으로 톤 통일 */
+#highlights .ch-figure {
+    display: inline-flex;
+    align-items: baseline;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 1.12;
+    padding-bottom: 0.06em;
+    min-height: 112px;          /* 숫자(1줄)·Android Launch(2줄) 칸 높이 통일 → 아래 라벨 정렬 */
+    letter-spacing: -0.015em;
+    transform-origin: left center;
+    filter: drop-shadow(0 8px 22px rgba(86, 126, 255, 0.20));
+    transition: transform .3s ease, filter .3s ease;
+    background: var(--metallic);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: about-stat-shine 3.6s ease-in-out infinite;
+}
+#highlights .ch-item:nth-child(1) .ch-figure { animation-delay: 0s; }
+#highlights .ch-item:nth-child(3) .ch-figure { animation-delay: 0.35s; }
+#highlights .ch-item:nth-child(5) .ch-figure { animation-delay: 0.7s; }
+/* 호버 — 숫자 살짝 확대 + 발광 강화 (인터랙션으로 시선 유도) */
+#highlights .ch-item:hover .ch-figure {
+    transform: scale(1.05);
+    filter: drop-shadow(0 14px 30px rgba(86, 126, 255, 0.34));
+}
+#highlights .ch-unit {
+    font-size: 38px;
+    font-weight: 700;
+    margin-left: 4px;
+    letter-spacing: 0;
+}
+/* 키워드형(Android Launch) — 숫자와 시각 무게 맞추되 한 단계 작게 + 로켓 아이콘 */
+#highlights .ch-figure-kw {
+    align-items: center;
+    gap: 14px;
+    -webkit-text-fill-color: initial;
+    animation: none;
+}
+#highlights .ch-figure-kw svg {
+    width: 50px; height: 50px;
+    stroke: var(--proj-deep);
+    flex: 0 0 auto;
+}
+#highlights .ch-kw {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.04;
+    background: var(--metallic);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: about-stat-shine 3.6s ease-in-out infinite;
+    animation-delay: 0.7s;
+}
+#highlights .ch-kw em {
+    font-style: normal;
+    display: block;
+}
+#highlights .ch-label {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+#highlights .ch-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    word-break: keep-all;
+    max-width: 340px;
+    min-height: 55px;   /* 2줄 고정 → 아래 링크/노트 행 정렬 */
+}
+/* 증거 링크 — 진짜 있는 항목(릴스·스토어)만. 절제된 외부 링크 톤 */
+#highlights .ch-proof {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--proj-deep);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(63, 88, 197, 0.28);
+    padding-bottom: 2px;
+    transition: gap .2s ease, border-color .2s ease, opacity .2s ease;
+}
+#highlights .ch-proof svg { width: 14px; height: 14px; flex: 0 0 auto; }
+#highlights .ch-proof:hover { gap: 9px; border-color: var(--proj-deep); }
+/* 컨텍스트 노트 — "릴스 보기" 링크와 동일한 색·크기·볼드(밑줄 포함), 단 링크가 아니므로 화살표 없음 */
+#highlights .ch-note {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.45;
+    color: var(--proj-deep);
+    border-bottom: 1px solid rgba(63, 88, 197, 0.28);
+    padding-bottom: 2px;
+    white-space: nowrap;   /* 1줄 고정 → 링크 행과 높이 정렬 */
+}
+/* 구분선 — 세로 헤어라인. 3개 수치를 하나의 밴드로 묶어 "기술서 카드" 느낌 제거 */
+#highlights .ch-sep {
+    align-self: stretch;
+    width: 1px;
+    min-height: 150px;
+    background: linear-gradient(180deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+    #highlights .ch-figure,
+    #highlights .ch-kw { animation: none; background-position: 50% 0; }
+}
+/* 태블릿 — 3열 유지, 수치·간격만 축소 */
+@media (max-width: 1280px) {
+    #highlights .ch-head { font-size: 34px; margin-bottom: 64px; }
+    #highlights .ch-row { gap: 0 36px; }
+    #highlights .ch-figure { font-size: 72px; }
+    #highlights .ch-unit { font-size: 31px; }
+    #highlights .ch-figure-kw svg { width: 42px; height: 42px; }
+    #highlights .ch-kw { font-size: 42px; }
+    #highlights .ch-label { font-size: 19px; }
+}
+/* 모바일 — 세로 스택, 구분선은 가로선으로 전환 */
+@media (max-width: 900px) {
+    #highlights .ch-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    #highlights .ch-item {
+        align-items: center;
+        text-align: center;
+        padding: 34px 0;
+    }
+    #highlights .ch-desc { max-width: 460px; }
+    #highlights .ch-sep {
+        width: 100%;
+        min-height: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+    }
+}
+@media (max-width: 560px) {
+    #highlights .ch-head { font-size: 27px; margin-bottom: 40px; }
+    #highlights .ch-figure { font-size: 66px; }
+    #highlights .ch-figure-kw { flex-direction: column; gap: 10px; }
+    #highlights .ch-kw { font-size: 40px; text-align: center; }
+}
+
+
 /* ---------- 02 CAREER JOURNEY ---------- */
 #career .career-head {
     font-size: 46px;
@@ -438,8 +630,9 @@ body, html {
 }
 #career .timeline {
     flex: 1;
+    min-width: 0;                               /* flex 자식 축소 허용(노트북 폭에서 넘침 방지) */
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));  /* 최소폭 아래로도 축소 → 넘침 방지 */
     gap: 22px;
     position: relative;
 }
@@ -552,7 +745,6 @@ body, html {
     line-height: 1.35;
     margin-bottom: 18px;
     min-height: 21px;
-    white-space: nowrap;
     letter-spacing: -0.02em;
 }
 #career .tl-img {
@@ -582,7 +774,6 @@ body, html {
     font-size: 16.5px;
     line-height: 1.65;
     color: var(--ink-soft);
-    white-space: nowrap;
     letter-spacing: -0.01em;
 }
 #career .tl-list li::before {
@@ -1929,14 +2120,6 @@ body, html {
     letter-spacing: 0.06em;
     color: var(--proj-deep);
 }
-#nt-decisions .dec-q {
-    font-size: 21px;
-    font-weight: 800;
-    line-height: 1.42;
-    color: var(--ink);
-    margin-bottom: 22px;
-    word-break: keep-all;
-}
 
 /* A vs B — 선택/포기가 또렷하게. 세로 스택, 가운데 vs 구분자 */
 #nt-decisions .dec-options {
@@ -2000,46 +2183,17 @@ body, html {
     opacity: 0.65;
 }
 
-/* 왜 / 포기 — 라벨 + 본문 2열 라인 */
-#nt-decisions .dec-why,
-#nt-decisions .dec-trade {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 12px;
-    align-items: baseline;
+/* 이유 — 선택 아래 한 줄. 점선 위 단문, 키워드만 보라 강조 */
+#nt-decisions .dec-reason {
+    margin-top: auto;
     padding-top: 16px;
     border-top: 1px solid var(--line);
-}
-#nt-decisions .dec-trade { padding-top: 14px; }
-#nt-decisions .dec-line-lab {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-}
-#nt-decisions .dec-why .dec-line-lab { color: var(--proj-deep); }
-#nt-decisions .dec-trade .dec-line-lab { color: var(--ink-soft); }
-#nt-decisions .dec-line-body {
     font-size: 16px;
     line-height: 1.58;
-    color: var(--ink);
-    word-break: keep-all;
-}
-#nt-decisions .dec-trade .dec-line-body { color: var(--ink-soft); }
-#nt-decisions .dec-line-body b { color: var(--proj-deep); font-weight: 700; }
-
-/* 검증 슬롯 — 비어 있으면 숨김(레이아웃 안 깨짐), 채우면 점선 위 한 줄 */
-#nt-decisions .dec-check { display: none; }
-#nt-decisions .dec-check:not(:empty) {
-    display: block;
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px dashed var(--line);
-    font-size: 14px;
-    line-height: 1.5;
     color: var(--ink-soft);
     word-break: keep-all;
 }
-
+#nt-decisions .dec-reason b { color: var(--proj-deep); font-weight: 700; }
 
 /* ---------- NOTALK Service Strategy & UX ---------- */
 #nt-service .svc-steps {
@@ -2845,7 +2999,6 @@ body, html {
     /* Design Decisions — 태블릿: 3열 유지, 간격·여백만 좁힘 */
     #nt-decisions .dec-grid { gap: 16px; }
     #nt-decisions .dec-card { padding: 26px 24px 24px; }
-    #nt-decisions .dec-q { font-size: 19px; }
 
     /* 5스텝도 grid에선 2열로 동일 정렬, 폰 폭은 셀에 꽉 차게 */
     #nt-service .svc-steps-5 {
@@ -4817,3 +4970,122 @@ body, html {
     #featured .fp-item::after { display: none; }
     #featured .fp-item.is-soon.nudge { animation: none; }
 }
+
+/* =========================================================
+   FEATURED — v3 (최종) : 다크 "챕터 커버" 유지 + 카드 효과만 정제.
+   배경 다크는 의도된 챕터 구분으로 살리되, 미래풍 네온/글로우/shine/3색 제거.
+   · 카드 = 절제된 다크 글래스 / 크롬 브랜드 블루 단일 / 앱 아이콘 색 유지
+   · 정보구조·클릭·접근성 동일. 상태 칩(출시완료/예정)은 기존 유지.
+   ========================================================= */
+
+/* 카드 액센트 → 브랜드 블루 단일(파랑·앰버·그린 3색 난립 제거) */
+#featured .fp-item,
+#featured .fp-item:nth-child(2),
+#featured .fp-item:nth-child(3) { --fp-accent: var(--blue); --fp-accent-rgb: 86,126,255; }
+
+/* 섹션 배경 — 딥 네이비 블랙(챕터 커버) */
+#featured {
+    background:
+        radial-gradient(circle at 80% 14%, rgba(86,126,255,0.10), transparent 42%),
+        radial-gradient(circle at 16% 86%, rgba(86,126,255,0.07), transparent 48%),
+        linear-gradient(160deg, #0a0e1a 0%, #06080f 55%, #090d18 100%);
+    color: #eef2ff;
+}
+
+/* 좌측 카피 — 다크 위 라이트 */
+#featured .fp-num {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background: var(--metallic);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none;
+}
+#featured .fp-title {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    background: none;
+    filter: drop-shadow(0 14px 30px rgba(86,126,255,0.20));
+    text-shadow: none;
+}
+#featured .fp-divider { background: linear-gradient(90deg, var(--blue-light), rgba(170,198,255,0.20)); }
+#featured .fp-sub { color: rgba(226,233,255,0.62); }
+
+/* 카드 — 절제된 다크 글래스(네온·corner glow 제거, 평면적이고 고급스럽게) */
+#featured .fp-item {
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+/* 상단 하이라이트 라인 — 글로우 제거, 아주 옅은 블루 헤어라인만 */
+#featured .fp-item::before { box-shadow: none; opacity: 0.4; }
+/* shine sweep(광택 스윕) 완전 제거 — '미래풍'의 핵심 원인 */
+#featured .fp-item::after { display: none; }
+
+/* 호버 — 절제된 리프트 + 옅은 보더/그림자(네온 글로우 제거) */
+#featured .fp-item.is-link:hover,
+#featured .fp-item.is-link:focus-visible,
+#featured .fp-item.is-soon:hover,
+#featured .fp-item.is-soon:focus-visible {
+    border-color: rgba(150,178,255,0.40);
+    background: rgba(255,255,255,0.07);
+    box-shadow:
+        0 44px 92px rgba(0,0,0,0.52),
+        0 0 0 1px rgba(150,178,255,0.22);
+}
+#featured .fp-item:focus-visible {
+    box-shadow:
+        0 44px 92px rgba(0,0,0,0.52),
+        0 0 0 3px rgba(150,178,255,0.45);
+}
+
+/* 아이콘 — 네온 후광/액센트 링 제거, 깔끔한 그림자만 */
+#featured .fp-icon {
+    background: rgba(255,255,255,0.04);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+}
+#featured .fp-icon img { filter: drop-shadow(0 10px 22px rgba(0,0,0,0.40)); }
+#featured .fp-item:hover .fp-icon,
+#featured .fp-item:focus-visible .fp-icon {
+    box-shadow:
+        0 24px 48px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.14);
+}
+#featured .fp-item:hover .fp-icon img,
+#featured .fp-item:focus-visible .fp-icon img { filter: drop-shadow(0 14px 28px rgba(0,0,0,0.5)) brightness(1.04); }
+
+/* 번호·이름 */
+#featured .fp-inum { color: var(--blue-light); text-shadow: none; }
+#featured .fp-name { color: #fff; }
+
+/* 타입 배지 — 브랜드 블루 단일(앰버·그린 제거) */
+#featured .fp-type.team,
+#featured .fp-type.personal,
+#featured .fp-type.team.green {
+    color: #eef4ff;
+    background: rgba(86,126,255,0.18);
+    border: 1px solid rgba(150,178,255,0.45);
+    box-shadow: none;
+}
+#featured .fp-type.team::before,
+#featured .fp-type.personal::before,
+#featured .fp-type.team.green::before { background: #dfe7ff; }
+#featured .fp-item:hover .fp-type.team,
+#featured .fp-item:hover .fp-type.personal,
+#featured .fp-item:hover .fp-type.team.green,
+#featured .fp-item:focus-visible .fp-type.team,
+#featured .fp-item:focus-visible .fp-type.personal,
+#featured .fp-item:focus-visible .fp-type.team.green {
+    box-shadow: 0 8px 18px rgba(34,54,150,0.40);
+}
+
+/* 연결 트랙·노드 제거 — 카드 위로 가로지르던 선이 02 계단식과 어긋나
+   '노톡만 위에 선이 있는' 비대칭을 만들어 제거. 3개 카드 동일하게. */
+#featured .fp-track { display: none; }
