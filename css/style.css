@@ -903,10 +903,11 @@ body, html {
     margin-bottom: 14px;
 }
 #notalk .nt-title {
-    font-size: 40px;            /* 고유명사 — 앵커 아님. 가치제안보다 한 단계 낮게 */
-    font-weight: 800;
+    font-size: 30px;            /* 2순위 이름 라벨 — 앵커(가치제안)보다 확실히 작게 */
+    font-weight: 800;           /* 작은 만큼 굵게 + 색 강등으로 '또렷한 이름표' */
     line-height: 1;
-    color: var(--ink);
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);     /* 주인공(--ink) 양보 → 라벨 톤으로 한 단계 내림 */
 }
 #notalk .nt-status {
     display: inline-flex;
@@ -930,8 +931,8 @@ body, html {
 }
 #notalk .nt-lead {
     max-width: 920px;
-    font-size: 52px;                 /* ★ 1순위 앵커 — "이게 뭔가" 가치제안. 제목보다 크게 */
-    font-weight: 800;
+    font-size: 52px;                 /* ★ 1순위 앵커 — "이게 뭔가" 가치제안. 가장 큼 */
+    font-weight: 700;                /* 큰 헤드라인은 700이면 충분히 무거움 → 노톡(800)과 굵기 차등 */
     line-height: 1.22;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -1570,22 +1571,28 @@ body, html {
         linear-gradient(135deg, var(--nt-deep) 0%, var(--nt) 100%);
     border: 1px solid rgba(111,123,239,0.4);
     border-radius: 20px;
-    padding: 34px 38px 32px;
+    padding: 52px 48px 40px;
     box-shadow: 0 24px 50px rgba(74,82,201,0.26);
     overflow: hidden;
+    text-align: center;
 }
 #nt-problem .insight-box::before {
     content: "\201C";
     position: absolute;
-    top: 6px;
-    left: 24px;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Work Sans', Georgia, serif;
-    font-size: 120px;
+    font-size: 110px;
     line-height: 1;
-    color: rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.13);
     pointer-events: none;
 }
-#nt-problem .insight-box .insight-head { margin-bottom: 16px; }
+#nt-problem .insight-box .insight-head {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
 #nt-problem .insight-box .nt-badge { margin-bottom: 0; }
 #nt-problem .insight-box .nt-badge .n {
     background: rgba(255,255,255,0.18);
@@ -1594,11 +1601,14 @@ body, html {
 #nt-problem .insight-box .nt-badge .t { color: rgba(255,255,255,0.92); }
 #nt-problem .insight-box .iquote {
     position: relative;
-    font-size: 29px;
+    max-width: 920px;
+    margin: 0 auto;
+    font-size: 31px;
     font-weight: 800;
-    line-height: 1.4;
+    line-height: 1.46;
     color: #fff;
     word-break: keep-all;
+    letter-spacing: -0.01em;
 }
 #nt-problem .insight-box .iquote b {
     color: #fff;
@@ -1606,13 +1616,21 @@ body, html {
     padding: 0 2px;
 }
 #nt-problem .insight-box .isub {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.18);
+    max-width: 720px;
+    margin: 22px auto 0;
     font-size: 16px;
     line-height: 1.55;
     color: rgba(255,255,255,0.86);
     word-break: keep-all;
+    text-wrap: balance;
+}
+#nt-problem .insight-box .isub::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin: 0 auto 20px;
+    background: rgba(255,255,255,0.28);
 }
 #nt-problem .insight-box .isub b { color: #fff; font-weight: 800; }
 
@@ -1930,7 +1948,7 @@ body, html {
         border-bottom: 1px solid var(--line);
     }
     #nt-problem .insight-box {
-        padding: 30px 30px 28px;
+        padding: 46px 32px 34px;
     }
     #nt-problem .insight-box .iquote { font-size: 26px; }
 
@@ -2085,7 +2103,7 @@ body, html {
     }
 
     #notalk .nt-title {
-        font-size: 32px;
+        font-size: 24px;        /* 라벨 — lead 38px 아래 유지 */
     }
 
     #notalk .nt-eyebrow {
@@ -2213,9 +2231,12 @@ body, html {
         margin-top: 34px;
     }
 
-    #featured .fp-title,
-    #notalk .nt-title {
+    #featured .fp-title {
         font-size: 38px;
+    }
+
+    #notalk .nt-title {
+        font-size: 24px;        /* 라벨 — 560px에서도 상속 lead(38px) 아래로 */
     }
 
     #featured .fp-icon {
@@ -2245,10 +2266,15 @@ body, html {
     #nt-problem .stat-box .note { font-size: 15.5px; }
 
     #nt-problem .insight-box {
-        padding: 26px 24px;
+        padding: 42px 22px 30px;
     }
-    #nt-problem .insight-box .iquote { font-size: 22px; }
-    #nt-problem .insight-box::before { font-size: 90px; left: 18px; }
+    #nt-problem .insight-box .iquote {
+        font-size: 21px;
+        text-wrap: balance;
+    }
+    /* 좁은 폭에선 강제 줄바꿈 해제 — balance가 균형 맞춤 */
+    #nt-problem .insight-box .iquote br { display: none; }
+    #nt-problem .insight-box::before { font-size: 80px; top: 0; }
     #nt-problem .prob-lead { font-size: 16.5px; }
 
     #nt-opportunity .opp-concept {
