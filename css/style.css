@@ -144,7 +144,7 @@ body, html {
 
 /* ── 옵션 B: 노톡 케이스 스코프 — 이 섹션들 안에서 --proj 가 노톡 대표색으로 해석됨 ── */
 /* 노톡 대표색 #5566f0 계열 (목록 카드 색 #5566f0 과 일치, 1제품 1색) */
-#notalk, #nt-problem, #nt-opportunity, #nt-structure, #nt-service {
+#notalk, #nt-problem, #nt-opportunity, #nt-decisions, #nt-structure, #nt-service {
     --proj: #5566f0;
     --proj-deep: #3a45c9;
     --proj-light: #9aa6ff;
@@ -974,12 +974,23 @@ body, html {
         conic-gradient(var(--proj-deep) 0 70%, rgba(111,123,239,0.18) 70% 100%);
     color: var(--proj-deep);
     font-family: 'Work Sans', sans-serif;
-    font-size: 25px;
     font-weight: 800;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    line-height: 1;
     box-shadow: 0 16px 30px rgba(74, 82, 201, 0.20);
+}
+#notalk .nt-impact .pct .pct-cap {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--proj-deep);
+    margin-bottom: 3px;
+}
+#notalk .nt-impact .pct .pct-num {
+    font-size: 25px;
 }
 #notalk .nt-impact .im-body {
     display: flex;
@@ -1310,9 +1321,9 @@ body, html {
     margin-bottom: 14px;
 }
 .nt-detail .nt-underline {
-    width: 56px; height: 3px;
-    background: linear-gradient(90deg, var(--proj), var(--proj-light));
-    border-radius: 3px;
+    width: 48px; height: 2px;
+    background: var(--proj);
+    border-radius: 2px;
     margin-bottom: 42px;
 }
 
@@ -1328,11 +1339,11 @@ body, html {
     font-size: 15px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(135deg, var(--proj), var(--proj-light));
-    border-radius: 8px;
+    background: var(--proj);
+    border-radius: 6px;
     padding: 6px 12px;
     line-height: 1;
-    box-shadow: 0 8px 18px rgba(111, 123, 239, 0.3);
+    box-shadow: none;
 }
 .nt-badge .t { font-size: 20px; font-weight: 700; color: var(--ink); }
 
@@ -1373,61 +1384,57 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background: var(--glass);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 24px 24px 26px;
-    box-shadow: var(--shadow-soft);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 26px 28px;
+    box-shadow: none;
     overflow: hidden;
 }
-/* 카드별 상단 액센트 바 — 한 가족(보라), 톤 단계로 구분 */
+/* 카드별 상단 액센트 — 4px 그라데이션 바 대신 얇은 단색 톤 라인(에디토리얼) */
 #nt-problem .prob-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
+    height: 2px;
 }
-#nt-problem .prob-card.t1::before { background: linear-gradient(90deg, var(--proj-deep), var(--proj)); }
-#nt-problem .prob-card.t2::before { background: linear-gradient(90deg, var(--proj), var(--proj-light)); }
-#nt-problem .prob-card.t3::before { background: linear-gradient(90deg, var(--proj-light), rgba(166,176,255,0.45)); }
+#nt-problem .prob-card.t1::before { background: var(--proj-deep); }
+#nt-problem .prob-card.t2::before { background: var(--proj); }
+#nt-problem .prob-card.t3::before { background: var(--proj-light); }
 
 #nt-problem .prob-card .pnum {
-    width: 52px;
-    height: 52px;
-    flex: 0 0 52px;
+    width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
-    color: #fff;
+    border-radius: 12px;
+    color: var(--proj-deep);
+    background: rgba(85, 102, 240, 0.10);
+    border: 1px solid rgba(111, 123, 239, 0.22);
 }
 #nt-problem .prob-card .pnum svg { width: 26px; height: 26px; }
-#nt-problem .prob-card.t1 .pnum {
-    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
-    box-shadow: 0 12px 24px rgba(74,82,201,0.30);
+/* 아이콘 + 번호/제목을 한 줄 헤더로 — 아이콘 왼쪽, 텍스트 오른쪽 */
+#nt-problem .prob-card .pc-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
-#nt-problem .prob-card.t2 .pnum {
-    background: linear-gradient(135deg, var(--proj), var(--proj-light));
-    box-shadow: 0 12px 24px rgba(111,123,239,0.26);
-}
-#nt-problem .prob-card.t3 .pnum {
-    background: linear-gradient(135deg, var(--proj-light), #c3cbff);
-    box-shadow: 0 12px 24px rgba(166,176,255,0.30);
-}
+#nt-problem .prob-card .pc-htext { min-width: 0; }
 #nt-problem .prob-card .pkey {
     font-family: 'Work Sans', sans-serif;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--proj-deep);
-    margin-bottom: 7px;
+    margin-bottom: 4px;
     text-transform: uppercase;
 }
 #nt-problem .prob-card .ptit {
     font-size: 21px;
     font-weight: 800;
-    margin-bottom: 9px;
+    margin-bottom: 0;
     color: var(--ink);
     word-break: keep-all;
 }
@@ -1451,12 +1458,11 @@ body, html {
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 32px;
-    background: var(--glass);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 24px 30px;
-    box-shadow: var(--shadow-soft);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 30px;
+    box-shadow: none;
 }
 #nt-problem .stat-box .stat-main {
     text-align: center;
@@ -1482,6 +1488,29 @@ body, html {
     color: transparent;
 }
 #nt-problem .stat-box .big .unit { font-size: 34px; }
+/* 리서치 방법 라벨 — "근거 기반으로 문제를 정의했다"를 얇게 명시 (1차 인터뷰 암시 X) */
+#nt-problem .stat-box .method {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    word-break: keep-all;
+}
+#nt-problem .stat-box .method-tag {
+    flex: 0 0 auto;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--proj-deep);
+    background: rgba(111,123,239,0.10);
+    border: 1px solid rgba(111,123,239,0.22);
+    border-radius: 6px;
+    padding: 3px 8px;
+}
 #nt-problem .stat-box .note {
     font-size: 16px;
     line-height: 1.58;
@@ -1528,14 +1557,14 @@ body, html {
 }
 #nt-problem .comp-arrow svg { width: 22px; height: 22px; }
 #nt-problem .comp-col {
-    background: rgba(255,255,255,0.42);
-    border-radius: 16px;
+    background: #fff;
+    border-radius: 12px;
     padding: 22px 24px;
     border: 1px solid var(--line);
 }
 #nt-problem .comp-col.need {
-    background: linear-gradient(160deg, rgba(111,123,239,0.10), rgba(255,255,255,0.42));
-    border-color: rgba(111,123,239,0.28);
+    background: rgba(85, 102, 240, 0.05);
+    border-color: rgba(111,123,239,0.24);
 }
 #nt-problem .comp-col .ch {
     display: flex;
@@ -1560,7 +1589,7 @@ body, html {
 #nt-problem .comp-col.need .ch { color: var(--proj-deep); border-color: rgba(111,123,239,0.25); }
 #nt-problem .comp-col.need .ch .tag {
     color: #fff;
-    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
+    background: var(--proj);
 }
 #nt-problem .comp-col .ci {
     position: relative;
@@ -1579,7 +1608,7 @@ body, html {
     background: rgba(36,60,159,0.20);
 }
 #nt-problem .comp-col.need .ci::before {
-    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
+    background: var(--proj);
 }
 #nt-problem .comp-col .ci .h {
     font-size: 16px;
@@ -1600,12 +1629,11 @@ body, html {
 #nt-problem .insight-box {
     position: relative;
     margin-top: 6px;
-    background:
-        linear-gradient(135deg, var(--proj-deep) 0%, var(--proj) 100%);
-    border: 1px solid rgba(111,123,239,0.4);
-    border-radius: 20px;
+    background: var(--proj-deep);
+    border: 1px solid var(--proj-deep);
+    border-radius: 14px;
     padding: 52px 48px 40px;
-    box-shadow: 0 24px 50px rgba(74,82,201,0.26);
+    box-shadow: 0 14px 30px rgba(36, 60, 159, 0.14);
     overflow: hidden;
     text-align: center;
 }
@@ -1697,11 +1725,11 @@ body, html {
     display: flex;
     flex-direction: column;
     min-height: 226px;
-    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
-    border: 1px solid rgba(111, 123, 239, 0.16);
-    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
     padding: 30px 32px 28px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: none;
     position: relative;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -1710,13 +1738,13 @@ body, html {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--proj-deep), var(--proj) 55%, var(--proj-light));
+    height: 2px;
+    background: var(--proj);
 }
 #nt-opportunity .opp-item:hover {
-    transform: translateY(-4px);
-    border-color: rgba(111, 123, 239, 0.34);
-    box-shadow: 0 20px 44px rgba(36, 60, 159, 0.13);
+    transform: translateY(-3px);
+    border-color: rgba(111, 123, 239, 0.30);
+    box-shadow: 0 12px 26px rgba(36, 60, 159, 0.08);
 }
 /* 헤더 행 — 인덱스 + 영문 라벨(아이콘) 4장 동일 정렬축 */
 #nt-opportunity .opp-item .oh {
@@ -1771,11 +1799,11 @@ body, html {
     align-items: center;
     justify-content: center;         /* CONCEPT + 문구 가운데 정렬 */
     gap: 24px;
-    background: linear-gradient(120deg, var(--proj), var(--proj-deep));
+    background: var(--proj-deep);
     color: #fff;
     border-radius: 10px;
     padding: 24px 34px;
-    box-shadow: 0 18px 40px rgba(111, 123, 239, 0.32);
+    box-shadow: 0 12px 26px rgba(36, 60, 159, 0.12);
 }
 #nt-opportunity .opp-concept .lab {
     font-family: 'Work Sans', sans-serif;
@@ -1790,6 +1818,188 @@ body, html {
     font-size: 28px;
     font-weight: 800;
     line-height: 1.32;
+}
+
+
+/* ---------- NOTALK Design Decisions ---------- */
+/* 전략 → 제품 선택의 판단 비트. 형제 카드(opp-item) 언어 계승:
+   흰 카드 + --line 보더 + radius 12 + 상단 2px 바. A vs B → 선택 → 포기를 한눈에. */
+#nt-decisions > .nt-badge { margin-bottom: 18px; }
+#nt-decisions .dec-lead {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 860px;
+    margin-bottom: 40px;
+    word-break: keep-all;
+}
+#nt-decisions .dec-lead b { color: var(--proj-deep); font-weight: 800; }
+
+#nt-decisions .dec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+#nt-decisions .dec-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 30px 30px 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#nt-decisions .dec-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--proj);
+}
+#nt-decisions .dec-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(111, 123, 239, 0.30);
+    box-shadow: 0 12px 26px rgba(36, 60, 159, 0.08);
+}
+
+/* 헤더 — 고스트 인덱스 + 결정 주제 (opp-item .oh/.oi 축 계승) */
+#nt-decisions .dec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+#nt-decisions .dec-idx {
+    flex: 0 0 auto;
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: rgba(111, 123, 239, 0.10);
+    border: 1px solid rgba(111, 123, 239, 0.30);
+    color: var(--proj-deep);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+}
+#nt-decisions .dec-topic {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--proj-deep);
+}
+#nt-decisions .dec-q {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.42;
+    color: var(--ink);
+    margin-bottom: 22px;
+    word-break: keep-all;
+}
+
+/* A vs B — 선택/포기가 또렷하게. 세로 스택, 가운데 vs 구분자 */
+#nt-decisions .dec-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+#nt-decisions .dec-opt {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    font-size: 16px;
+    font-weight: 700;
+    word-break: keep-all;
+}
+#nt-decisions .dec-opt .dec-mark {
+    flex: 0 0 auto;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+#nt-decisions .dec-opt .dec-mark svg { width: 14px; height: 14px; }
+
+/* 선택 = 보라 보더·✓ 채워진 마크 */
+#nt-decisions .dec-opt.chosen {
+    border-color: var(--proj);
+    background: rgba(111, 123, 239, 0.06);
+    color: var(--ink);
+}
+#nt-decisions .dec-opt.chosen .dec-mark {
+    background: var(--proj);
+    color: #fff;
+}
+/* 포기 = 회색·취소선·✗ — 과하지 않게 흐리게 */
+#nt-decisions .dec-opt.rejected {
+    border-style: dashed;
+    border-color: var(--line);
+    color: var(--ink-soft);
+}
+#nt-decisions .dec-opt.rejected .dec-opt-label {
+    text-decoration: line-through;
+    text-decoration-color: rgba(89, 97, 122, 0.5);
+    opacity: 0.8;
+}
+#nt-decisions .dec-opt.rejected .dec-mark {
+    background: rgba(89, 97, 122, 0.10);
+    color: var(--ink-soft);
+}
+#nt-decisions .dec-vs {
+    align-self: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.65;
+}
+
+/* 왜 / 포기 — 라벨 + 본문 2열 라인 */
+#nt-decisions .dec-why,
+#nt-decisions .dec-trade {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+#nt-decisions .dec-trade { padding-top: 14px; }
+#nt-decisions .dec-line-lab {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+#nt-decisions .dec-why .dec-line-lab { color: var(--proj-deep); }
+#nt-decisions .dec-trade .dec-line-lab { color: var(--ink-soft); }
+#nt-decisions .dec-line-body {
+    font-size: 16px;
+    line-height: 1.58;
+    color: var(--ink);
+    word-break: keep-all;
+}
+#nt-decisions .dec-trade .dec-line-body { color: var(--ink-soft); }
+#nt-decisions .dec-line-body b { color: var(--proj-deep); font-weight: 700; }
+
+/* 검증 슬롯 — 비어 있으면 숨김(레이아웃 안 깨짐), 채우면 점선 위 한 줄 */
+#nt-decisions .dec-check { display: none; }
+#nt-decisions .dec-check:not(:empty) {
+    display: block;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    word-break: keep-all;
 }
 
 
@@ -1823,7 +2033,7 @@ body, html {
     border-radius: 32px;
     border: 8px solid #11151f;
     background: #fff;
-    box-shadow: 0 34px 64px rgba(36, 60, 159, 0.18);
+    box-shadow: 0 18px 40px rgba(36, 60, 159, 0.12);
 }
 #nt-service .svc-phone.img-slot::after { content: none; }
 #nt-service .svc-phone img {
@@ -1865,7 +2075,7 @@ body, html {
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--proj-deep), var(--proj-light));
+    background: var(--proj);
 }
 
 /* ── 생성자 흐름 5스텝: 칸이 많아 폰/간격 축소 ── */
@@ -1933,7 +2143,7 @@ body, html {
     width: 26px; height: 2px;
     vertical-align: middle;
     margin-right: 12px;
-    background: linear-gradient(90deg, var(--proj), var(--proj-light));
+    background: var(--proj);
 }
 #nt-structure .ps-block-cap {
     font-size: 18px;
@@ -1944,10 +2154,10 @@ body, html {
 
 /* ===== 블록 A · Information Architecture (트리) ===== */
 #nt-structure .ps-tree {
-    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
-    border: 1px solid rgba(111, 123, 239, 0.16);
-    border-radius: 20px;
-    box-shadow: var(--shadow-soft);
+    background: #fafbff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: none;
     padding: 48px 40px 44px;
 }
 
@@ -1973,17 +2183,17 @@ body, html {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, var(--proj), var(--proj-deep));
+    background: var(--proj-deep);
     color: #fff;
-    border-radius: 14px;
+    border-radius: 10px;
     padding: 18px 30px;
-    box-shadow: 0 16px 34px rgba(85, 102, 240, 0.34);
+    box-shadow: 0 10px 22px rgba(36, 60, 159, 0.12);
 }
 #nt-structure .ps-root-mark {
-    width: 12px; height: 12px;
+    width: 10px; height: 10px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.22);
 }
 #nt-structure .ps-root-name {
     font-family: 'Work Sans', sans-serif;
@@ -2046,10 +2256,10 @@ body, html {
     align-items: center;
     gap: 8px;
     background: #fff;
-    border: 1px solid rgba(111, 123, 239, 0.22);
-    border-radius: 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
     padding: 18px 14px 16px;
-    box-shadow: 0 8px 20px rgba(36, 60, 159, 0.07);
+    box-shadow: none;
     margin-bottom: 18px;
     position: relative;
 }
@@ -2058,8 +2268,8 @@ body, html {
     align-items: center;
     justify-content: center;
     width: 46px; height: 46px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(85,102,240,0.12), rgba(154,166,255,0.18));
+    border-radius: 10px;
+    background: rgba(85, 102, 240, 0.08);
     color: var(--proj-deep);
 }
 #nt-structure .ps-node-ic svg { width: 22px; height: 22px; }
@@ -2101,9 +2311,9 @@ body, html {
     font-weight: 600;
     color: var(--ink);
     text-align: center;
-    background: rgba(85, 102, 240, 0.06);
-    border: 1px solid rgba(111, 123, 239, 0.14);
-    border-radius: 10px;
+    background: rgba(85, 102, 240, 0.05);
+    border: 1px solid var(--line);
+    border-radius: 8px;
     padding: 9px 10px;
     word-break: keep-all;
 }
@@ -2111,17 +2321,17 @@ body, html {
 /* ===== 블록 B · IA Detail (4 패널) ===== */
 #nt-structure .ps-detail-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
 }
 #nt-structure .ps-panel {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
-    border: 1px solid rgba(111, 123, 239, 0.16);
-    border-radius: 16px;
-    padding: 28px 26px 26px;
-    box-shadow: var(--shadow-soft);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 22px 24px;
+    box-shadow: none;
     position: relative;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -2130,13 +2340,13 @@ body, html {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--proj-deep), var(--proj) 55%, var(--proj-light));
+    height: 2px;
+    background: var(--proj);
 }
 #nt-structure .ps-panel:hover {
-    transform: translateY(-4px);
-    border-color: rgba(111, 123, 239, 0.34);
-    box-shadow: 0 20px 44px rgba(36, 60, 159, 0.13);
+    transform: translateY(-3px);
+    border-color: rgba(111, 123, 239, 0.30);
+    box-shadow: 0 12px 26px rgba(36, 60, 159, 0.08);
 }
 #nt-structure .ps-panel-head {
     display: flex;
@@ -2150,23 +2360,17 @@ body, html {
     align-items: center;
     justify-content: center;
     width: 40px; height: 40px;
-    border-radius: 10px;
-    background: rgba(85, 102, 240, 0.10);
-    border: 1px solid rgba(111, 123, 239, 0.26);
+    border-radius: 8px;
+    background: rgba(85, 102, 240, 0.08);
+    border: 1px solid rgba(111, 123, 239, 0.20);
     color: var(--proj-deep);
     flex: 0 0 auto;
 }
 #nt-structure .ps-panel-ic svg { width: 20px; height: 20px; }
-#nt-structure .ps-panel-en {
-    font-family: 'Work Sans', sans-serif;
+#nt-structure .ps-panel-ko {
     font-size: 19px;
     font-weight: 800;
     color: var(--ink);
-}
-#nt-structure .ps-panel-ko {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--proj-deep);
 }
 #nt-structure .ps-panel-desc {
     font-size: 16px;
@@ -2196,49 +2400,10 @@ body, html {
     content: '';
     position: absolute;
     left: 0; top: 9px;
-    width: 7px; height: 7px;
+    width: 6px; height: 6px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--proj), var(--proj-light));
+    background: var(--proj);
 }
-
-/* ===== 블록 C · Structure Overview (4원칙) ===== */
-#nt-structure .ps-principles {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-}
-#nt-structure .ps-principle {
-    background: linear-gradient(120deg, var(--proj), var(--proj-deep));
-    color: #fff;
-    border-radius: 16px;
-    padding: 30px 28px 28px;
-    box-shadow: 0 18px 40px rgba(85, 102, 240, 0.30);
-    display: flex;
-    flex-direction: column;
-}
-#nt-structure .ps-principle-ic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.16);
-    margin-bottom: 18px;
-}
-#nt-structure .ps-principle-ic svg { width: 24px; height: 24px; }
-#nt-structure .ps-principle-tit {
-    font-size: 21px;
-    font-weight: 800;
-    margin-bottom: 11px;
-    word-break: keep-all;
-}
-#nt-structure .ps-principle-desc {
-    font-size: 16px;
-    line-height: 1.62;
-    color: rgba(255, 255, 255, 0.88);
-    word-break: keep-all;
-}
-
 
 /* =========================================================
    RESPONSIVE
@@ -2389,6 +2554,11 @@ body, html {
         display: none;
     }
 
+    /* Design Decisions — 태블릿: 3열 유지, 간격·여백만 좁힘 */
+    #nt-decisions .dec-grid { gap: 16px; }
+    #nt-decisions .dec-card { padding: 26px 24px 24px; }
+    #nt-decisions .dec-q { font-size: 19px; }
+
     /* 5스텝도 grid에선 2열로 동일 정렬, 폰 폭은 셀에 꽉 차게 */
     #nt-service .svc-steps-5 {
         gap: 28px;
@@ -2400,14 +2570,13 @@ body, html {
         font-size: 22px;
     }
 
-    /* Product Structure — 태블릿: 트리 5열 유지, Detail/원칙 2열 */
+    /* Product Structure — 태블릿: 트리 5열 유지, Detail 3열(5패널=3+2), 원칙 2열 */
     #nt-structure .ps-tree { padding: 40px 28px 36px; }
     #nt-structure .ps-branches { gap: 14px; }
     #nt-structure .ps-node { padding: 16px 10px 14px; }
     #nt-structure .ps-node-name { font-size: 16px; }
     #nt-structure .ps-leaves li { font-size: 13.5px; padding: 8px 8px; }
-    #nt-structure .ps-detail-grid { grid-template-columns: 1fr 1fr; }
-    #nt-structure .ps-principles { grid-template-columns: 1fr 1fr; }
+    #nt-structure .ps-detail-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 }
 
 @media (max-width: 900px) {
@@ -2497,6 +2666,7 @@ body, html {
     #nt-problem .prob-cards,
     #nt-problem .prob-side,
     #nt-opportunity .opp-grid,
+    #nt-decisions .dec-grid,
     #nt-service .svc-steps {
         grid-template-columns: 1fr;
     }
@@ -2689,7 +2859,6 @@ body, html {
     #nt-structure .ps-leaves li { text-align: left; }
 
     #nt-structure .ps-detail-grid { grid-template-columns: 1fr; }
-    #nt-structure .ps-principles { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -2807,8 +2976,7 @@ body, html {
     #nt-structure .ps-node { flex-basis: auto; flex-direction: row; gap: 12px; align-self: stretch; }
     #nt-structure .ps-node-ic { width: 40px; height: 40px; }
     #nt-structure .ps-node-en { margin-left: auto; }
-    #nt-structure .ps-panel-en { font-size: 18px; }
-    #nt-structure .ps-principle-tit { font-size: 20px; }
+    #nt-structure .ps-panel-ko { font-size: 18px; }
 }
 
 
