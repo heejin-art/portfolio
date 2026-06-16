@@ -109,14 +109,26 @@ body, html {
    - 표지(Intro) 무드와 통일: 화이트–블루 그라데이션 + 메탈릭 블루
    ========================================================= */
 :root {
-    --blue: #567eff;          /* 메인 포인트 (표지 메탈릭 블루) */
-    --blue-light: #80b0ff;
-    --blue-soft: #aac6ff;
-    --blue-deep: #3f58c5;
-    --blue-ink: #243c9f;
-    --nt: #6f7bef;            /* 노톡 프로젝트 액센트 (블루-퍼플 브릿지) */
-    --nt-light: #a6b0ff;
-    --nt-deep: #4a52c9;
+    /* ── 1계층: 브랜드 원천색 (Single Source of Truth) ── */
+    --brand: #567eff;         /* 메인 포인트 (표지 메탈릭 블루) */
+    --brand-light: #80b0ff;
+    --brand-soft: #aac6ff;
+    --brand-deep: #3f58c5;
+    --brand-ink: #243c9f;
+
+    /* 기존 --blue* 별칭 → 브랜드로 재배선 (무중단: 모든 var(--blue*) 참조 그대로 동작) */
+    --blue: var(--brand);     /* = #567eff */
+    --blue-light: var(--brand-light);
+    --blue-soft: var(--brand-soft);
+    --blue-deep: var(--brand-deep);
+    --blue-ink: var(--brand-ink);
+
+    /* ── 2계층: 프로젝트 스코프 토큰 (기본값 = 브랜드, 섹션에서 오버라이드) ── */
+    --proj: var(--brand);
+    --proj-deep: var(--brand-deep);
+    --proj-light: var(--brand-light);
+
+    /* (구) --nt* 노톡 토큰 제거됨 → 옵션 B에서 #notalk 스코프의 --proj* 로 일원화 */
     --ink: #1a2238;          /* 본문 네이비 잉크 */
     --ink-soft: #59617a;
     --line: rgba(36, 60, 159, 0.12);
@@ -127,6 +139,15 @@ body, html {
     --slide-pad: 130px;
     --slide-pad-y: 120px;     /* 섹션 상하 통일값 — 이 숫자만 바꾸면 전체 적용 */
     --metallic: linear-gradient(118deg, #243c9f 0%, #567eff 30%, #80c7ff 52%, #3f58c5 74%, #243c9f 100%);
+    --brand-metallic: var(--metallic);   /* 브랜드 메탈릭 별칭 (의미 명확화, 값 동일) */
+}
+
+/* ── 옵션 B: 노톡 케이스 스코프 — 이 섹션들 안에서 --proj 가 노톡 대표색으로 해석됨 ── */
+/* 노톡 대표색 #5566f0 계열 (목록 카드 색 #5566f0 과 일치, 1제품 1색) */
+#notalk, #nt-problem, #nt-opportunity, #nt-structure, #nt-service {
+    --proj: #5566f0;
+    --proj-deep: #3a45c9;
+    --proj-light: #9aa6ff;
 }
 
 .slide {
@@ -820,79 +841,8 @@ body, html {
     color: var(--ink);
     margin-bottom: 22px;
 }
-#featured .fp-type {
-    font-family: 'Work Sans', sans-serif;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 172px;
-    min-height: 38px;
-    font-size: 12.5px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    border-radius: 8px;
-    padding: 10px 18px;
-    overflow: hidden;
-    isolation: isolate;
-}
-#featured .fp-type::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex: 0 0 7px;
-}
-#featured .fp-type::after {
-    content: '';
-    position: absolute;
-    inset: -70% -45%;
-    z-index: -1;
-    transform: translateX(-120%) rotate(12deg);
-    animation: badge-shine 3.2s ease-in-out infinite;
-}
-#featured .fp-type.team {
-    color: #fff;
-    background: linear-gradient(135deg, #5f7fff 0%, #405bd6 100%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    box-shadow:
-        0 14px 26px rgba(64, 91, 214, 0.24),
-        inset 0 1px 0 rgba(255,255,255,0.28);
-    animation: team-badge-lift 2.8s ease-in-out infinite;
-}
-#featured .fp-type.team::before {
-    background: #ffffff;
-    box-shadow: 0 0 10px rgba(255,255,255,0.78);
-}
-#featured .fp-type.team::after {
-    background: linear-gradient(115deg,
-        transparent 36%,
-        rgba(255,255,255,0.34) 48%,
-        rgba(255,255,255,0.12) 58%,
-        transparent 70%);
-}
-#featured .fp-type.personal {
-    color: #08727c;
-    background: linear-gradient(135deg, rgba(235, 253, 255, 0.92), rgba(214, 250, 246, 0.74));
-    border: 1px solid rgba(35, 180, 193, 0.42);
-    box-shadow:
-        0 14px 26px rgba(30, 167, 186, 0.12),
-        inset 0 1px 0 rgba(255,255,255,0.84);
-    animation: personal-badge-pulse 3s ease-in-out infinite;
-}
-#featured .fp-type.personal::before {
-    background: #24b7c7;
-    box-shadow: 0 0 10px rgba(36,183,199,0.5);
-}
-#featured .fp-type.personal::after {
-    background: linear-gradient(115deg,
-        transparent 34%,
-        rgba(255,255,255,0.72) 48%,
-        rgba(255,255,255,0.22) 58%,
-        transparent 72%);
-    animation-delay: 0.55s;
-}
+/* [정리됨] 구 .fp-type 정의(베이스/team/personal/::before/::after) 제거 —
+   최종 승자 단일 블록은 파일 하단(FEATURED 타입 배지 재디자인)에 통합. 시각 결과 동일. */
 @keyframes badge-shine {
     0%, 42% { transform: translateX(-120%) rotate(12deg); }
     62%, 100% { transform: translateX(120%) rotate(12deg); }
@@ -1021,8 +971,8 @@ body, html {
     border-radius: 50%;
     background:
         radial-gradient(circle at center, #fff 0 42%, transparent 43%),
-        conic-gradient(var(--nt-deep) 0 70%, rgba(111,123,239,0.18) 70% 100%);
-    color: var(--nt-deep);
+        conic-gradient(var(--proj-deep) 0 70%, rgba(111,123,239,0.18) 70% 100%);
+    color: var(--proj-deep);
     font-family: 'Work Sans', sans-serif;
     font-size: 25px;
     font-weight: 800;
@@ -1045,7 +995,7 @@ body, html {
     align-items: center;
     padding: 7px 14px;
     border-radius: 8px;
-    background: linear-gradient(120deg, var(--nt-deep), var(--nt));
+    background: linear-gradient(120deg, var(--proj-deep), var(--proj));
     color: #fff;
     font-size: 16px;
     font-weight: 800;
@@ -1094,7 +1044,7 @@ body, html {
     text-wrap: pretty;               /* 마지막 줄 외톨이 단어(orphan) 방지 */
 }
 #notalk .nt-impact .im-text b {
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     font-weight: 800;
 }
 /* ===== 메타 정보 — 3순위: 보조 레이어. 색 죽이고 박스 제거, 라인으로만 구분 ===== */
@@ -1131,7 +1081,7 @@ body, html {
 #notalk .nt-info .ic::after { content: none; }
 #notalk .nt-info .ic svg {
     width: 17px; height: 17px;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     display: block;
 }
 #notalk .nt-info .lbl {
@@ -1149,7 +1099,7 @@ body, html {
 #notalk .nt-info .val .tag {
     display: inline-flex;
     background: rgba(111, 123, 239, 0.14);
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     font-weight: 800;
     font-size: 14px;
     padding: 5px 10px;
@@ -1234,7 +1184,7 @@ body, html {
     font-family: 'Work Sans', sans-serif;
     font-size: 13px;
     font-weight: 800;
-    color: #6f7bef;
+    color: #5566f0;          /* 노톡 대표색 수렴 (구 #6f7bef) */
 }
 #notalk .phone-top .search {
     width: 18px;
@@ -1260,8 +1210,8 @@ body, html {
     border-radius: 14px;
     padding: 18px;
     background:
-        radial-gradient(circle at 82% 28%, rgba(111,123,239,0.25), transparent 28%),
-        linear-gradient(135deg, #f3f5ff, #dffbff);
+        radial-gradient(circle at 82% 28%, rgba(85,102,240,0.25), transparent 28%),   /* 노톡 대표색 톤 */
+        linear-gradient(135deg, #f3f5ff, #e7eaff);                                     /* 시안 끝색 → 연보라로 수렴 */
 }
 #notalk .phone-hero p {
     font-size: 20px;
@@ -1274,7 +1224,7 @@ body, html {
     display: inline-flex;
     padding: 8px 12px;
     border-radius: 8px;
-    background: #7b73ff;
+    background: #5566f0;      /* 노톡 대표색 수렴 (구 #7b73ff) */
     color: #fff;
     font-size: 12px;
     font-weight: 800;
@@ -1318,7 +1268,7 @@ body, html {
 }
 #notalk .phone-card span {
     font-size: 12px;
-    color: #6f7bef;
+    color: #5566f0;          /* 노톡 대표색 수렴 (구 #6f7bef) */
     font-weight: 800;
 }
 #notalk .phone-nav {
@@ -1332,8 +1282,8 @@ body, html {
     background: #d8dee9;
 }
 #notalk .phone-nav .active {
-    background: linear-gradient(135deg, #6f7bef, #61d7e7);
-    box-shadow: 0 8px 18px rgba(111,123,239,0.24);
+    background: linear-gradient(135deg, #5566f0, #9aa6ff);   /* 시안 포인트(#61d7e7) 제거 → 노톡 대표색 계열로 수렴 */
+    box-shadow: 0 8px 18px rgba(85,102,240,0.24);
 }
 
 
@@ -1352,7 +1302,7 @@ body, html {
     margin-bottom: 16px;
     color: var(--ink-soft);
 }
-.nt-detail .nt-eyebrow b { color: var(--nt-deep); font-weight: 700; margin-right: 6px; }
+.nt-detail .nt-eyebrow b { color: var(--proj-deep); font-weight: 700; margin-right: 6px; }
 .nt-detail .nt-sectitle {
     font-size: 46px;
     font-weight: 800;
@@ -1361,7 +1311,7 @@ body, html {
 }
 .nt-detail .nt-underline {
     width: 56px; height: 3px;
-    background: linear-gradient(90deg, var(--nt), var(--nt-light));
+    background: linear-gradient(90deg, var(--proj), var(--proj-light));
     border-radius: 3px;
     margin-bottom: 42px;
 }
@@ -1378,7 +1328,7 @@ body, html {
     font-size: 15px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(135deg, var(--nt), var(--nt-light));
+    background: linear-gradient(135deg, var(--proj), var(--proj-light));
     border-radius: 8px;
     padding: 6px 12px;
     line-height: 1;
@@ -1438,9 +1388,9 @@ body, html {
     top: 0; left: 0; right: 0;
     height: 4px;
 }
-#nt-problem .prob-card.t1::before { background: linear-gradient(90deg, var(--nt-deep), var(--nt)); }
-#nt-problem .prob-card.t2::before { background: linear-gradient(90deg, var(--nt), var(--nt-light)); }
-#nt-problem .prob-card.t3::before { background: linear-gradient(90deg, var(--nt-light), rgba(166,176,255,0.45)); }
+#nt-problem .prob-card.t1::before { background: linear-gradient(90deg, var(--proj-deep), var(--proj)); }
+#nt-problem .prob-card.t2::before { background: linear-gradient(90deg, var(--proj), var(--proj-light)); }
+#nt-problem .prob-card.t3::before { background: linear-gradient(90deg, var(--proj-light), rgba(166,176,255,0.45)); }
 
 #nt-problem .prob-card .pnum {
     width: 52px;
@@ -1454,15 +1404,15 @@ body, html {
 }
 #nt-problem .prob-card .pnum svg { width: 26px; height: 26px; }
 #nt-problem .prob-card.t1 .pnum {
-    background: linear-gradient(135deg, var(--nt-deep), var(--nt));
+    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
     box-shadow: 0 12px 24px rgba(74,82,201,0.30);
 }
 #nt-problem .prob-card.t2 .pnum {
-    background: linear-gradient(135deg, var(--nt), var(--nt-light));
+    background: linear-gradient(135deg, var(--proj), var(--proj-light));
     box-shadow: 0 12px 24px rgba(111,123,239,0.26);
 }
 #nt-problem .prob-card.t3 .pnum {
-    background: linear-gradient(135deg, var(--nt-light), #c3cbff);
+    background: linear-gradient(135deg, var(--proj-light), #c3cbff);
     box-shadow: 0 12px 24px rgba(166,176,255,0.30);
 }
 #nt-problem .prob-card .pkey {
@@ -1470,7 +1420,7 @@ body, html {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     margin-bottom: 7px;
     text-transform: uppercase;
 }
@@ -1482,7 +1432,7 @@ body, html {
     word-break: keep-all;
 }
 #nt-problem .prob-card .pdesc {
-    font-size: 15.5px;
+    font-size: 16px;            /* 본문 설명문 — 가이드(≥16px) 보정 (구 15.5px) */
     line-height: 1.55;
     color: var(--ink-soft);
     word-break: keep-all;
@@ -1515,7 +1465,7 @@ body, html {
 }
 #nt-problem .stat-box .cap {
     font-size: 14px;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     margin-bottom: 6px;
     font-weight: 800;
     letter-spacing: 0.02em;
@@ -1538,7 +1488,7 @@ body, html {
     color: var(--ink);
     word-break: keep-all;
 }
-#nt-problem .stat-box .note b { color: var(--nt-deep); }
+#nt-problem .stat-box .note b { color: var(--proj-deep); }
 #nt-problem .stat-box .src {
     display: flex;
     align-items: center;
@@ -1550,7 +1500,7 @@ body, html {
 #nt-problem .stat-box .src-tag {
     font-size: 11px;
     font-weight: 700;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     background: rgba(111,123,239,0.12);
     border-radius: 6px;
     padding: 3px 8px;
@@ -1572,7 +1522,7 @@ body, html {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     background: rgba(111,123,239,0.10);
     border: 1px solid rgba(111,123,239,0.22);
 }
@@ -1607,10 +1557,10 @@ body, html {
     padding: 4px 9px;
     letter-spacing: 0.02em;
 }
-#nt-problem .comp-col.need .ch { color: var(--nt-deep); border-color: rgba(111,123,239,0.25); }
+#nt-problem .comp-col.need .ch { color: var(--proj-deep); border-color: rgba(111,123,239,0.25); }
 #nt-problem .comp-col.need .ch .tag {
     color: #fff;
-    background: linear-gradient(135deg, var(--nt-deep), var(--nt));
+    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
 }
 #nt-problem .comp-col .ci {
     position: relative;
@@ -1629,7 +1579,7 @@ body, html {
     background: rgba(36,60,159,0.20);
 }
 #nt-problem .comp-col.need .ci::before {
-    background: linear-gradient(135deg, var(--nt-deep), var(--nt));
+    background: linear-gradient(135deg, var(--proj-deep), var(--proj));
 }
 #nt-problem .comp-col .ci .h {
     font-size: 16px;
@@ -1639,19 +1589,19 @@ body, html {
     word-break: keep-all;
 }
 #nt-problem .comp-col .ci .d {
-    font-size: 14.5px;
+    font-size: 16px;            /* 본문 설명문 — 가이드(≥16px) 보정 (구 14.5px) */
     line-height: 1.48;
     color: var(--ink-soft);
     word-break: keep-all;
 }
-#nt-problem .comp-col.need .ci .h { color: var(--nt-deep); }
+#nt-problem .comp-col.need .ci .h { color: var(--proj-deep); }
 
 /* STEP 4 — 핵심 인사이트 (클라이맥스) */
 #nt-problem .insight-box {
     position: relative;
     margin-top: 6px;
     background:
-        linear-gradient(135deg, var(--nt-deep) 0%, var(--nt) 100%);
+        linear-gradient(135deg, var(--proj-deep) 0%, var(--proj) 100%);
     border: 1px solid rgba(111,123,239,0.4);
     border-radius: 20px;
     padding: 52px 48px 40px;
@@ -1725,17 +1675,16 @@ body, html {
 }
 #nt-opportunity .opp-hero {
     margin-bottom: 40px;
-    max-width: 1180px;
+    max-width: none;                 /* 서브카피 한 줄 수용 → 폭 제한 해제 */
 }
 #nt-opportunity .opp-bridge {
     font-size: 25px;
     line-height: 1.58;
     color: var(--ink-soft);
-    max-width: 980px;
+    max-width: none;                 /* 한 줄로 */
     word-break: keep-all;
-    text-wrap: balance;
 }
-#nt-opportunity .opp-bridge b { color: var(--nt-deep); font-weight: 800; }
+#nt-opportunity .opp-bridge b { color: var(--proj-deep); font-weight: 800; }
 
 /* 4원칙 = 해결책 → 문제 카드(유리/약)와 달리 채워진 보라 톤(액티브) */
 #nt-opportunity .opp-grid {
@@ -1762,7 +1711,7 @@ body, html {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--nt-deep), var(--nt) 55%, var(--nt-light));
+    background: linear-gradient(90deg, var(--proj-deep), var(--proj) 55%, var(--proj-light));
 }
 #nt-opportunity .opp-item:hover {
     transform: translateY(-4px);
@@ -1784,7 +1733,7 @@ body, html {
     border-radius: 8px;
     background: rgba(111, 123, 239, 0.10);
     border: 1px solid rgba(111, 123, 239, 0.30);
-    color: var(--nt-deep);
+    color: var(--proj-deep);
     font-family: 'Work Sans', sans-serif;
     font-weight: 800;
     font-size: 16px;
@@ -1800,7 +1749,7 @@ body, html {
     font-weight: 800;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: var(--nt-deep);
+    color: var(--proj-deep);
 }
 #nt-opportunity .opp-item .olab svg { width: 17px; height: 17px; }
 #nt-opportunity .opp-item .otit {
@@ -1818,10 +1767,11 @@ body, html {
 }
 #nt-opportunity .opp-concept {
     display: flex;
-    width: min(100%, 1180px);
+    width: 100%;                     /* 카드 그리드 폭에 맞춰 오른쪽까지 확장 */
     align-items: center;
+    justify-content: center;         /* CONCEPT + 문구 가운데 정렬 */
     gap: 24px;
-    background: linear-gradient(120deg, var(--nt), var(--nt-deep));
+    background: linear-gradient(120deg, var(--proj), var(--proj-deep));
     color: #fff;
     border-radius: 10px;
     padding: 24px 34px;
@@ -1892,6 +1842,401 @@ body, html {
     color: var(--blue);
     font-size: 26px;
     padding-top: 60px;
+}
+
+/* ── 두 사용자 여정 트랙 (참여자 흐름 / 생성자 흐름) ── */
+#nt-service .svc-track + .svc-track {
+    margin-top: 64px;
+}
+#nt-service .svc-track-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 7px 16px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--proj-deep);
+    background: rgba(85, 102, 240, 0.08);
+    border: 1px solid rgba(85, 102, 240, 0.18);
+}
+#nt-service .svc-track-label .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--proj-deep), var(--proj-light));
+}
+
+/* ── 생성자 흐름 5스텝: 칸이 많아 폰/간격 축소 ── */
+#nt-service .svc-steps-5 {
+    gap: 8px;
+}
+#nt-service .svc-steps-5 .svc-arrow {
+    flex: 0 0 24px;
+    font-size: 22px;
+}
+#nt-service .svc-steps-5 .svc-step .sn {
+    font-size: 24px;
+}
+#nt-service .svc-steps-5 .svc-step .st {
+    font-size: 19px;
+    margin-bottom: 18px;
+}
+#nt-service .svc-steps-5 .svc-phone {
+    width: min(100%, 280px);
+    height: auto;
+    aspect-ratio: 9 / 16;
+}
+
+/* ── 빈 이미지 슬롯 placeholder (채워진 슬롯엔 영향 없음) ── */
+#nt-service .svc-phone.svc-empty {
+    border: 2px dashed rgba(85, 102, 240, 0.35);
+    background:
+        repeating-linear-gradient(135deg,
+            rgba(85, 102, 240, 0.035) 0 12px,
+            rgba(85, 102, 240, 0.07) 12px 24px);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nt-service .svc-phone.svc-empty::after {
+    content: "이미지";
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--proj);
+    opacity: 0.7;
+}
+
+
+/* ---------- NOTALK Product Structure & IA ---------- */
+#nt-structure > .nt-badge { margin-bottom: 30px; }
+
+/* 블록 공통 — IA / Detail / Overview 세로 논리 흐름 */
+#nt-structure .ps-block { margin-bottom: 56px; }
+#nt-structure .ps-block:last-child { margin-bottom: 0; }
+#nt-structure .ps-block-head { margin-bottom: 26px; }
+#nt-structure .ps-block-tit {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--proj-deep);
+    margin-bottom: 8px;
+}
+#nt-structure .ps-block-tit::before {
+    content: '';
+    display: inline-block;
+    width: 26px; height: 2px;
+    vertical-align: middle;
+    margin-right: 12px;
+    background: linear-gradient(90deg, var(--proj), var(--proj-light));
+}
+#nt-structure .ps-block-cap {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    word-break: keep-all;
+}
+
+/* ===== 블록 A · Information Architecture (트리) ===== */
+#nt-structure .ps-tree {
+    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
+    border: 1px solid rgba(111, 123, 239, 0.16);
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    padding: 48px 40px 44px;
+}
+
+/* 루트 노드 — 보라 솔리드(앵커 색), 가운데 */
+#nt-structure .ps-root-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 38px;
+    position: relative;
+}
+/* 루트 → 분기선: 루트 아래로 내려오는 세로 줄기 */
+#nt-structure .ps-root-row::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -38px;
+    width: 2px;
+    height: 38px;
+    background: rgba(111, 123, 239, 0.32);
+    transform: translateX(-50%);
+}
+#nt-structure .ps-root {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--proj), var(--proj-deep));
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px 30px;
+    box-shadow: 0 16px 34px rgba(85, 102, 240, 0.34);
+}
+#nt-structure .ps-root-mark {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.25);
+}
+#nt-structure .ps-root-name {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+#nt-structure .ps-root-sub {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+/* 5개 분기 — 가로 정렬, 위쪽 분기 가로선 */
+#nt-structure .ps-branches {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    position: relative;
+    padding-top: 30px;
+}
+/* 가로 분기선 — 첫 탭 중앙 ~ 마지막 탭 중앙 */
+#nt-structure .ps-branches::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: rgba(111, 123, 239, 0.32);
+}
+#nt-structure .ps-branch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* 각 탭에서 위 가로선으로 올라가는 세로 연결선 */
+#nt-structure .ps-branch::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: rgba(111, 123, 239, 0.32);
+    transform: translateX(-50%);
+}
+
+/* 탭 노드 카드 */
+#nt-structure .ps-node {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid rgba(111, 123, 239, 0.22);
+    border-radius: 14px;
+    padding: 18px 14px 16px;
+    box-shadow: 0 8px 20px rgba(36, 60, 159, 0.07);
+    margin-bottom: 18px;
+    position: relative;
+}
+#nt-structure .ps-node-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(85,102,240,0.12), rgba(154,166,255,0.18));
+    color: var(--proj-deep);
+}
+#nt-structure .ps-node-ic svg { width: 22px; height: 22px; }
+#nt-structure .ps-node-name {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+}
+#nt-structure .ps-node-en {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+/* 탭 → 하위 항목 연결 세로선 */
+#nt-structure .ps-node::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -18px;
+    width: 2px;
+    height: 18px;
+    background: rgba(111, 123, 239, 0.24);
+    transform: translateX(-50%);
+}
+
+/* 하위 leaf 리스트 */
+#nt-structure .ps-leaves {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0; padding: 0;
+}
+#nt-structure .ps-leaves li {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+    background: rgba(85, 102, 240, 0.06);
+    border: 1px solid rgba(111, 123, 239, 0.14);
+    border-radius: 10px;
+    padding: 9px 10px;
+    word-break: keep-all;
+}
+
+/* ===== 블록 B · IA Detail (4 패널) ===== */
+#nt-structure .ps-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+#nt-structure .ps-panel {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #fbfbff 0%, #f3f3fc 100%);
+    border: 1px solid rgba(111, 123, 239, 0.16);
+    border-radius: 16px;
+    padding: 28px 26px 26px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#nt-structure .ps-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--proj-deep), var(--proj) 55%, var(--proj-light));
+}
+#nt-structure .ps-panel:hover {
+    transform: translateY(-4px);
+    border-color: rgba(111, 123, 239, 0.34);
+    box-shadow: 0 20px 44px rgba(36, 60, 159, 0.13);
+}
+#nt-structure .ps-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+#nt-structure .ps-panel-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(85, 102, 240, 0.10);
+    border: 1px solid rgba(111, 123, 239, 0.26);
+    color: var(--proj-deep);
+    flex: 0 0 auto;
+}
+#nt-structure .ps-panel-ic svg { width: 20px; height: 20px; }
+#nt-structure .ps-panel-en {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+}
+#nt-structure .ps-panel-ko {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--proj-deep);
+}
+#nt-structure .ps-panel-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    word-break: keep-all;
+}
+#nt-structure .ps-panel-list {
+    list-style: none;
+    margin: 0; padding: 18px 0 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: auto;
+}
+#nt-structure .ps-panel-list li {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    padding-left: 18px;
+    word-break: keep-all;
+}
+#nt-structure .ps-panel-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 9px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--proj), var(--proj-light));
+}
+
+/* ===== 블록 C · Structure Overview (4원칙) ===== */
+#nt-structure .ps-principles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+#nt-structure .ps-principle {
+    background: linear-gradient(120deg, var(--proj), var(--proj-deep));
+    color: #fff;
+    border-radius: 16px;
+    padding: 30px 28px 28px;
+    box-shadow: 0 18px 40px rgba(85, 102, 240, 0.30);
+    display: flex;
+    flex-direction: column;
+}
+#nt-structure .ps-principle-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.16);
+    margin-bottom: 18px;
+}
+#nt-structure .ps-principle-ic svg { width: 24px; height: 24px; }
+#nt-structure .ps-principle-tit {
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 11px;
+    word-break: keep-all;
+}
+#nt-structure .ps-principle-desc {
+    font-size: 16px;
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.88);
+    word-break: keep-all;
 }
 
 
@@ -2043,6 +2388,26 @@ body, html {
     #nt-service .svc-arrow {
         display: none;
     }
+
+    /* 5스텝도 grid에선 2열로 동일 정렬, 폰 폭은 셀에 꽉 차게 */
+    #nt-service .svc-steps-5 {
+        gap: 28px;
+    }
+    #nt-service .svc-steps-5 .svc-phone {
+        width: min(100%, 350px);
+    }
+    #nt-service .svc-steps-5 .svc-step .st {
+        font-size: 22px;
+    }
+
+    /* Product Structure — 태블릿: 트리 5열 유지, Detail/원칙 2열 */
+    #nt-structure .ps-tree { padding: 40px 28px 36px; }
+    #nt-structure .ps-branches { gap: 14px; }
+    #nt-structure .ps-node { padding: 16px 10px 14px; }
+    #nt-structure .ps-node-name { font-size: 16px; }
+    #nt-structure .ps-leaves li { font-size: 13.5px; padding: 8px 8px; }
+    #nt-structure .ps-detail-grid { grid-template-columns: 1fr 1fr; }
+    #nt-structure .ps-principles { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 900px) {
@@ -2134,6 +2499,20 @@ body, html {
     #nt-opportunity .opp-grid,
     #nt-service .svc-steps {
         grid-template-columns: 1fr;
+    }
+
+    /* 1열에선 5스텝 폰도 참여자 흐름과 동일 폭/비율로 */
+    #nt-service .svc-steps-5 .svc-phone {
+        width: min(100%, 340px);
+        height: auto;
+        aspect-ratio: 9 / 16;
+        max-height: 640px;
+    }
+    #nt-service .svc-steps-5 .svc-step .st {
+        font-size: 24px;
+    }
+    #nt-service .svc-track + .svc-track {
+        margin-top: 56px;
     }
 
     /* compare: 가로 대비 → 세로 스택, 화살표 90도 회전 */
@@ -2266,6 +2645,51 @@ body, html {
         aspect-ratio: 9 / 16;
         max-height: 640px;
     }
+
+    /* Product Structure — 모바일: 트리 세로 스택, 분기선 숨김(우아한 폴백) */
+    #nt-structure .ps-block { margin-bottom: 44px; }
+    #nt-structure .ps-tree { padding: 32px 20px 28px; }
+    #nt-structure .ps-root-row { margin-bottom: 26px; }
+    #nt-structure .ps-root-row::after { display: none; }
+    #nt-structure .ps-root { padding: 16px 22px; }
+    #nt-structure .ps-root-name { font-size: 21px; }
+
+    #nt-structure .ps-branches {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-top: 0;
+    }
+    #nt-structure .ps-branches::before { display: none; }
+    #nt-structure .ps-branch::before { display: none; }
+    /* 세로 스택에서는 노드+leaf를 한 줄 카드처럼 — 가로 정렬 */
+    #nt-structure .ps-branch {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+        background: #fff;
+        border: 1px solid rgba(111, 123, 239, 0.18);
+        border-radius: 14px;
+        padding: 18px 18px;
+        box-shadow: 0 8px 20px rgba(36, 60, 159, 0.06);
+    }
+    #nt-structure .ps-node {
+        width: auto;
+        flex: 0 0 116px;
+        margin-bottom: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+    #nt-structure .ps-node::after { display: none; }
+    #nt-structure .ps-leaves {
+        flex: 1;
+        align-self: center;
+    }
+    #nt-structure .ps-leaves li { text-align: left; }
+
+    #nt-structure .ps-detail-grid { grid-template-columns: 1fr; }
+    #nt-structure .ps-principles { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -2343,7 +2767,7 @@ body, html {
         font-size: 50px;
     }
     #nt-problem .stat-box .big .unit { font-size: 28px; }
-    #nt-problem .stat-box .note { font-size: 15.5px; }
+    #nt-problem .stat-box .note { font-size: 16px; }   /* 본문 노트 — 가이드(≥16px) 정합 (구 15.5px) */
 
     #nt-problem .insight-box {
         padding: 42px 22px 30px;
@@ -2376,6 +2800,15 @@ body, html {
         padding: 26px 24px 24px;
     }
     #nt-opportunity .opp-item .otit { font-size: 22px; }
+
+    /* Product Structure — 소형 모바일 미세 조정 */
+    #nt-structure .ps-block-cap { font-size: 16px; }
+    #nt-structure .ps-branch { flex-direction: column; }
+    #nt-structure .ps-node { flex-basis: auto; flex-direction: row; gap: 12px; align-self: stretch; }
+    #nt-structure .ps-node-ic { width: 40px; height: 40px; }
+    #nt-structure .ps-node-en { margin-left: auto; }
+    #nt-structure .ps-panel-en { font-size: 18px; }
+    #nt-structure .ps-principle-tit { font-size: 20px; }
 }
 
 
@@ -2565,27 +2998,7 @@ body, html {
     margin-bottom: 22px;
 }
 
-#featured .fp-type,
-#featured .fp-type.team,
-#featured .fp-type.personal {
-    min-width: 0;
-    min-height: auto;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    animation: none;
-    color: rgba(238, 242, 255, 0.62);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-#featured .fp-type::before,
-#featured .fp-type::after {
-    content: none;
-}
+/* [정리됨] 구 .fp-type 평면 텍스트 정의 제거 — 하단 pill 재디자인이 전부 덮음. 시각 동일. */
 
 @media (max-width: 1280px) {
     #featured .fp-track {
@@ -2745,37 +3158,7 @@ body, html {
     margin-bottom: 22px;
 }
 
-#featured .fp-type {
-    min-width: 172px;
-    min-height: 38px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-}
-
-#featured .fp-type::before {
-    content: '';
-}
-
-#featured .fp-type.team {
-    color: #fff;
-    background: linear-gradient(135deg, #5f7fff 0%, #405bd6 100%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    box-shadow:
-        0 14px 26px rgba(64, 91, 214, 0.24),
-        inset 0 1px 0 rgba(255,255,255,0.28);
-}
-
-#featured .fp-type.personal {
-    color: #08727c;
-    background: linear-gradient(135deg, rgba(235, 253, 255, 0.92), rgba(214, 250, 246, 0.74));
-    border: 1px solid rgba(35, 180, 193, 0.42);
-    box-shadow:
-        0 14px 26px rgba(30, 167, 186, 0.12),
-        inset 0 1px 0 rgba(255,255,255,0.84);
-}
+/* [정리됨] 구 .fp-type 정의 제거 — 하단 pill 재디자인이 전부 덮음. 시각 동일. */
 
 
 /* ---------- 16:9 Height Fit: About & Featured ---------- */
@@ -3041,34 +3424,7 @@ body, html {
     margin-bottom: 22px;
 }
 
-#featured .fp-type {
-    min-width: 172px;
-    min-height: 38px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-#featured .fp-type::before {
-    content: '';
-}
-
-#featured .fp-type.team {
-    color: #fff;
-    background: linear-gradient(135deg, #5f7fff 0%, #405bd6 100%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    box-shadow: 0 14px 28px rgba(57, 84, 205, 0.22);
-}
-
-#featured .fp-type.personal {
-    color: #08727c;
-    background: linear-gradient(135deg, rgba(235, 253, 255, 0.92), rgba(214, 250, 246, 0.74));
-    border: 1px solid rgba(35, 180, 193, 0.42);
-    box-shadow: 0 14px 28px rgba(36, 183, 199, 0.12);
-}
+/* [정리됨] 구 .fp-type 정의 제거 — 하단 pill 재디자인이 전부 덮음. 시각 동일. */
 
 @media (min-width: 1281px) {
     #featured {
@@ -3418,10 +3774,11 @@ body, html {
 }
 
 /* =========================================================
-   FEATURED 프로젝트 타입 배지 — 재디자인
-   · 알약(pill)형 + 리딩 아이콘으로 한눈에 구분
-   · TEAM = 블루(두 사람), PERSONAL = 앰버/골드(한 사람)
-   · 다크 커버 위에서 또렷하게 (틴티드 글래스 + 컬러 보더)
+   FEATURED 프로젝트 타입 배지 — 단일 통합 블록 (캐스케이드 정리 완료)
+   · 이전 6중 중복(.fp-type 베이스/team/personal 반복 재정의)을 제거하고
+     "이기던 최종값"만 한 곳에 모음. 렌더 결과 동일.
+   · 알약(pill)형 + 리딩 아이콘(SVG 마스크). 다크 커버 위 고대비(WCAG AA 지향).
+   · 1제품 1색:  노톡=TEAM 블루 / 오늘뽁=PERSONAL 앰버 / 끄숑=TEAM+GREEN 그린
    ========================================================= */
 #featured .fp-type {
     display: inline-flex;
@@ -3454,40 +3811,9 @@ body, html {
 }
 #featured .fp-type::after { content: none; }
 
-/* TEAM — 블루, 두 사람 아이콘 */
+/* TEAM — 솔리드 블루 틴트, 두 사람 아이콘 (최종 승자값) */
 #featured .fp-type.team {
     --ic: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle%20cx='8.5'%20cy='8'%20r='3.3'/%3E%3Ccircle%20cx='16.5'%20cy='9'%20r='2.7'/%3E%3Cpath%20d='M2%2018.6c0-3.2%202.9-5%206.5-5s6.5%201.8%206.5%205v.6H2z'/%3E%3Cpath%20d='M16%2013.6c3%200%205.5%201.4%205.5%204.1v.9H17v-.5c0-1.9-.6-3.5-1.7-4.4.2-.1.5-.1.7-.1z'/%3E%3C/svg%3E");
-    padding: 8px 15px 8px 12px;
-    border-radius: 999px;
-    color: #d4e2ff;
-    background: linear-gradient(135deg, rgba(95,127,255,0.22), rgba(64,91,214,0.12));
-    border: 1px solid rgba(124, 156, 255, 0.55);
-    box-shadow: 0 8px 22px rgba(38, 58, 150, 0.32), inset 0 1px 0 rgba(255,255,255,0.10);
-}
-#featured .fp-type.team::before { background: #8fb0ff; }
-
-/* PERSONAL — 앰버/골드, 한 사람 아이콘 */
-#featured .fp-type.personal {
-    --ic: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle%20cx='12'%20cy='7.7'%20r='3.7'/%3E%3Cpath%20d='M4.7%2018.9c0-3.7%203.3-5.7%207.3-5.7s7.3%202%207.3%205.7v.6H4.7z'/%3E%3C/svg%3E");
-    padding: 8px 15px 8px 12px;
-    border-radius: 999px;
-    color: #ffe2b3;
-    background: linear-gradient(135deg, rgba(255,184,77,0.20), rgba(214,138,30,0.12));
-    border: 1px solid rgba(255, 190, 92, 0.55);
-    box-shadow: 0 8px 22px rgba(120, 78, 12, 0.30), inset 0 1px 0 rgba(255,255,255,0.10);
-}
-#featured .fp-type.personal::before { background: #ffc46b; }
-
-/* =========================================================
-   FEATURED — 강디 재디자인 (캐스케이드 승리 보장: 파일 최하단 append)
-   1) 배지 고대비   2) 카드 hover lift   3) 클릭 어포던스/접근성
-   · transform 은 GSAP(reveal)이 인라인으로 점유 → hover 이동은
-     CSS 개별 속성 translate/scale 로 처리해 GSAP matrix 와 합성(충돌 0)
-   ========================================================= */
-
-/* ---- 1. 타입 배지 고대비 (다크 럭셔리 유지, 형광 금지, WCAG AA 지향) ---- */
-/* TEAM — 솔리드 블루 틴트. 텍스트 #eaf1ff(거의 흰색) on 진한 블루 → AA 통과 */
-#featured .fp-type.team {
     color: #eef4ff;
     background: linear-gradient(135deg, rgba(70, 104, 232, 0.92), rgba(48, 78, 196, 0.92));
     border: 1.4px solid rgba(150, 178, 255, 0.85);
@@ -3497,8 +3823,9 @@ body, html {
 }
 #featured .fp-type.team::before { background: #ffffff; }
 
-/* PERSONAL — 솔리드 앰버/골드 틴트. 텍스트 #fff6e6 on 진한 앰버 → AA 통과 */
+/* PERSONAL — 솔리드 앰버/골드 틴트, 한 사람 아이콘 (최종 승자값) */
 #featured .fp-type.personal {
+    --ic: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle%20cx='12'%20cy='7.7'%20r='3.7'/%3E%3Cpath%20d='M4.7%2018.9c0-3.7%203.3-5.7%207.3-5.7s7.3%202%207.3%205.7v.6H4.7z'/%3E%3C/svg%3E");
     color: #fff7e9;
     background: linear-gradient(135deg, rgba(214, 142, 36, 0.94), rgba(176, 110, 18, 0.94));
     border: 1.4px solid rgba(255, 206, 130, 0.88);
@@ -3507,6 +3834,23 @@ body, html {
         inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 #featured .fp-type.personal::before { background: #fff3df; }
+
+/* GREEN — 끄숑 전용 (팀플이라 .team 아이콘=두 사람 유지, 색만 그린으로 오버라이드).
+   카드 글로우(--fp-accent #43d6b4)와 일치 → 1제품 1색(끄숑=그린). .team 뒤라서 색이 이김. */
+#featured .fp-type.team.green {
+    color: #e7fff8;
+    background: linear-gradient(135deg, rgba(45, 196, 162, 0.92), rgba(26, 150, 122, 0.92));
+    border: 1.4px solid rgba(120, 230, 200, 0.85);
+    box-shadow:
+        0 10px 24px rgba(14, 110, 88, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+#featured .fp-type.team.green::before { background: #ffffff; }
+
+/* =========================================================
+   FEATURED — 카드 hover lift / 클릭 어포던스 / 접근성
+   · transform 은 GSAP(reveal)이 인라인 점유 → hover 이동은 translate/scale 개별속성 (합성, 충돌 0)
+   ========================================================= */
 
 /* ---- 2. 카드: 클릭 어포던스 + hover/focus lift ---- */
 #featured .fp-item {
@@ -3573,6 +3917,13 @@ body, html {
         0 12px 28px rgba(120, 78, 12, 0.50),
         inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
+/* 끄숑(green) hover 글로우 — .team 블루 발광을 그린으로 덮어 1제품 1색 유지 */
+#featured .fp-item:hover .fp-type.team.green,
+#featured .fp-item:focus-visible .fp-type.team.green {
+    box-shadow:
+        0 12px 28px rgba(14, 110, 88, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
 
 /* ---- 3. 준비중 카드 nudge(흔들림) — 목적지 없을 때 피드백 ---- */
 @keyframes fp-nudge {
@@ -3617,7 +3968,7 @@ body, html {
    ========================================================= */
 
 /* ---- 카드별 액센트 컬러 주입 (아이콘 톤에서 추출, 형광 금지·다크 럭셔리) ---- */
-#featured .fp-item               { --fp-accent: #6f97ff; --fp-accent-rgb: 111,151,255; } /* 01 블루 */
+#featured .fp-item               { --fp-accent: #5566f0; --fp-accent-rgb: 85,102,240; } /* 01 노톡 — 상세색과 일치(#5566f0) */
 #featured .fp-item:nth-child(2)  { --fp-accent: #f0b450; --fp-accent-rgb: 240,180,80;  } /* 02 앰버 */
 #featured .fp-item:nth-child(3)  { --fp-accent: #43d6b4; --fp-accent-rgb: 67,214,180;  } /* 03 그린/틸 */
 
@@ -3841,7 +4192,7 @@ body, html {
     inset: 0;
     top: -3px;
     background-image:
-        radial-gradient(circle, #6f97ff 0 3.2px, transparent 3.6px),
+        radial-gradient(circle, #5566f0 0 3.2px, transparent 3.6px),   /* 노톡 노드 — 대표색 #5566f0 정합 */
         radial-gradient(circle, #f0b450 0 3.2px, transparent 3.6px),
         radial-gradient(circle, #43d6b4 0 3.2px, transparent 3.6px);
     background-repeat: no-repeat;
