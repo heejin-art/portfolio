@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node _shot.js)",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1920,8640 --screenshot=\"_preview.png\" \"file:///c:/Users/Administrator/Desktop/★우희진_0615 포폴시작 - 컨텐츠붙이기/_preview.html\")",
+      "Bash(find . -name \"_preview.png\")",
+      "Bash(ls -la *.png)"
+    ]
+  }
+}

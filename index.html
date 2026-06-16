@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOO HEE JIN - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+        <section class="intro-section">
+            <div class="text-container">
+                <p class="job-title">Product Designer · PM</p>
+                <h1 class="main-name" id="mainName">WOO HEE JIN</h1>
+            </div>
+        </section>
+
+        <!-- ================= 01 ABOUT ME ================= -->
+        <section id="about" class="slide light">
+            <div class="sec-eyebrow about-eyebrow reveal">
+                <span class="sec-num">01</span>
+                <span class="sec-label">ABOUT ME</span>
+                <span class="sec-divider"></span>
+            </div>
+
+            <div class="about-left reveal">
+                <!-- 이미지: 프로필 사진 -->
+                <img class="about-photo" src="images/profile.png" alt="우희진 프로필 사진">
+            </div>
+
+            <div class="about-right">
+                <h2 class="about-head reveal">사용자의 문제를 경험으로 해결합니다.</h2>
+                <p class="about-sub reveal">사용자의 문제를 발견하고, 서비스 구조와 사용자 경험을 설계하며,
+                <br>실행 가능한 서비스로 구체화합니다.</p>
+                <div class="keyword-row reveal">
+                    <span>문제 정의</span><span class="dot">•</span>
+                    <span>서비스 기획</span><span class="dot">•</span>
+                    <span>사용자 경험 설계</span>
+                </div>
+                <div class="stat-row reveal">
+                    <div class="stat-item">
+                        <span class="stat-num">5+</span>
+                        <span class="stat-cap">실무 경험</span>
+                    </div>
+                    <span class="stat-line"></span>
+                    <div class="stat-item">
+                        <span class="stat-num">4</span>
+                        <span class="stat-cap">프로젝트</span>
+                    </div>
+                    <span class="stat-line"></span>
+                    <div class="stat-item">
+                        <span class="stat-num">1</span>
+                        <span class="stat-cap">출시 서비스</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 02 CAREER JOURNEY ================= -->
+        <section id="career" class="slide light">
+            <div class="sec-eyebrow reveal">
+                <span class="sec-num">02</span>
+                <span class="sec-label">CAREER JOURNEY</span>
+            </div>
+            <h2 class="career-head reveal">사용자 이해에서 시작해 더 나은 서비스를 만드는 전 과정을 주도합니다.</h2>
+            <p class="career-sub reveal">현장 경험에서 시작해 운영과 기획을 거치며<br>사용자와 비즈니스를 연결하는 시각을 갖추게 되었습니다.</p>
+
+            <div class="career-body">
+                <div class="timeline">
+                    <div class="tl-card reveal">
+                        <span class="tl-num">01</span>
+                        <span class="tl-titlebar">고객 이해</span>
+                        <span class="tl-date">한샘 대리점 · 2020.12–2022.04</span>
+                        <!-- 이미지 --><div class="tl-img img-slot"><img src="images/고객 이해.png" alt="고객 이해"></div>
+                        <ul class="tl-list">
+                            <li>고객 상담과 니즈 파악</li>
+                            <li>현장 관리 및 시공 프로세스 경험</li>
+                            <li>고객 만족과 문제 해결 경험</li>
+                        </ul>
+                    </div>
+                    <div class="tl-card reveal">
+                        <span class="tl-num">02</span>
+                        <span class="tl-titlebar">서비스 운영</span>
+                        <span class="tl-date">집닥 · 2022.08–2023.08</span>
+                        <!-- 이미지 --><div class="tl-img img-slot"><img src="images/서비스 운영.png" alt="서비스 운영"></div>
+                        <ul class="tl-list">
+                            <li>플랫폼 서비스 운영 및 관리</li>
+                            <li>CS 및 고객 커뮤니케이션</li>
+                            <li>프로세스 개선으로 고객 경험 향상</li>
+                        </ul>
+                    </div>
+                    <div class="tl-card reveal">
+                        <span class="tl-num">03</span>
+                        <span class="tl-titlebar">비즈니스 기획</span>
+                        <span class="tl-date">인터스텔라 · 2023.09–2024.06</span>
+                        <!-- 이미지 --><div class="tl-img img-slot"><img src="images/비즈니스 기획.png" alt="비즈니스 기획"></div>
+                        <ul class="tl-list">
+                            <li>BM 및 서비스 기획</li>
+                            <li>시장/경쟁 분석 및 제안</li>
+                            <li>수익 모델 설계 및 검증</li>
+                        </ul>
+                    </div>
+                    <div class="tl-card reveal">
+                        <span class="tl-num">04</span>
+                        <span class="tl-titlebar">사업 운영</span>
+                        <span class="tl-date">미스타교자 천호점 · 2024.10–2025.11</span>
+                        <!-- 이미지 --><div class="tl-img img-slot"><img src="images/사업 운영.png" alt="사업 운영"></div>
+                        <ul class="tl-list">
+                            <li>매장 운영 및 수익 구조 설계</li>
+                            <li>프로세스 개선 및 효율화</li>
+                            <li>데이터 기반 의사결정 경험</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="now-card reveal">
+                    <span class="now-badge">현재</span>
+                    <h3 class="now-role">Product Designer<br>Project Manager</h3>
+                    <!-- 이미지 --><div class="now-img img-slot"><img src="images/현재.png" alt="현재 Product Designer 및 Project Manager"></div>
+                    <p class="now-period">2025.12 – Present</p>
+                    <p class="now-desc">AI 기반 서비스 기획 및 UX 설계<br><br>사용자 중심 문제 해결과 프로젝트 리딩 주도 경험</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 03 FEATURED PROJECTS ================= -->
+        <section id="featured" class="slide light">
+            <div class="fp-left">
+                <p class="fp-num reveal">03</p>
+                <h2 class="fp-title reveal">FEATURED<br>PROJECTS</h2>
+                <span class="fp-divider reveal"></span>
+                <p class="fp-sub reveal">서비스 기획, UX 설계, 실행까지 연결한<br> 대표 프로젝트입니다.</p>
+            </div>
+
+            <div class="fp-right">
+                <span class="fp-track"></span>
+                <div class="fp-list">
+                    <div class="fp-item reveal">
+                        <!-- 이미지: 앱 아이콘 --><div class="fp-icon img-slot"><img src="images/노톡.png" alt="노톡 앱 아이콘"></div>
+                        <span class="fp-inum">01</span>
+                        <span class="fp-name">노톡</span>
+                        <span class="fp-type team">TEAM PROJECT</span>
+                    </div>
+                    <div class="fp-item reveal">
+                        <!-- 이미지: 앱 아이콘 --><div class="fp-icon img-slot"><img src="images/오늘뽁.png" alt="오늘뽁 앱 아이콘"></div>
+                        <span class="fp-inum">02</span>
+                        <span class="fp-name">오늘뽁</span>
+                        <span class="fp-type personal">PERSONAL PROJECT</span>
+                    </div>
+                    <div class="fp-item reveal">
+                        <!-- 이미지: 앱 아이콘 --><div class="fp-icon img-slot"><img src="images/끄숑.png" alt="끄숑 앱 아이콘"></div>
+                        <span class="fp-inum">03</span>
+                        <span class="fp-name">끄숑</span>
+                        <span class="fp-type team">TEAM PROJECT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NOTALK · Executive Summary ================= -->
+        <section id="notalk" class="slide light">
+            <div class="nt-left">
+                <p class="nt-eyebrow reveal"><b>01</b><span>NOTALK · Executive Summary</span></p>
+                <div class="nt-title-row reveal">
+                    <h2 class="nt-title">노톡</h2>
+                    <span class="nt-status">QA 진행중</span>
+                </div>
+                <p class="nt-lead reveal">대화보다 경험에 집중하는 팝업형 오프라인 커뮤니티 서비스</p>
+                <p class="nt-desc reveal">관계 형성의 부담은 낮추고, 같은 시간과 공간을 공유하는 경험의 가치는 높였습니다. 사용자는 부담 없는 탐색, 목적 중심 참여, 모임 후 자연스러운 종료까지 하나의 흐름으로 경험합니다.</p>
+
+                <div class="nt-info reveal">
+                    <div class="row"><span class="ic role"></span><span class="lbl">역할</span><span class="val">PM · Product Designer<span class="tag">Project Lead</span></span></div>
+                    <div class="row"><span class="ic team"></span><span class="lbl">팀 구성</span><span class="val">4인 팀 프로젝트</span></div>
+                    <div class="row"><span class="ic time"></span><span class="lbl">기간</span><span class="val">2026.05 – 진행 중</span></div>
+                    <div class="row"><span class="ic platform"></span><span class="lbl">플랫폼</span><span class="val">Web App</span></div>
+                </div>
+
+                <div class="nt-contrib reveal">
+                    <span class="pct">70%</span>
+                    <span class="ctxt"><b>Contribution 70%</b><br>서비스 기획, UX/UI 설계, 프론트엔드 구현, QA 및 프로젝트 리딩까지 전반을 주도했습니다.</span>
+                </div>
+
+                <div class="nt-tools reveal">
+                    <span class="tl-label">TOOLS</span>
+                    <span class="tool-chip figma">Figma</span>
+                    <span class="tool-chip ps">Ps</span>
+                    <span class="tool-chip react">React</span>
+                    <span class="tool-chip ts">TS</span>
+                    <span class="tool-chip notion">Notion</span>
+                    <span class="tool-chip git">GitHub</span>
+                </div>
+            </div>
+
+            <div class="nt-right reveal">
+                <div class="nt-phone">
+                    <img src="images/notalkmain.png" alt="노톡 메인 화면">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NOTALK · Problem & Insight ============ -->
+        <section id="nt-problem" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>01</b>NOTALK · Problem &amp; Insight</p>
+            <h2 class="nt-sectitle reveal">사용자가 원하는 것은 관계가 아니라, 부담 없는 경험이었습니다.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <div class="nt-badge reveal"><span class="n">01</span><span class="t">문제 발견</span></div>
+            <div class="prob-cards">
+                <div class="prob-card reveal">
+                    <span class="pnum">01</span>
+                    <div>
+                        <p class="ptit">관계 형성 부담</p>
+                        <p class="pdesc">모임 참여가 곧 친밀한 관계를 만들어야 한다는 압박으로 이어집니다.</p>
+                    </div>
+                </div>
+                <div class="prob-card reveal">
+                    <span class="pnum">02</span>
+                    <div>
+                        <p class="ptit">대화 피로감</p>
+                        <p class="pdesc">어색한 대화를 시작하고 지속해야 하는 상황이 참여 장벽이 됩니다.</p>
+                    </div>
+                </div>
+                <div class="prob-card reveal">
+                    <span class="pnum">03</span>
+                    <div>
+                        <p class="ptit">지속성 부담</p>
+                        <p class="pdesc">한 번의 참여가 이후 연락과 반복 모임으로 이어질 것 같은 부담이 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="problem-flow">
+                <div class="stat-box reveal">
+                    <p class="cap">행동 변화 근거</p>
+                    <p class="big">36.9%</p>
+                    <p class="note">1인 가구 증가와 개인 중심 생활 방식 확산으로, 사용자는 깊은 관계보다 선택적이고 가벼운 연결을 선호합니다.</p>
+                    <p class="src">· 2026년 기준 1인 가구 비율 / 통계청 (2026)</p>
+                </div>
+                <div class="compare">
+                    <div class="comp-col reveal">
+                        <p class="ch">기존 모임 방식</p>
+                        <div class="ci">
+                            <p class="h">관계 형성 중심</p>
+                            <p class="d">친밀해지는 것을 전제로 참여를 설계합니다.</p>
+                        </div>
+                        <div class="ci">
+                            <p class="h">지속적 소통 요구</p>
+                            <p class="d">꾸준한 대화와 교류가 자연스럽게 요구됩니다.</p>
+                        </div>
+                        <div class="ci">
+                            <p class="h">정기 모임 구조</p>
+                            <p class="d">반복 참여와 관계 유지에 대한 부담이 생깁니다.</p>
+                        </div>
+                    </div>
+                    <div class="comp-col need reveal">
+                        <p class="ch">사용자가 원하는 방식</p>
+                        <div class="ci">
+                            <p class="h">경험 중심 참여</p>
+                            <p class="d">관계 형성보다 원하는 활동과 경험에 집중하고 싶습니다.</p>
+                        </div>
+                        <div class="ci">
+                            <p class="h">가벼운 연결</p>
+                            <p class="d">깊은 관계보다 같은 목적을 가진 편안한 동행을 원합니다.</p>
+                        </div>
+                        <div class="ci">
+                            <p class="h">선택적 참여</p>
+                            <p class="d">원할 때만 참여하고, 모임 후에는 자연스럽게 종료되길 원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-box reveal">
+                    <div class="nt-badge"><span class="n">02</span><span class="t">핵심 인사이트</span></div>
+                    <p class="iquote">사용자는 <b>함께하는 경험</b>은 원하지만,<br>그 경험이 <b>관계 유지의 부담</b>으로 이어지는 것은 원하지 않습니다.</p>
+                    <p class="isub">따라서 노톡은 관계 형성보다 경험 참여와 자연스러운 종료에 집중했습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NOTALK · Opportunity ============ -->
+        <section id="nt-opportunity" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>01</b>NOTALK · Opportunity</p>
+            <h2 class="nt-sectitle reveal">관계 부담을 낮추고, 경험의 가치를 높이는 방향으로 전환했습니다.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <div class="opp-hero reveal">
+                <div class="opp-kicker"><span>03</span>기회 발견</div>
+                <p class="opp-bridge">“함께하는 경험은 원하지만, 관계 유지의 부담은 원하지 않는다”는 인사이트를 <b>네 가지 제품 설계 원칙</b>으로 번역했습니다.</p>
+            </div>
+
+            <div class="opp-grid">
+                <div class="opp-item reveal">
+                    <span class="oi">01</span>
+                    <div>
+                        <p class="olab">Participation</p>
+                        <p class="otit">팝업형 참여 구조</p>
+                        <p class="odesc">정해진 시간과 장소에 모였다 자연스럽게 해산해, 관계 유지 부담 없이 참여하도록 설계했습니다.</p>
+                    </div>
+                </div>
+                <div class="opp-item reveal">
+                    <span class="oi">02</span>
+                    <div>
+                        <p class="olab">Communication</p>
+                        <p class="otit">버튼형 채팅 시스템</p>
+                        <p class="odesc">자유 대화 대신 상황별 버튼으로 소통해, 어색한 대화 시작과 지속 부담을 낮췄습니다.</p>
+                    </div>
+                </div>
+                <div class="opp-item reveal">
+                    <span class="oi">03</span>
+                    <div>
+                        <p class="olab">Discovery</p>
+                        <p class="otit">탐색 기반 참여 경험</p>
+                        <p class="odesc">관심 있는 모임을 먼저 둘러보고, 원할 때만 가볍게 참여할 수 있는 선택권을 제공했습니다.</p>
+                    </div>
+                </div>
+                <div class="opp-item reveal">
+                    <span class="oi">04</span>
+                    <div>
+                        <p class="olab">Experience</p>
+                        <p class="otit">경험 중심 커뮤니티</p>
+                        <p class="odesc">친밀함보다 같은 목적을 공유한 경험 자체에 집중하는 새로운 모임 문화를 제안했습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opp-concept reveal">
+                <span class="lab">CONCEPT</span>
+                <span class="val">관계 부담 없이 원하는 경험만 선택하는 팝업형 커뮤니티, 노톡</span>
+            </div>
+        </section>
+
+        <!-- ============ NOTALK · Service Strategy & UX Design ============ -->
+        <section id="nt-service" class="slide light nt-detail">
+            <p class="nt-eyebrow reveal"><b>01</b>NOTALK · Service Strategy &amp; UX Design</p>
+            <h2 class="nt-sectitle reveal">관계보다 경험에 집중하는 서비스 구조를 설계했습니다.</h2>
+            <span class="nt-underline reveal"></span>
+
+            <div class="svc-steps">
+                <div class="svc-step reveal">
+                    <span class="sn">01</span>
+                    <span class="st">관계 부담 없이 탐색</span>
+                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/01 관계부담없이탐색.png" alt="관계 부담 없이 탐색 화면"></div>
+                </div>
+                <div class="svc-arrow reveal">»</div>
+                <div class="svc-step reveal">
+                    <span class="sn">02</span>
+                    <span class="st">오프라인 모임 참여</span>
+                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/02 오프라임모임참여.png" alt="오프라인 모임 참여 화면"></div>
+                </div>
+                <div class="svc-arrow reveal">»</div>
+                <div class="svc-step reveal">
+                    <span class="sn">03</span>
+                    <span class="st">목적 중심 소통</span>
+                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/03 목적중심소통.png" alt="목적 중심 소통 화면"></div>
+                </div>
+                <div class="svc-arrow reveal">»</div>
+                <div class="svc-step reveal">
+                    <span class="sn">04</span>
+                    <span class="st">모임 종료 후 자동종료</span>
+                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/04 모임후 자동종료.png" alt="모임 종료 후 자동종료 화면"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+    // 1. Lenis 초기화 (부드러운 스크롤)
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // GSAP 및 ScrollTrigger 등록
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. 글자 쪼개기
+    const nameElement = document.getElementById("mainName");
+    if (nameElement) {
+        const text = nameElement.textContent;
+        nameElement.textContent = "";
+        const chars = text.split("").map((char, index) => {
+            const span = document.createElement("span");
+            span.textContent = char === " " ? "\u00A0" : char;
+            span.className = char === " " ? "char space" : "char";
+            nameElement.appendChild(span);
+            return span;
+        });
+    }
+
+    // 3. 초기 타이핑 효과
+    const introTl = gsap.timeline();
+    introTl.to(".job-title", { opacity: 1, duration: 0.8 })
+           .to(".main-name .char", {
+               opacity: 1,
+               duration: 0.05,
+               stagger: 0.08,
+               ease: "none"
+           });
+
+    // 4. 메인 스크롤 애니메이션 (Intro)
+    const mainTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".intro-section",
+            start: "top top",
+            end: "+=400%",
+            scrub: 1.5,
+            pin: true,
+            anticipatePin: 1
+        }
+    });
+
+    mainTl
+        .to(".job-title", { opacity: 0, y: -30, duration: 0.8 })
+        .to("body", { backgroundColor: "#000", duration: 1.2 }, "typeGate")
+        .to(".intro-section", { backgroundColor: "#000", backgroundImage: "none", duration: 1.2 }, "typeGate")
+        .to(".main-name", {
+            fontSize: window.innerWidth <= 560 ? "46px" : window.innerWidth <= 900 ? "72px" : window.innerWidth <= 1280 ? "120px" : "180px",
+            letterSpacing: "0.08em",
+            filter: "drop-shadow(0 16px 28px rgba(86, 126, 255, 0.32))",
+            duration: 1.4,
+            ease: "power3.inOut"
+        }, "typeGate")
+        .to(".main-name .char", {
+            backgroundImage: "linear-gradient(118deg, #243c9f 0%, #698dff 14%, #eef5ff 27%, #80c7ff 38%, #3f58c5 52%, #1f348c 66%, #cad8ff 82%, #536fe0 100%)",
+            color: "transparent",
+            webkitTextStroke: "0.7px rgba(255,255,255,0.28)",
+            textShadow: "0 1px 0 rgba(255,255,255,0.55), 0 2px 8px rgba(129,183,255,0.22), 0 16px 30px rgba(31,52,140,0.24)",
+            animation: "metallic-shimmer 5.5s ease-in-out infinite alternate",
+            duration: 1.1,
+            ease: "power3.inOut"
+        }, "typeGate")
+        .to(".main-name", {
+            scale: window.innerWidth <= 560 ? 3.2 : window.innerWidth <= 900 ? 4.5 : 8,
+            letterSpacing: "0.16em",
+            filter: "blur(2px)",
+            opacity: 0,
+            duration: 1.6,
+            ease: "power2.in"
+        }, "typeGate+=1.35");
+
+    // 5. 콘텐츠 섹션 스크롤 진입 애니메이션
+    document.querySelectorAll(".slide").forEach((slide) => {
+        const items = slide.querySelectorAll(".reveal");
+        gsap.to(items, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: slide,
+                start: "top 72%"
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
+
+
