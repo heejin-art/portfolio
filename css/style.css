@@ -5610,3 +5610,293 @@ body, html {
 @media (max-width: 900px) {
     #featured .fp-list { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   04 UX·UI IMPROVEMENTS — 케이스당 한 페이지, 풀폭 Before/After
+   ============================================================ */
+#uxui .uxd-case,
+#uxui-2 .uxd-case {
+    margin-top: 56px;
+}
+#uxui .uxd-head,
+#uxui-2 .uxd-head {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+#uxui .uxd-name,
+#uxui-2 .uxd-name {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--ink);
+}
+#uxui .uxd-tag,
+#uxui-2 .uxd-tag {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+#uxui .uxd-ba,
+#uxui-2 .uxd-ba {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+#uxui .uxd-shot,
+#uxui-2 .uxd-shot { flex: 1; min-width: 0; }
+#uxui .uxd-balabel,
+#uxui-2 .uxd-balabel {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 7px 18px;
+    border-radius: 9px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+#uxui .uxd-balabel.before,
+#uxui-2 .uxd-balabel.before {
+    color: var(--ink-soft);
+    background: rgba(89,97,122,0.12);
+}
+#uxui .uxd-balabel.after,
+#uxui-2 .uxd-balabel.after {
+    color: #fff;
+    background: linear-gradient(135deg, var(--brand-deep), var(--brand));
+}
+#uxui .uxd-img,
+#uxui-2 .uxd-img {
+    width: 100%;
+    height: 540px;
+    border-radius: 18px;
+}
+#uxui .uxd-arrow,
+#uxui-2 .uxd-arrow {
+    flex: 0 0 auto;
+    margin-top: 30px;
+    color: var(--brand);
+}
+#uxui .uxd-arrow svg,
+#uxui-2 .uxd-arrow svg { width: 40px; height: 40px; }
+#uxui .uxd-insight,
+#uxui-2 .uxd-insight {
+    margin-top: 38px;
+    font-size: 23px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+#uxui .uxd-insight b,
+#uxui-2 .uxd-insight b { color: var(--brand-deep); font-weight: 700; }
+
+/* ============================================================
+   05 END-TO-END BUILDER — 기획→디자인→개발→출시 흐름 + AI 레버리지
+   ============================================================ */
+#endtoend .e2e-flow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 80px;
+}
+#endtoend .e2e-step {
+    flex: 1;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 38px 32px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(236,243,255,0.5));
+    border: 1px solid rgba(63,88,197,0.14);
+}
+#endtoend .e2e-ic {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(86,126,255,0.12);
+    color: var(--brand-deep);
+}
+#endtoend .e2e-ic svg { width: 28px; height: 28px; }
+#endtoend .e2e-no {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--brand);
+}
+#endtoend .e2e-tit {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+}
+#endtoend .e2e-desc {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+#endtoend .e2e-step.is-ship {
+    background: linear-gradient(150deg, var(--brand-deep), var(--brand));
+    border-color: transparent;
+    box-shadow: 0 22px 52px -24px rgba(86,126,255,0.7);
+}
+#endtoend .e2e-step.is-ship .e2e-ic { background: rgba(255,255,255,0.18); color: #fff; }
+#endtoend .e2e-step.is-ship .e2e-no { color: rgba(255,255,255,0.86); }
+#endtoend .e2e-step.is-ship .e2e-tit { color: #fff; }
+#endtoend .e2e-step.is-ship .e2e-desc { color: rgba(255,255,255,0.82); }
+#endtoend .e2e-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--brand-soft);
+}
+#endtoend .e2e-arrow svg { width: 26px; height: 26px; }
+#endtoend .e2e-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 56px;
+    padding: 30px 36px;
+    border-radius: 20px;
+    background: rgba(86,126,255,0.07);
+    border: 1px solid rgba(86,126,255,0.18);
+}
+#endtoend .e2e-note-ic {
+    flex: 0 0 auto;
+    color: var(--brand);
+}
+#endtoend .e2e-note-ic svg { width: 30px; height: 30px; }
+#endtoend .e2e-note-txt {
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--ink);
+}
+#endtoend .e2e-note-txt b { color: var(--brand-deep); font-weight: 700; }
+
+/* ============================================================
+   06 SKILLS & TOOLS — 전체 스택 (about 칩 스타일 재사용)
+   ============================================================ */
+#skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 64px;
+    margin-top: 72px;
+}
+#skills .skill-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#skills .skill-col-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+}
+#skills .skill-col-label svg { width: 22px; height: 22px; color: var(--brand-deep); }
+#skills .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+#skills .tool-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(36, 60, 159, 0.10);
+}
+#skills .tool-ico {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    fill: var(--ink-soft);
+}
+
+/* ============================================================
+   07 CLOSING & CONTACT — WHY ME 흡수 + 연락 수단
+   ============================================================ */
+#contact.contact-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#contact .contact-inner {
+    max-width: 920px;
+}
+#contact .contact-eyebrow {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    color: var(--brand);
+    margin-bottom: 28px;
+}
+#contact .contact-head {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 26px;
+}
+#contact .contact-sub {
+    font-size: 21px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 52px;
+}
+#contact .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 60px;
+}
+#contact .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 18px 32px;
+    border-radius: 16px;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(63,88,197,0.18);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#contact .contact-link svg { width: 22px; height: 22px; }
+#contact .contact-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px -20px rgba(63,88,197,0.6);
+    border-color: var(--brand);
+}
+#contact .contact-link.primary {
+    color: #fff;
+    background: linear-gradient(135deg, var(--brand-deep), var(--brand));
+    border-color: transparent;
+}
+#contact .contact-foot {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    opacity: 0.55;
+}
