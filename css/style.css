@@ -2180,14 +2180,14 @@ body, html {
      밝은 --proj 는 채움/포인트/바에만. 솔리드 채움 위 텍스트는 흰색.
    ════════════════════════════════════════════════════════════════ */
 #today, #today-concept, #today-making, #today-screens, #today-delivery, #today-result, #today-learn {
-    --proj: #f0b450;          /* 밝은 앰버 — 채움/포인트/바 전용 */
-    --proj-deep: #c8821f;     /* 짙은 앰버 — 텍스트·아이콘 (WCAG 대비 확보) */
-    --proj-light: #f8d49a;    /* 연한 앰버 */
-    /* 체험하기 CTA — 오늘뽁: 밝고 고급스러운 앰버/골드(갈색 폐기).
+    --proj: #8b5cf6;          /* 밝은 바이올렛 — 채움/포인트/바 전용 (앱 아이콘 보라핑크 매칭) */
+    --proj-deep: #6d28d9;     /* 짙은 보라 — 텍스트·아이콘 (흰 글자 대비 확보) */
+    --proj-light: #c4b5fd;    /* 연한 보라 */
+    /* 체험하기 CTA — 오늘뽁: 앱 아이콘 보라핑크에 맞춘 바이올렛 그라데이션.
        노톡과 동일 디자인 언어, 색만 스코프로 스왑. */
-    --live-grad: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    --live-grad: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
     --live-shimmer: rgba(255, 255, 255, 0.62);
-    --live-glow: 245, 158, 11;   /* rgb — box-shadow 발광용 */
+    --live-glow: 124, 58, 237;   /* rgb — box-shadow 발광용 (바이올렛) */
 }
 
 /* ── 오늘뽁 Executive Summary — 노톡 #notalk 레이아웃 미러링 ── */
@@ -2244,10 +2244,10 @@ body, html {
     padding: 22px 26px; border-radius: 14px;
     /* 배경 톤 절제 — 큰 숫자가 주인공, 박스는 헤드라인보다 약하게 */
     background:
-        linear-gradient(120deg, rgba(240,180,80,0.09), rgba(248,212,154,0.03)),
+        linear-gradient(120deg, rgba(139,92,246,0.09), rgba(196,181,253,0.03)),
         rgba(255,255,255,0.6);
-    border: 1px solid rgba(200, 130, 31, 0.18);
-    box-shadow: 0 14px 34px rgba(200, 130, 31, 0.08);
+    border: 1px solid rgba(109, 40, 217, 0.18);
+    box-shadow: 0 14px 34px rgba(109, 40, 217, 0.08);
     margin-bottom: 34px;
 }
 /* 기여도 도넛 — "혼자 다 했다" 100% 풀링. 2차 히어로 앵커 (앰버, 노톡 미러링) */
@@ -2261,7 +2261,7 @@ body, html {
     line-height: 1;
     border-radius: 50%;
     background:
-        conic-gradient(var(--proj-deep) var(--fill), rgba(200, 130, 31, 0.14) 0);
+        conic-gradient(var(--proj-deep) var(--fill), rgba(109, 40, 217, 0.14) 0);
     transition: --fill 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 #today .nt-impact .pct.is-filled { --fill: 360deg; }    /* 100% = 360° */
@@ -2271,7 +2271,7 @@ body, html {
     inset: 11px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: inset 0 1px 4px rgba(200, 130, 31, 0.1);
+    box-shadow: inset 0 1px 4px rgba(109, 40, 217, 0.1);
 }
 #today .nt-impact .pct .pct-num {
     position: relative; z-index: 1;
@@ -2300,7 +2300,7 @@ body, html {
     align-self: flex-start;
     display: inline-flex; align-items: center;
     padding: 7px 14px; border-radius: 8px;
-    background: rgba(200, 130, 31, 0.08);   /* 아주 연한 앰버 틴트 */
+    background: rgba(139, 92, 246, 0.08);   /* 아주 연한 바이올렛 틴트 */
     border: 1.5px solid var(--proj-deep);
     color: var(--proj-deep); font-size: 16px; font-weight: 800; letter-spacing: 0.01em;
 }
@@ -2327,7 +2327,7 @@ body, html {
 }
 #today .nt-info .ic {
     width: 32px; height: 32px; border-radius: 8px;
-    background: rgba(240, 180, 80, 0.16);
+    background: rgba(139, 92, 246, 0.16);
     display: inline-flex; align-items: center; justify-content: center;
 }
 #today .nt-info .ic svg { width: 17px; height: 17px; color: var(--proj-deep); display: block; }
@@ -2354,7 +2354,7 @@ body, html {
 #today .nt-phone {
     width: 440px; height: 926px; border-radius: 26px;
     background: #11151f; border: 8px solid #11151f;
-    box-shadow: 0 54px 96px rgba(200, 130, 31, 0.22);   /* 차분하게 떠 보이게 — 앰버 톤 */
+    box-shadow: 0 54px 96px rgba(109, 40, 217, 0.22);   /* 차분하게 떠 보이게 — 바이올렛 톤 */
     position: relative; padding: 0; overflow: hidden;
 }
 #today .nt-phone img {
@@ -2375,7 +2375,7 @@ body, html {
 #today-screens .svc-phone {
     width: min(100%, 350px); aspect-ratio: 9 / 16; height: auto;
     border-radius: 18px; border: 8px solid #11151f; background: #fff;
-    box-shadow: 0 18px 40px rgba(200, 130, 31, 0.12);
+    box-shadow: 0 18px 40px rgba(109, 40, 217, 0.12);
 }
 #today-screens .svc-phone.img-slot::after { content: none; }
 #today-screens .svc-phone img {
@@ -2392,8 +2392,8 @@ body, html {
     display: flex; width: fit-content; margin: 0 auto 30px;
     align-items: center; justify-content: center; gap: 9px;
     padding: 11px 24px; border-radius: 12px; font-size: 21px; font-weight: 800;
-    color: var(--proj-deep); background: rgba(240, 180, 80, 0.14);
-    border: 1px solid rgba(200, 130, 31, 0.22);
+    color: var(--proj-deep); background: rgba(139, 92, 246, 0.14);
+    border: 1px solid rgba(109, 40, 217, 0.22);
 }
 #today-screens .svc-track-label .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--proj); }
 /* 3모드 캡션 — 각 모드의 목적(느긋/몰입/유머) 한 줄. 폰 아래 배치 */
@@ -2423,10 +2423,10 @@ body, html {
     max-width: none;
     padding: 38px 40px; border-radius: 16px;
     background:
-        linear-gradient(120deg, rgba(240,180,80,0.08), rgba(248,212,154,0.03)),
+        linear-gradient(120deg, rgba(139,92,246,0.08), rgba(196,181,253,0.03)),
         #fff;
-    border: 1px solid rgba(200, 130, 31, 0.16);
-    box-shadow: 0 14px 34px rgba(200, 130, 31, 0.07);
+    border: 1px solid rgba(109, 40, 217, 0.16);
+    box-shadow: 0 14px 34px rgba(109, 40, 217, 0.07);
     border-left: 4px solid var(--proj);
 }
 #today-concept .tc-lead {
@@ -2459,14 +2459,14 @@ body, html {
     width: 54px; height: 54px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
     background: #fff; border: 3px solid var(--proj);
-    color: var(--proj-deep); box-shadow: 0 10px 24px rgba(200, 130, 31, 0.16);
+    color: var(--proj-deep); box-shadow: 0 10px 24px rgba(109, 40, 217, 0.16);
     margin-bottom: 18px;
 }
 #today-making .mk-dot svg { width: 24px; height: 24px; }
 #today-making .mk-step.is-goal .mk-dot {
     background: linear-gradient(135deg, var(--proj-deep), var(--proj));
     border-color: var(--proj-deep); color: #fff;
-    box-shadow: 0 14px 30px rgba(200, 130, 31, 0.34);
+    box-shadow: 0 14px 30px rgba(109, 40, 217, 0.34);
 }
 #today-making .mk-no {
     font-family: 'Work Sans', sans-serif; font-size: 14px; font-weight: 800;
@@ -2485,9 +2485,9 @@ body, html {
     display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
     max-width: none; margin-bottom: 56px;
     padding: 42px 44px; border-radius: 18px;
-    background: linear-gradient(135deg, rgba(240,180,80,0.14), rgba(248,212,154,0.05)), #fff;
-    border: 1px solid rgba(200, 130, 31, 0.22);
-    box-shadow: 0 22px 52px rgba(200, 130, 31, 0.14);
+    background: linear-gradient(135deg, rgba(139,92,246,0.14), rgba(196,181,253,0.05)), #fff;
+    border: 1px solid rgba(109, 40, 217, 0.22);
+    box-shadow: 0 22px 52px rgba(109, 40, 217, 0.14);
 }
 #today-delivery .dl-badge-live {
     display: inline-flex; align-items: center; gap: 9px;
@@ -2495,7 +2495,7 @@ body, html {
     font-family: 'Work Sans', sans-serif; font-size: 15px; font-weight: 800;
     letter-spacing: 0.14em; color: #fff;
     background: linear-gradient(120deg, var(--proj-deep), var(--proj));
-    box-shadow: 0 8px 20px rgba(200, 130, 31, 0.3);
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.3);
 }
 #today-delivery .dl-pulse {
     width: 9px; height: 9px; border-radius: 50%; background: #fff;
@@ -2539,8 +2539,8 @@ body, html {
 }
 #today-delivery .dl-promo {
     margin-top: 24px; padding: 18px 22px; border-radius: 12px;
-    background: var(--proj-weak, rgba(200,130,31,0.07));
-    border: 1px solid rgba(200,130,31,0.18);
+    background: var(--proj-weak, rgba(109,40,217,0.07));
+    border: 1px solid rgba(109,40,217,0.18);
     font-size: 18px; line-height: 1.6; color: var(--ink); font-weight: 600;
 }
 #today-delivery .dl-promo b { color: var(--proj-deep); font-weight: 800; }
@@ -2560,9 +2560,9 @@ body, html {
 #today-result .result-slot, #today-delivery .result-slot {
     display: flex; flex-direction: column; gap: 8px;
     padding: 28px 26px; border-radius: 14px;
-    border: 1px solid rgba(200, 130, 31, 0.20);
-    background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(255,249,240,0.88));
-    box-shadow: 0 14px 32px rgba(200, 130, 31, 0.08);
+    border: 1px solid rgba(109, 40, 217, 0.20);
+    background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(248,245,255,0.88));
+    box-shadow: 0 14px 32px rgba(109, 40, 217, 0.08);
 }
 #today-result .result-slot .rs-cap, #today-delivery .result-slot .rs-cap {
     font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: var(--proj-deep);
@@ -2583,12 +2583,12 @@ body, html {
     display: flex; flex-direction: column; gap: 14px;
     padding: 30px 28px; border-radius: 12px;
     background: #fff; border: 1px solid var(--line);
-    box-shadow: 0 12px 30px rgba(200, 130, 31, 0.06);
+    box-shadow: 0 12px 30px rgba(109, 40, 217, 0.06);
 }
 #today-learn .learn-card .lc-tag {
     align-self: flex-start; display: inline-flex; padding: 6px 12px;
     border-radius: 8px; font-size: 16px; font-weight: 800;
-    color: var(--proj-deep); background: rgba(240, 180, 80, 0.16);
+    color: var(--proj-deep); background: rgba(139, 92, 246, 0.16);
 }
 #today-learn .learn-card .lc-body {
     font-size: 18px; line-height: 1.7; color: var(--ink-soft);
@@ -4618,7 +4618,7 @@ body, html {
 
 /* ---- 카드별 액센트 컬러 주입 (아이콘 톤에서 추출, 형광 금지·다크 럭셔리) ---- */
 #featured .fp-item               { --fp-accent: #5566f0; --fp-accent-rgb: 85,102,240; } /* 01 노톡 — 상세색과 일치(#5566f0) */
-#featured .fp-item:nth-child(2)  { --fp-accent: #f0b450; --fp-accent-rgb: 240,180,80;  } /* 02 앰버 */
+#featured .fp-item:nth-child(2)  { --fp-accent: #8b5cf6; --fp-accent-rgb: 139,92,246;  } /* 02 바이올렛 */
 #featured .fp-item:nth-child(3)  { --fp-accent: #43d6b4; --fp-accent-rgb: 67,214,180;  } /* 03 그린/틸 */
 
 /* ---- 카드 기하 재점검: 휑한 세로 여백을 조이고 위→아래 흐름으로 정렬 ----
@@ -4829,7 +4829,7 @@ body, html {
     top: -3px;
     background-image:
         radial-gradient(circle, #5566f0 0 3.2px, transparent 3.6px),   /* 노톡 노드 — 대표색 #5566f0 정합 */
-        radial-gradient(circle, #f0b450 0 3.2px, transparent 3.6px),
+        radial-gradient(circle, #8b5cf6 0 3.2px, transparent 3.6px),   /* 오늘뽁 노드 — 바이올렛 */
         radial-gradient(circle, #43d6b4 0 3.2px, transparent 3.6px);
     background-repeat: no-repeat;
     background-position: 16.6% 0, 50% 0, 83.4% 0;
@@ -5390,7 +5390,7 @@ body, html {
 
 /* ── 프로젝트별 대표색 복원 (위 단일-블루 통일 규칙을 덮음) ── */
 #featured .fp-item               { --fp-accent: #5566f0; --fp-accent-rgb: 85,102,240; }  /* 01 노톡 — 블루 */
-#featured .fp-item:nth-child(2)  { --fp-accent: #f0b450; --fp-accent-rgb: 240,180,80;  }  /* 02 오늘뽁 — 앰버 */
+#featured .fp-item:nth-child(2)  { --fp-accent: #8b5cf6; --fp-accent-rgb: 139,92,246;  }  /* 02 오늘뽁 — 바이올렛(앱 아이콘 보라핑크) */
 #featured .fp-item:nth-child(3)  { --fp-accent: #34c47a; --fp-accent-rgb: 52,196,122;  }  /* 03 끄숑 — 그린 */
 
 /* ── 좌측 제목 2줄 유지(시안) — 위 1줄 강제(nowrap·br 숨김) 무력화 ── */
@@ -5501,8 +5501,8 @@ body, html {
 /* 점/레일 영역만큼 상단 여백 확보 후 번호 시작 */
 #featured .fp-inum {
     margin-top: 30px;          /* 레일/점 아래로 텍스트 분리(커진 아이콘에 맞춰 여유) */
-    margin-bottom: 7px;
-    font-size: 17px;
+    margin-bottom: 11px;
+    font-size: 23px;
     font-weight: 800;
     letter-spacing: 0.10em;
     /* 번호 = 프로젝트 대표색 (메탈릭 그라데이션 덮음) */
@@ -5514,9 +5514,9 @@ body, html {
     text-shadow: 0 4px 14px rgba(var(--fp-accent-rgb), 0.30);
 }
 #featured .fp-name {
-    margin-bottom: 9px;
-    font-size: 32px;
-    font-weight: 800;
+    margin-bottom: 18px;
+    font-size: 38px;
+    font-weight: 700;
     color: #ffffff;
     -webkit-text-fill-color: #ffffff;
     letter-spacing: -0.01em;
@@ -5529,7 +5529,7 @@ body, html {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    margin: 0 0 6px;
+    margin: 0 0 10px;
     padding: 0;
     background: none;
     border: 0;
@@ -5537,7 +5537,7 @@ body, html {
     color: rgba(226, 233, 255, 0.76);
     font-family: 'Work Sans', 'Pretendard', sans-serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.01em;
     text-transform: lowercase;   /* 소문자 */
 }
@@ -5556,7 +5556,7 @@ body, html {
     gap: 8px;
     font-family: 'Work Sans', 'Pretendard', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.01em;
     line-height: 1;
 }
@@ -5570,7 +5570,7 @@ body, html {
 /* 출시예정(soon) — '대기' 앰버 점 (회색 아님, soon/progress/live 점색 3분리) */
 #featured .fp-status.soon {
     color: rgba(255,255,255,0.62);
-    font-weight: 600;
+    font-weight: 400;
 }
 #featured .fp-status.soon::before {
     background: #f5b740;                          /* 앰버 — 예정/대기 */
