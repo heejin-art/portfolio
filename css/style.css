@@ -2398,15 +2398,15 @@ body, html {
 #today-screens .svc-track-label .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--proj); }
 /* 3모드 캡션 — 각 모드의 목적(느긋/몰입/유머) 한 줄. 폰 아래 배치 */
 #today-screens .svc-track-host .svc-cap {
-    margin-top: 16px; max-width: 320px;
-    font-size: 15px; line-height: 1.6; color: var(--ink-soft);
+    margin-top: 18px; max-width: 360px;
+    font-size: 18px; line-height: 1.65; color: var(--ink-soft);
     text-align: center; word-break: keep-all; text-wrap: pretty;
 }
 #today-screens .svc-track-host .svc-cap b { color: var(--ink); font-weight: 800; }
 #today-screens .svc-track-host .svc-cap i { font-style: italic; color: var(--proj-deep); }
 #today-screens .svc-track-host .svc-cap .svc-goal {
-    display: block; margin-bottom: 6px;
-    font-size: 14px; font-weight: 800; letter-spacing: 0.01em;
+    display: block; margin-bottom: 7px;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.01em;
     color: var(--proj-deep); text-transform: none;
 }
 /* 4스텝 트랙(온보딩→홈): 칸 많아 폰/간격 살짝 축소 */
@@ -2435,7 +2435,7 @@ body, html {
 }
 #today-concept .tc-lead b { color: var(--proj-deep); }
 #today-concept .tc-body {
-    font-size: 19px; line-height: 1.8; color: var(--ink-soft);
+    font-size: 21px; line-height: 1.9; color: var(--ink-soft);
     word-break: keep-all; text-wrap: pretty;
 }
 #today-concept .tc-body b { color: var(--proj-deep); font-weight: 800; }
