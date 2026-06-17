@@ -5333,9 +5333,8 @@ body, html {
     margin-bottom: 6px;
     color: var(--brand-deep);
     font-weight: 700;
-    background: #eef3ff;
 }
-.toc-item.toc-top:hover { background: #e2ebff; }
+.toc-item.toc-top:hover { background: #f0f4ff; }
 .toc-top-ico { width: 17px; height: 17px; flex: 0 0 auto; transform: translateY(2px); }
 
 /* ── 모바일: 보텀시트 + FAB 위치/크기 조정 ── */
