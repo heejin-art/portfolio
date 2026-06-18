@@ -3018,12 +3018,13 @@ body, html {
 }
 #kkushong .nt-right { flex: 0 0 500px; display: flex; justify-content: center; align-items: center; position: relative; }
 #kkushong .nt-phone {
-    width: 440px; height: 926px; border-radius: 26px;
+    width: 440px; height: 752px; border-radius: 26px;   /* 영상(448:778) 비율에 맞춰 꽉 차게 */
     background: #11151f; border: 8px solid #11151f;
     box-shadow: 0 54px 96px rgba(31, 143, 86, 0.22);
     position: relative; padding: 0; overflow: hidden;
 }
-#kkushong .nt-phone img { display: block; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; object-position: top center; background: #fff; }
+#kkushong .nt-phone img,
+#kkushong .nt-phone video { display: block; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; object-position: top center; background: #11151f; }
 /* 빈 폰 목업 placeholder — 사용자 이미지 대기 */
 #kkushong .kk-phone-empty { display: flex; align-items: center; justify-content: center; }
 #kkushong .kk-phone-empty::after {
@@ -3041,14 +3042,11 @@ body, html {
 }
 #kk-concept .kk-char {
     flex: 0 0 220px; width: 220px; height: 220px; border-radius: 24px;
-    background: rgba(52, 196, 122, 0.1); border: 2px dashed rgba(31, 143, 86, 0.4);
+    background: rgba(52, 196, 122, 0.08);
     display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
 }
-#kk-concept .kk-char-empty::after {
-    content: '끄숑이\A 캐릭터 자리'; white-space: pre; text-align: center;
-    color: var(--proj-deep); font-size: 16px; font-weight: 700; line-height: 1.6; opacity: 0.7;
-}
-#kk-concept .kk-char img { width: 100%; height: 100%; border-radius: 22px; object-fit: cover; }
+#kk-concept .kk-char img { width: 100%; height: 100%; border-radius: 22px; object-fit: contain; }
 #kk-concept .kk-hero-body { flex: 1; }
 #kk-concept .kk-hero-tag {
     display: inline-flex; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px;
@@ -3166,20 +3164,21 @@ body, html {
 }
 #kk-screens .svc-step .st { font-size: 22px; font-weight: 800; margin-bottom: 24px; color: var(--ink); }
 #kk-screens .svc-phone {
-    width: min(100%, 350px); aspect-ratio: 9 / 16; height: auto;
+    width: min(100%, 350px);
     border-radius: 18px; border: 8px solid #11151f; background: #fff;
     box-shadow: 0 18px 40px rgba(31, 143, 86, 0.12);
+    overflow: hidden; position: relative;
 }
 #kk-screens .svc-phone.img-slot::after { content: none; }
 #kk-screens .svc-phone.svc-empty {
+    aspect-ratio: 9 / 16;
     display: flex; align-items: center; justify-content: center;
     background: repeating-linear-gradient(135deg, rgba(52,196,122,0.05) 0 12px, rgba(52,196,122,0.1) 12px 24px);
 }
-#kk-screens .svc-phone img { display: block; width: 100%; height: 100%; border-radius: 10px; object-fit: cover; object-position: top center; }
-/* 01 홈 — F모드 / T모드 화면 교차(왔다갔다) */
-#kk-screens .svc-phone.kk-toggle { position: relative; }
-#kk-screens .svc-phone.kk-toggle img { position: absolute; inset: 0; }
-#kk-screens .svc-phone.kk-toggle img:last-child { animation: kkToggle 4.5s ease-in-out infinite; }
+/* 이미지 전체가 잘림 없이(세로 가변) 보이게 */
+#kk-screens .svc-phone img { display: block; width: 100%; height: auto; border-radius: 10px; }
+/* 01 홈 — F/T 교차: 첫 이미지가 높이 결정, 둘째는 위에 겹쳐 크로스페이드 */
+#kk-screens .svc-phone.kk-toggle img:last-child { position: absolute; inset: 0; height: 100%; animation: kkToggle 4.5s ease-in-out infinite; }
 @keyframes kkToggle {
     0%, 42% { opacity: 0; }      /* F(뒤) 보임 */
     50%, 92% { opacity: 1; }     /* T(앞) 보임 */
@@ -6036,8 +6035,8 @@ body, html {
 }
 :is(#uxui, #uxui-2) .uxd-balabel.before,
 #uxui-2 .uxd-balabel.before {
-    color: var(--ink-soft);
-    background: rgba(89,97,122,0.12);
+    color: #fff;
+    background: linear-gradient(135deg, #565d70, #767d90);   /* 진회색 채움 — 또렷하되 무채색(AFTER 대표색보다 약) */
 }
 :is(#uxui, #uxui-2) .uxd-balabel.after,
 #uxui-2 .uxd-balabel.after {
@@ -6077,10 +6076,10 @@ body, html {
 :is(#uxui, #uxui-2) .uxd-summary { margin: 28px 0 10px; }
 :is(#uxui, #uxui-2) .uxd-sum-head {
     display: flex; align-items: center; gap: 9px;
-    font-size: 16px; font-weight: 800; color: var(--ink); margin: 0 0 14px;
+    font-size: 18px; font-weight: 800; color: var(--ink); margin: 0 0 16px;
 }
 :is(#uxui, #uxui-2) .uxd-sum-head::before {
-    content: ""; width: 4px; height: 18px; border-radius: 2px;
+    content: ""; width: 4px; height: 20px; border-radius: 2px;
     background: linear-gradient(180deg, var(--acc), var(--acc-deep));
 }
 :is(#uxui, #uxui-2) .uxd-sum-grid {
@@ -6101,11 +6100,11 @@ body, html {
     background: color-mix(in srgb, var(--acc) 12%, #fff); color: var(--acc-deep);
 }
 :is(#uxui, #uxui-2) .uxd-sum-ico svg { width: 19px; height: 19px; }
-:is(#uxui, #uxui-2) .uxd-sum-head2 { font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 9px; }
-:is(#uxui, #uxui-2) .uxd-sum-card .p-bad { font-size: 17px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+:is(#uxui, #uxui-2) .uxd-sum-head2 { font-size: 23px; font-weight: 800; color: var(--ink); margin: 0 0 10px; }
+:is(#uxui, #uxui-2) .uxd-sum-card .p-bad { font-size: 18.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
 :is(#uxui, #uxui-2) .uxd-sum-card .p-arr { display: block; color: var(--acc); margin: 9px 0; }
 :is(#uxui, #uxui-2) .uxd-sum-card .p-arr svg { width: 18px; height: 18px; }
-:is(#uxui, #uxui-2) .uxd-sum-card .p-fix { font-size: 17px; line-height: 1.55; color: var(--acc-deep); font-weight: 700; margin: 0; }
+:is(#uxui, #uxui-2) .uxd-sum-card .p-fix { font-size: 18.5px; line-height: 1.55; color: var(--acc-deep); font-weight: 700; margin: 0; }
 @media (max-width: 980px) {
     :is(#uxui, #uxui-2) .uxd-sum-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -6139,7 +6138,7 @@ body, html {
 :is(#uxui, #uxui-2) .uxd-cmplabel {
     font-family: 'Work Sans', sans-serif;
     font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
-    color: var(--acc-deep);
+    color: var(--ink-soft);
     text-align: left;
     margin: 0 0 18px;
 }
