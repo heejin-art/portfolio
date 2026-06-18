@@ -87,7 +87,7 @@
 
                 <div class="about-right">
                     <h2 class="about-head reveal">아이디어를 서비스로 구체화합니다.</h2>
-                    <p class="about-sub reveal">서비스 기획과 UX 설계를 바탕으로, 사용자가 진짜 겪는 문제부터 정의합니다.<br>화면과 흐름으로 해법을 설계하고, 디자인부터 개발까지 AI를 도구 삼아 직접 구현해<br>아이디어를 머무는 생각이 아니라 실제 출시된 서비스로 만들어 냅니다.</p>
+                    <p class="about-sub reveal">서비스 기획과 UX 설계로 사용자가 진짜 겪는 문제부터 정의하고,<br>디자인·개발·출시까지 AI를 도구 삼아 직접 만들어 냅니다.</p>
                     <div class="about-tools reveal">
                     <span class="about-tools-label">사용 도구</span>
                     <div class="tool-cat">
@@ -876,7 +876,12 @@
 
             <div class="nt-right reveal">
                 <!-- ▼▼ [사용자 수정] 끄숑 홈 화면 목업 이미지 ▼▼ -->
-                <div class="nt-phone img-slot kk-phone-empty"></div>
+                <div class="nt-phone">
+                    <video class="nt-hero-video" muted loop playsinline preload="metadata" poster="images/끄숑_홈_F.png" aria-label="끄숑 앱 시연 — 온보딩·홈">
+                        <source src="videos/kkushong_hero.mp4" type="video/mp4">
+                        <img src="images/끄숑_홈_F.png" alt="끄숑 홈 화면">
+                    </video>
+                </div>
             </div>
         </section>
 
@@ -888,7 +893,7 @@
 
             <div class="kk-hero reveal">
                 <!-- ▼▼ [사용자 수정] 끄숑이 캐릭터 이미지 ▼▼ -->
-                <div class="kk-char img-slot kk-char-empty"></div>
+                <div class="kk-char img-slot"><img src="images/끄숑캐릭터.png" alt="끄숑이 캐릭터"></div>
                 <div class="kk-hero-body">
                     <span class="kk-hero-tag">F / T 잔소리 트레이너</span>
                     <p class="kk-hero-line">"끄숑이"가 당신의 성향을 읽고,<br><b>공감형(F)</b> 또는 <b>팩트형(T)</b>으로 디지털 디톡스를 코칭합니다.</p>
@@ -1015,22 +1020,22 @@
                     <div class="svc-step reveal">
                         <span class="sn">01</span>
                         <span class="st">홈 · 오늘 사용량</span>
-                        <!-- ▼ [사용자 수정] 홈 화면 이미지 ▼ -->
-                        <div class="svc-phone img-slot svc-empty"></div>
+                        <!-- ▼ [사용자 수정] 홈 화면 이미지 — F/T 모드 교차 ▼ -->
+                        <div class="svc-phone img-slot kk-toggle"><img src="images/끄숑_홈_F.png" alt="끄숑 홈 — F모드(공감형) 오늘 사용량"><img src="images/끄숑_홈_T.png" alt="끄숑 홈 — T모드(팩트형) 오늘 사용량"></div>
                     </div>
                     <div class="svc-arrow reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
                     <div class="svc-step reveal">
                         <span class="sn">02</span>
-                        <span class="st">기록 · 월별 조회</span>
-                        <!-- ▼ [사용자 수정] 월별 기록 화면 이미지 ▼ -->
-                        <div class="svc-phone img-slot svc-empty"></div>
+                        <span class="st">일간기록</span>
+                        <!-- ▼ [사용자 수정] 일간기록 화면 이미지 ▼ -->
+                        <div class="svc-phone img-slot"><img src="images/끄숑_일간기록.png" alt="끄숑 일간기록 — 일별 사용시간"></div>
                     </div>
                     <div class="svc-arrow reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
                     <div class="svc-step reveal">
                         <span class="sn">03</span>
-                        <span class="st">기록 · 일별 조회</span>
-                        <!-- ▼ [사용자 수정] 일별 기록 화면 이미지 ▼ -->
-                        <div class="svc-phone img-slot svc-empty"></div>
+                        <span class="st">월간기록</span>
+                        <!-- ▼ [사용자 수정] 월간기록 화면 이미지 ▼ -->
+                        <div class="svc-phone img-slot"><img src="images/끄숑_월간기록.png" alt="끄숑 월간기록 — 월별 사용시간"></div>
                     </div>
                 </div>
             </div>
@@ -1082,86 +1087,176 @@
             <!-- 울프람알파 — 메인 홈 정보구조 개선 (BEFORE/AFTER 풀폭 스택 + 핫스팟 + 3단 근거) -->
             <div class="uxd-case uxd-rich reveal">
                 <div class="uxd-head">
+                    <span class="uxd-num">01</span>
                     <span class="uxd-name">울프람알파</span>
                     <span class="uxd-tag">정보구조 재설계</span>
                     <span class="uxd-tag">진입점 설계</span>
                 </div>
+                <div class="uxd-meta reveal">
+                    <span class="uxd-mtag team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>3인 팀 프로젝트</span>
+                    <span class="uxd-mtag date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>2026.03.30 – 04.03</span>
+                    <p class="uxd-mrole"><span class="lbl">역할</span>UX 설계 · 정보구조(카테고리) 재설계 · 서브 디자인 — 개선 기획 주도</p>
+                </div>
                 <p class="uxd-problem reveal">지식 계산 엔진인데, 첫 화면에 <b>52개 항목이 평면으로 깔려</b> 사용자가 "무엇부터 눌러야 할지" 알기 어렵습니다.</p>
+                <p class="uxd-insight reveal"><b>평면적 정보 나열로 진입점이 없던 첫 화면</b>을, <b>진입점 있는 구조</b>로 재구성해 첫 행동까지의 거리를 좁혔습니다.</p>
 
+                <div class="uxd-body">
+                <div class="uxd-main">
+                <p class="uxd-cmplabel">WEB</p>
                 <div class="uxd-stack">
                     <figure class="uxd-shot is-before reveal">
                         <figcaption class="uxd-balabel before">BEFORE</figcaption>
                         <div class="uxd-frame" data-zoom role="button" tabindex="0" aria-label="원본 화면 크게 보기">
                             <img src="images/울프람알파_main_asis.png" alt="울프람알파 메인 홈 원본 — 빽빽한 텍스트 링크 그리드" loading="lazy">
-                            <span class="uxd-hot neg" style="left:50%;top:16%">1</span>
-                            <span class="uxd-hot neg" style="left:50%;top:55%">2</span>
                         </div>
-                        <ul class="uxd-notes neg">
-                            <li><span class="n">1</span> 검색창이 단순 입력칸 — 이 도구가 뭘 해주는지 전달이 없음</li>
-                            <li><span class="n">2</span> 4열 × 13행 ≈ <b>52개 링크</b>를 평면 나열 — 우선순위·진입점 부재</li>
-                        </ul>
                     </figure>
 
-                    <div class="uxd-divider reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg><span>이렇게 다시 설계했습니다</span></div>
+                    <div class="uxd-divider reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
 
                     <figure class="uxd-shot is-after reveal">
                         <figcaption class="uxd-balabel after">AFTER</figcaption>
-                        <div class="uxd-frame" data-zoom role="button" tabindex="0" aria-label="개선 화면 크게 보기">
+                        <div class="uxd-frame is-capped" data-zoom role="button" tabindex="0" aria-label="개선 화면 전체 보기">
                             <img src="images/울프람알파_main_tobe.png" alt="울프람알파 메인 홈 리디자인 — 가치제안 히어로·주제 카드·소셜프루프" loading="lazy">
-                            <span class="uxd-hot pos" style="left:50%;top:10%">1</span>
-                            <span class="uxd-hot pos" style="left:50%;top:43%">2</span>
-                            <span class="uxd-hot pos" style="left:50%;top:69%">3</span>
                         </div>
-                        <ul class="uxd-notes pos">
-                            <li><span class="n">1</span> 가치 제안 히어로 — "세상의 모든 지식을 계산할 수 있게"로 한 줄에 정체성 전달</li>
-                            <li><span class="n">2</span> 52개 링크 → <b>주제별 4카드</b>로 압축, 진입 의사결정 단계 축소</li>
-                            <li><span class="n">3</span> "지금 1463명이 풀고 있어요" <b>소셜프루프</b>로 첫 행동 유도(넛지)</li>
-                        </ul>
                     </figure>
                 </div>
 
-                <div class="uxd-rationale reveal">
-                    <div class="r-col"><span class="r-lab">문제 가설</span><p>첫 화면에 52개 항목 동시 노출 → 선택 마비, 첫 행동까지 인지 비용 증가</p></div>
-                    <div class="r-col"><span class="r-lab">개선 근거</span><p>핵심 행동(검색)을 히어로로 끌어올리고, 카테고리는 <b>52 → 4</b>개로 묶어 진입 단계 축소</p></div>
-                    <div class="r-col"><span class="r-lab">효과 <em>(가설)</em></span><p>"무엇을 할 수 있는지"가 빠르게 보이고, 소셜프루프로 이탈 전 1회 시도율 상승</p></div>
-                </div>
-
-                <p class="uxd-insight"><b>평면적 정보 나열로 진입점이 없던 첫 화면</b>을, <b>가치 제안 히어로·주제별 카드·소셜프루프</b>로 재구성해 첫 행동까지의 거리를 좁혔습니다.</p>
-
-                <div class="uxd-sub reveal">
-                    <p class="uxd-sub-lead"><span class="uxd-sub-tag">일관 적용</span> 같은 진단 원칙을 하위 <b>'일상생활'</b> 페이지에도 — 빽빽한 드롭다운 폼을 <b>카드 선택형</b>으로 정리했습니다.</p>
-                    <div class="uxd-sub-pair">
-                        <figure class="uxd-subshot" data-zoom role="button" tabindex="0" aria-label="일상생활 원본 크게 보기"><figcaption>BEFORE</figcaption><img src="images/울프람알파_sub_asis.png" alt="일상생활 페이지 원본" loading="lazy"></figure>
-                        <figure class="uxd-subshot" data-zoom role="button" tabindex="0" aria-label="일상생활 개선 크게 보기"><figcaption>AFTER</figcaption><img src="images/울프람알파_sub_tobe.png" alt="일상생활 페이지 리디자인" loading="lazy"></figure>
+                <div class="uxd-summary reveal">
+                    <p class="uxd-sum-head">개선 포인트</p>
+                    <div class="uxd-sum-grid">
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+                            <p class="uxd-sum-head2">52개를 4개로</p>
+                            <p class="p-bad">링크 52개가 평면에 나열돼, 뭘 먼저 눌러야 할지 막막</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">주제별 카드로 묶어 첫 클릭까지 단축</p>
+                        </div>
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span>
+                            <p class="uxd-sum-head2">왜 쓰는지부터</p>
+                            <p class="p-bad">기능만 나열돼, 왜 좋은지 안 와닿음</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">가치 한 줄을 첫 화면에 — 3초 만에 납득</p>
+                        </div>
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                            <p class="uxd-sum-head2">혼자가 아니란 신호</p>
+                            <p class="p-bad">처음 온 사람에게 믿을 단서가 없음</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">"지금 1,463명이 푸는 중" — 시작할 용기를 줌</p>
+                        </div>
                     </div>
                 </div>
+
+                <div class="uxd-mobcompare reveal">
+                    <p class="uxd-cmplabel">MOBILE</p>
+                    <div class="uxd-mobrow">
+                        <figure class="uxd-mobshot">
+                            <figcaption class="uxd-balabel before">BEFORE</figcaption>
+                            <div class="uxd-mobile" data-zoom role="button" tabindex="0" aria-label="울프람알파 모바일 원본 전체 보기">
+                                <div class="uxd-mobile-frame"><div class="uxd-scroll-track"><img src="images/울프람알파_mainmobile_asis.png" alt="울프람알파 모바일 원본 — 전체 화면" loading="lazy"><img src="images/울프람알파_mainmobile_asis.png" alt="" aria-hidden="true" loading="lazy"></div></div>
+                            </div>
+                        </figure>
+                        <div class="uxd-divider reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+                        <figure class="uxd-mobshot">
+                            <figcaption class="uxd-balabel after">AFTER</figcaption>
+                            <div class="uxd-mobile" data-zoom role="button" tabindex="0" aria-label="울프람알파 모바일 리디자인 전체 보기">
+                                <div class="uxd-mobile-frame"><div class="uxd-scroll-track"><img src="images/울프람알파_mainmobile_tobe.png" alt="울프람알파 모바일 리디자인 — 전체 화면" loading="lazy"><img src="images/울프람알파_mainmobile_tobe.png" alt="" aria-hidden="true" loading="lazy"></div></div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                </div><!-- /uxd-main -->
+                </div><!-- /uxd-body -->
             </div>
         </section>
 
         <!-- ================= 04 UX·UI IMPROVEMENTS — ② 시스템치과 ================= -->
         <section id="uxui-2" class="slide light">
-            <p class="nt-eyebrow reveal"><b>04</b>UX · UI IMPROVEMENTS · 시스템치과</p>
-            <h2 class="nt-sectitle reveal">복잡한 예약 흐름을 더 단순하게 다시 설계했습니다.</h2>
-            <span class="nt-underline reveal"></span>
-
-            <!-- ▼▼ [사용자 수정] 시스템치과 — Before/After 이미지 + 개선 설명 ▼▼ -->
-            <div class="uxd-case reveal">
+            <div class="uxd-case uxd-rich reveal">
                 <div class="uxd-head">
+                    <span class="uxd-num">02</span>
                     <span class="uxd-name">시스템치과</span>
-                    <span class="uxd-tag">[개선 영역 — 예: 예약 페이지]</span>
+                    <span class="uxd-tag">정보 위계 재설계</span>
+                    <span class="uxd-tag">신뢰·전환 설계</span>
                 </div>
-                <div class="uxd-ba">
-                    <div class="uxd-shot">
-                        <span class="uxd-balabel before">BEFORE</span>
-                        <div class="uxd-img img-slot"></div>
-                    </div>
-                    <span class="uxd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                    <div class="uxd-shot">
-                        <span class="uxd-balabel after">AFTER</span>
-                        <div class="uxd-img img-slot"></div>
+                <div class="uxd-meta reveal">
+                    <span class="uxd-mtag team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>4인 팀 프로젝트</span>
+                    <span class="uxd-mtag lead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>팀장 · 프로젝트 리드</span>
+                    <span class="uxd-mtag date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>2026.05.26 – 06.05</span>
+                    <p class="uxd-mrole"><span class="lbl">역할</span>프로젝트 리딩 · UX·UI 기획 · 서브 디자인 · 메인 개발 · 제안서 작성</p>
+                </div>
+                <p class="uxd-problem reveal">할인이 첫 화면을 점유한 치과 홈을, <b>신뢰 → 상담 동선</b>으로 재설계했습니다.</p>
+                <p class="uxd-insight reveal"><b>정보 과부하의 긴 마케팅 페이지</b>를, <b>전문성 중심의 명확한 구조</b>로 재설계해 신뢰와 예약 전환의 동선을 정리했습니다.</p>
+
+                <div class="uxd-body">
+                <div class="uxd-main">
+                <p class="uxd-cmplabel">WEB</p>
+                <div class="uxd-stack">
+                    <figure class="uxd-shot is-before reveal">
+                        <figcaption class="uxd-balabel before">BEFORE</figcaption>
+                        <div class="uxd-frame is-capped" data-zoom role="button" tabindex="0" aria-label="시스템치과 원본 화면 전체 보기">
+                            <img src="images/시스템치과_main_asis.png" alt="시스템치과 원본 홈 — 길게 나열된 마케팅 페이지" loading="lazy">
+                        </div>
+                    </figure>
+
+                    <div class="uxd-divider reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+
+                    <figure class="uxd-shot is-after reveal">
+                        <figcaption class="uxd-balabel after">AFTER</figcaption>
+                        <div class="uxd-frame is-capped" data-zoom role="button" tabindex="0" aria-label="시스템치과 개선 화면 전체 보기">
+                            <img src="images/시스템치과_main_tobe.png" alt="시스템치과 리디자인 홈 — 전문성 중심 구조" loading="lazy">
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="uxd-summary reveal">
+                    <p class="uxd-sum-head">개선 포인트</p>
+                    <div class="uxd-sum-grid">
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/><circle cx="12" cy="12" r="10"/></svg></span>
+                            <p class="uxd-sum-head2">할인 대신 신뢰를</p>
+                            <p class="p-bad">할인·전후사진이 첫 화면을 차지 — 자극적이고 피로</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">대표 원장·진료 시스템을 전면에 — 믿음이 먼저</p>
+                        </div>
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></span>
+                            <p class="uxd-sum-head2">환자의 말로</p>
+                            <p class="p-bad">'밀크네이트' 같은 시술명 그대로 — 못 알아봄</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">쉬운 이름·구조로 재정리 + 디지털 진료 신설</p>
+                        </div>
+                        <div class="uxd-sum-card">
+                            <span class="uxd-sum-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg></span>
+                            <p class="uxd-sum-head2">상담까지 한 번에</p>
+                            <p class="p-bad">예약 버튼이 흩어져 행동까지 멀다</p>
+                            <span class="p-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+                            <p class="p-fix">예약 버튼을 항상 띄워 — 그 자리에서 바로</p>
+                        </div>
                     </div>
                 </div>
-                <p class="uxd-insight"><b>[핵심 문제]</b> 를 진단하고, <b>[개선 방향]</b> 으로 다시 설계해 [결과·효과]를 만들었습니다.</p>
+
+                <div class="uxd-mobcompare reveal">
+                    <p class="uxd-cmplabel">MOBILE</p>
+                    <div class="uxd-mobrow">
+                        <figure class="uxd-mobshot">
+                            <figcaption class="uxd-balabel before">BEFORE</figcaption>
+                            <div class="uxd-mobile" data-zoom role="button" tabindex="0" aria-label="시스템치과 모바일 원본 전체 보기">
+                                <div class="uxd-mobile-frame"><div class="uxd-scroll-track"><img src="images/시스템치과_mainmobile_asis.png" alt="시스템치과 모바일 원본 — 전체 화면" loading="lazy"><img src="images/시스템치과_mainmobile_asis.png" alt="" aria-hidden="true" loading="lazy"></div></div>
+                            </div>
+                        </figure>
+                        <div class="uxd-divider reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+                        <figure class="uxd-mobshot">
+                            <figcaption class="uxd-balabel after">AFTER</figcaption>
+                            <div class="uxd-mobile" data-zoom role="button" tabindex="0" aria-label="시스템치과 모바일 리디자인 전체 보기">
+                                <div class="uxd-mobile-frame"><div class="uxd-scroll-track"><img src="images/시스템치과_mainmobile_tobe.JPG" alt="시스템치과 모바일 리디자인 — 전체 화면" loading="lazy"><img src="images/시스템치과_mainmobile_tobe.JPG" alt="" aria-hidden="true" loading="lazy"></div></div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                </div><!-- /uxd-main -->
+                </div><!-- /uxd-body -->
             </div>
         </section>
 
@@ -1220,33 +1315,25 @@
         <section id="contact" class="slide light contact-slide">
             <div class="contact-inner reveal">
                 <p class="contact-eyebrow">CONTACT</p>
-                <h2 class="contact-head">아이디어를 실제로 만드는 사람을<br>찾고 계신가요.</h2>
-                <p class="contact-sub">기획부터 출시까지 직접 끌고 가는 프로덕트 디자이너 / 기획자입니다.<br>함께 만들 기회가 있다면 언제든 연락 주세요.</p>
+                <h2 class="contact-head">다음 Product를 <br>함께 만들 준비가 되어 있습니다.</h2>
+                <p class="contact-sub">기획부터 UX 설계, 개발, 출시까지 경험했습니다.<br>더 큰 서비스를 함께 만들고 싶습니다.</p>
 
-                <div class="contact-links">
-                    <!-- ▼▼ [사용자 수정] 실제 이메일로 교체 ▼▼ -->
-                    <a class="contact-link primary" href="mailto:[이메일 주소]">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <span>이메일</span>
+                <hr class="contact-rule">
+
+                <div class="contact-info">
+                    <a class="contact-item" href="mailto:zbxm2000@naver.com">
+                        <span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                        <span class="ci-text"><span class="ci-label">Email</span><span class="ci-val">zbxm2000@naver.com</span></span>
                     </a>
-                    <!-- ▼▼ [사용자 수정] 이력서 PDF 파일 경로로 교체 ▼▼ -->
-                    <a class="contact-link" href="[이력서 PDF 경로]" download>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-                        <span>이력서 PDF</span>
-                    </a>
-                    <!-- ▼▼ [사용자 수정] 오늘뽁 Google Play URL로 교체 ▼▼ -->
-                    <a class="contact-link" href="[오늘뽁 Google Play URL]" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.41 12l2.488-2.491zM5.864 2.658 16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
-                        <span>Google Play</span>
-                    </a>
-                    <!-- ▼▼ [사용자 수정] 인스타그램 URL로 교체 ▼▼ -->
-                    <a class="contact-link" href="[인스타그램 URL]" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                        <span>Instagram</span>
+                    <a class="contact-item" href="tel:01099668132">
+                        <span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                        <span class="ci-text"><span class="ci-label">Phone</span><span class="ci-val">010-9966-8132</span></span>
                     </a>
                 </div>
 
-                <p class="contact-foot">Thank you for scrolling.</p>
+                <hr class="contact-rule">
+
+                <p class="contact-foot">Thank you.</p>
             </div>
         </section>
     </div>
@@ -1286,11 +1373,11 @@
                 <a class="toc-item toc-case" href="#kkushong"><span class="toc-n">03</span><span class="toc-t">끄숑<em>진행중 · 팀 프로젝트</em></span></a>
             </div>
 
-            <a class="toc-item" href="#uxui"><span class="toc-n">04</span><span class="toc-t">UX·UI 개선<small>UX·UI IMPROVEMENTS</small></span></a>
+            <a class="toc-item" href="#uxui"><span class="toc-n">04</span><span class="toc-t"><span style="white-space:nowrap;">UX·UI 개선 <span style="font-weight:500;font-size:0.8em;opacity:0.6;">(웹·모바일)</span></span><small>UX·UI IMPROVEMENTS</small></span></a>
 
             <div class="toc-group">
-                <a class="toc-item toc-case" href="#uxui"><span class="toc-n">01</span><span class="toc-t">울프람알파<em>웹 UX 개선</em></span></a>
-                <a class="toc-item toc-case" href="#uxui-2"><span class="toc-n">02</span><span class="toc-t">시스템치과<em>웹 UX 개선</em></span></a>
+                <a class="toc-item toc-case" href="#uxui"><span class="toc-n">01</span><span class="toc-t">울프람알파</span></a>
+                <a class="toc-item toc-case" href="#uxui-2"><span class="toc-n">02</span><span class="toc-t">시스템치과</span></a>
             </div>
 
             <a class="toc-item" href="#skills"><span class="toc-n">05</span><span class="toc-t">역량·도구<small>SKILLS & TOOLS</small></span></a>
@@ -1609,15 +1696,32 @@
             }), { threshold: 0.35 }).observe(v);
         });
         // 2트랙 데모: 자동재생 X — 재생버튼 클릭 시에만 재생. 화면 밖이면 정지(버튼 다시 노출)
-        document.querySelectorAll('.nt-demo-track .nt-demo-phone').forEach((phone) => {
+        // 재생 중엔 오른쪽 동행 영상(#nt-stick) 정지 + 검정 딤 → 끄면 복원
+        const stickPanel = document.getElementById('nt-stick');
+        const stickVid = stickPanel && stickPanel.querySelector('video');
+        const demoPhones = document.querySelectorAll('.nt-demo-track .nt-demo-phone');
+        const anyDemoPlaying = () => [...demoPhones].some((p) => { const vv = p.querySelector('video'); return vv && !vv.paused; });
+        const syncStick = () => {
+            if (!stickPanel) return;
+            const dim = anyDemoPlaying();
+            stickPanel.classList.toggle('dimmed', dim);
+            if (stickVid) {
+                if (dim) stickVid.pause();
+                else if (stickPanel.classList.contains('on') && !reduce) stickVid.play().catch(() => {});
+            }
+        };
+        demoPhones.forEach((phone) => {
             const v = phone.querySelector('video');
             const btn = phone.querySelector('.nt-demo-play');
+            const track = phone.closest('.nt-demo-track');
             if (!v) return;
             v.pause();
-            const start = () => { v.play().then(() => phone.classList.add('playing')).catch(() => {}); };
-            const stop = () => { v.pause(); phone.classList.remove('playing'); };
+            const start = () => { v.play().then(() => { phone.classList.add('playing'); if (track) track.classList.add('playing'); }).catch(() => {}); };
+            const stop = () => { v.pause(); phone.classList.remove('playing'); if (track) track.classList.remove('playing'); };
             if (btn) btn.addEventListener('click', start);
             v.addEventListener('click', () => { if (!v.paused) stop(); });  // 재생 중 클릭 → 일시정지
+            v.addEventListener('play', syncStick);
+            v.addEventListener('pause', syncStick);
             new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) stop(); }),
                 { threshold: 0.1 }).observe(phone);
         });
@@ -1640,7 +1744,7 @@
                 const on = wide.matches && visible.size > 0 && !blocked;
                 panel.classList.toggle('on', on);
                 panel.setAttribute('aria-hidden', on ? 'false' : 'true');
-                if (vid) { if (on && !reduce) { vid.play().catch(() => {}); } else { vid.pause(); } }  // 이어서 연속재생
+                if (vid) { if (on && !reduce && !panel.classList.contains('dimmed')) { vid.play().catch(() => {}); } else { vid.pause(); } }  // 이어서 연속재생(딤 중엔 정지 유지)
             };
             const io = new IntersectionObserver((entries) => {
                 entries.forEach((e) => { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); });
@@ -1731,7 +1835,7 @@
             lb.classList.remove('on'); lb.setAttribute('aria-hidden', 'true');
             if (lastFocus) lastFocus.focus();
         };
-        document.querySelectorAll('#uxui [data-zoom]').forEach((el) => {
+        document.querySelectorAll('#uxui [data-zoom], #uxui-2 [data-zoom]').forEach((el) => {
             const img = el.querySelector('img');
             if (!img) return;
             const fire = () => { lastFocus = el; open(img.currentSrc || img.src, img.alt); };
@@ -1741,6 +1845,28 @@
         closeBtn.addEventListener('click', close);
         lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('on')) close(); });
+    })();
+
+    // ── MOBILE·AFTER 폰 목업 자동 세로 스크롤: 속도(px/s) 일정화 + 화면 밖이면 정지 ──
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const SPEED = 52; // px/s — 울프람·시스템치과 동일 체감 속도 (긴 이미지는 자동으로 더 오래)
+        document.querySelectorAll('.uxd-mobile-frame').forEach((frame) => {
+            const track = frame.querySelector('.uxd-scroll-track');
+            if (!track) return;
+            const img = track.querySelector('img');
+            const setDur = () => {
+                const dist = track.scrollHeight / 2; // -50% 이동거리 = 원본 1장 높이
+                if (dist > 0) track.style.setProperty('--roll-dur', (dist / SPEED).toFixed(1) + 's');
+            };
+            if (img && img.complete) setDur();
+            else if (img) img.addEventListener('load', setDur, { once: true });
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver((es) => es.forEach((e) => {
+                    frame.classList.toggle('is-paused', !e.isIntersecting);
+                }), { threshold: 0.04 }).observe(frame);
+            }
+        });
     })();
 
 </script>
