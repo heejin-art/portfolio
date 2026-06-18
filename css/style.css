@@ -1594,8 +1594,9 @@ body, html {
     #nt-problem,
     #nt-opportunity,
     #nt-structure,
-    #today-concept,
-    #today-making {
+    #today-making,
+    #today-delivery,
+    #today-learn {
         padding-right: calc(var(--slide-pad) + 340px);
     }
 }

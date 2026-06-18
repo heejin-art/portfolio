@@ -269,7 +269,7 @@
 
             <div class="nt-right reveal">
                 <div class="nt-phone">
-                    <video class="nt-hero-video" autoplay muted loop playsinline preload="metadata" poster="images/notalkmain.png" aria-label="노톡 앱 시연 — 홈 화면">
+                    <video class="nt-hero-video" muted loop playsinline preload="metadata" poster="images/notalkmain.png" aria-label="노톡 앱 시연 — 홈 화면">
                         <source src="videos/notalk_hero.mp4" type="video/mp4">
                         <img src="images/notalkmain.png" alt="노톡 메인 화면">
                     </video>
@@ -620,7 +620,7 @@
 
             <div class="nt-right reveal">
                 <div class="nt-phone">
-                    <video class="nt-hero-video" autoplay muted loop playsinline preload="metadata" poster="images/오늘뽁/메인1.png" aria-label="오늘뽁 앱 시연 — 온보딩·홈">
+                    <video class="nt-hero-video" muted loop playsinline preload="metadata" poster="images/오늘뽁/메인1.png" aria-label="오늘뽁 앱 시연 — 온보딩·홈">
                         <source src="videos/oneulbbok_hero.mp4" type="video/mp4">
                         <img src="images/오늘뽁/메인1.png" alt="오늘뽁 앱 홈 화면">
                     </video>
@@ -1549,12 +1549,14 @@
     (function () {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!('IntersectionObserver' in window)) return;
-        // 히어로: 화면 안이면 이어서 재생, 밖이면 정지
+        // 히어로: 미리 틀지 않고, 섹션 진입 시 '처음부터' 재생 / 밖이면 정지
         document.querySelectorAll('.nt-hero-video').forEach((v) => {
-            if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+            v.pause();
+            if (reduce) return;
             new IntersectionObserver((es) => es.forEach((e) => {
-                e.isIntersecting ? v.play().catch(() => {}) : v.pause();
-            }), { threshold: 0.25 }).observe(v);
+                if (e.isIntersecting) { try { v.currentTime = 0; } catch (_) {} v.play().catch(() => {}); }
+                else v.pause();
+            }), { threshold: 0.35 }).observe(v);
         });
         // 2트랙 데모: 자동재생 X — 재생버튼 클릭 시에만 재생. 화면 밖이면 정지(버튼 다시 노출)
         document.querySelectorAll('.nt-demo-track .nt-demo-phone').forEach((phone) => {
@@ -1609,8 +1611,8 @@
         };
         // 노톡: Problem/Design/Structure(Experience Flow까지) — 오늘뽁(#today) 진입하면 숨김
         setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today');
-        // 오늘뽁: Concept/Making Process까지 — 다음 섹션(#today-screens) 진입하면 숨김
-        setup('today-stick', ['#today-concept', '#today-making'], '#today-screens');
+        // 오늘뽁: Making/Delivery/Decisions에서 보이고(Screens & Experience에선 트리거 없어 자동 숨김), 끄숑 진입하면 완전 숨김
+        setup('today-stick', ['#today-making', '#today-delivery', '#today-learn'], '#kkushong');
     })();
 
 </script>

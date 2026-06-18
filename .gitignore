@@ -1,0 +1,12 @@
+# 원본 녹화본 — 포폴엔 가공 클립만 사용. 로컬 보관, 깃엔 올리지 않음(레포 경량화)
+videos/notalk_video.mp4
+videos/notalk_모임 생성하기.mp4
+videos/notalk_참여자 채팅.mp4
+videos/notalk_참여자 흐름.mp4
+videos/notalk_참여하기.mp4
+videos/oneulbbok_main.mp4
+videos/oneulbbok_onboarding.mp4
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
