@@ -860,7 +860,8 @@ body, html {
 #career .tl-list li::before {
     content: '';
     position: absolute;
-    left: 0; top: 12px;
+    left: 0; top: 0.825em;          /* line-height 1.65 의 절반 → 첫 줄 중앙 */
+    transform: translateY(-50%);
     width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--blue);
@@ -4406,7 +4407,8 @@ body, html {
     }
 
     #career .tl-list li::before {
-        top: 12px;
+        top: 0.825em;
+        transform: translateY(-50%);
     }
 
     #career .now-card {
@@ -4783,30 +4785,34 @@ body, html {
     border-radius: 50%;
     flex: 0 0 7px;
 }
-/* 출시예정 — 뉴트럴/대기 톤, 과하지 않게 */
+/* 출시예정 — 텍스트는 중립 톤 유지(이 스타일이 두 상태의 기준), 점만 빨강 */
 #featured .fp-status.soon {
     color: rgba(226, 232, 240, 0.62);
 }
 #featured .fp-status.soon::before {
-    background: rgba(148, 163, 184, 0.85);
+    background: #ff4d4d;
+    box-shadow: 0 0 6px rgba(255, 77, 77, 0.50);
 }
-/* 출시완료 — 긍정/완료 신호로 또렷하게: 초록 글씨 + 발광 점 + 리딩 체크 */
+/* 출시완료 — 글자는 출시예정과 fz/fw/fc 동일, 점만 초록 + 은은히 퍼지는 글로우 */
 #featured .fp-status.live {
-    color: #7df0c4;
-    font-weight: 700;
+    color: rgba(226, 232, 240, 0.62);   /* = 출시예정 색 */
+    font-weight: 600;                    /* = 출시예정 굵기(.fp-status 기본) */
 }
 #featured .fp-status.live::before {
     background: #3ddca0;
-    box-shadow: 0 0 8px rgba(61, 220, 160, 0.65);
+    animation: fpLivePulse 2.4s ease-out infinite;
 }
-#featured .fp-status.live::after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    flex: 0 0 12px;
-    background: #7df0c4;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M20%206L9%2017l-5-5'%20fill='none'%20stroke='%23000'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M20%206L9%2017l-5-5'%20fill='none'%20stroke='%23000'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+/* 점 중심에서 빛이 은은히 퍼졌다 사라지는 효과 */
+@keyframes fpLivePulse {
+    0%   { box-shadow: 0 0 5px 0 rgba(61, 220, 160, 0.55), 0 0 0 0 rgba(61, 220, 160, 0.45); }
+    70%  { box-shadow: 0 0 9px 2px rgba(61, 220, 160, 0.30), 0 0 0 8px rgba(61, 220, 160, 0); }
+    100% { box-shadow: 0 0 5px 0 rgba(61, 220, 160, 0.55), 0 0 0 0 rgba(61, 220, 160, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #featured .fp-status.live::before {
+        animation: none;
+        box-shadow: 0 0 8px rgba(61, 220, 160, 0.55);
+    }
 }
 
 /* ---- 연결 트랙: 노드 점이 있는 의도된 타임라인으로 살림 ---- */
@@ -5429,10 +5435,35 @@ body, html {
     left: 16.6%;
     right: 16.6%;
     top: 166px;
-    height: 0;
-    border-top: 1.5px dashed rgba(170, 198, 255, 0.34);
+    height: 2px;
+    transform: translateY(-50%);          /* 라인 중심을 기존 166px 지점에 유지 */
+    /* 점선은 '마스크'로 고정(움직이지 않음). 점 3px + 간격 5px(1주기 8px) */
+    -webkit-mask: repeating-linear-gradient(90deg, #000 0 3px, transparent 3px 8px);
+            mask: repeating-linear-gradient(90deg, #000 0 3px, transparent 3px 8px);
+    /* 색 레이어 2장:
+       (위) 좌→우로 흐르는 밝은 띠   (아래) 아이콘 계열 고정 그라디언트 */
+    background-image:
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 50%, transparent 100%),
+        linear-gradient(90deg, #5566f0 0%, #8b5cf6 50%, #43d6b4 100%);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50% 100%, 100% 100%;          /* 흐르는 띠는 폭 50% */
+    background-position: -100% center, 0 center;    /* 띠 시작은 왼쪽 화면 밖 */
+    animation: fpRailFlow 3s linear infinite;       /* 색이 좌→우로 흐름 */
     z-index: 0;
     pointer-events: none;
+}
+/* 밝은 띠(첫 레이어)만 좌→우로 이동, 아이콘색 그라디언트(둘째 레이어)는 고정 */
+@keyframes fpRailFlow {
+    from { background-position: -100% center, 0 center; }
+    to   { background-position:  200% center, 0 center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #featured .fp-list::before {
+        animation: none;
+        background-image: linear-gradient(90deg, #5566f0 0%, #8b5cf6 50%, #43d6b4 100%);
+        background-size: 100% 100%;
+        background-position: 0 center;
+    }
 }
 
 /* ── 각 컬럼(아이템) : 가운데 정렬 세로 스택 ── */
@@ -5482,7 +5513,9 @@ body, html {
 /* ── 타임라인 노드 점 : 각 아이콘 중심(컬럼 50%), 레일 위에 ── */
 #featured .fp-node {
     position: absolute;
-    top: 166px;                /* 레일(166px) 중앙에 점 중심이 오도록 (translate -50%로 정렬) */
+    /* 레일은 .fp-list 기준 166px, 점은 .fp-item 기준이라 .fp-list padding-top(6px)만큼
+       아래로 밀린다 → 166-6=160 으로 보정해 레일·점 중심을 일치시킴 */
+    top: 160px;
     left: 50%;
     width: 14px;
     height: 14px;
@@ -5513,8 +5546,8 @@ body, html {
     text-shadow: 0 4px 14px rgba(var(--fp-accent-rgb), 0.30);
 }
 #featured .fp-name {
-    margin-bottom: 18px;
-    font-size: 38px;
+    margin-bottom: 14px;          /* 제목 ↔ 메타(Team Project) 간격 (12~16px) */
+    font-size: 34px;
     font-weight: 700;
     color: #ffffff;
     -webkit-text-fill-color: #ffffff;
@@ -5527,37 +5560,38 @@ body, html {
     display: flex;               /* 아이콘+글자 한 줄, 행 폭 채워 중앙 정렬 */
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    margin: 0 0 10px;
+    gap: 6px;
+    margin: 0 0 6px;             /* 상태(출시 예정)와 6px — 하나의 상태 영역처럼 */
     padding: 0;
     background: none;
     border: 0;
     box-shadow: none;
-    color: rgba(226, 233, 255, 0.76);
+    color: #9AA0B4;              /* 보조정보 회색 */
     font-family: 'Work Sans', 'Pretendard', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 16px;             /* 제목 아래 보조 위계 */
+    font-weight: 500;            /* Medium */
     letter-spacing: 0.01em;
-    text-transform: lowercase;   /* 소문자 */
+    text-transform: none;        /* HTML 표기 그대로(Team/Personal Project) */
 }
 #featured .fp-type-ico {
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
+    width: 14px;                 /* 글자 축소에 맞춰 아이콘도 비례 축소 */
+    height: 14px;
+    flex: 0 0 14px;
     stroke: currentColor;
-    opacity: 0.92;            /* 글자색과 같은 톤, 다크 배경서 또렷 */
+    opacity: 0.85;
 }
 
 /* 상태 — 타입 아래 한 줄(출시완료=대표색 강조 보존) */
 #featured .fp-status {
     justify-content: center;
-    gap: 8px;
+    gap: 6px;                            /* 점-글자 간격 (.fp-type와 통일) */
     font-family: 'Work Sans', 'Pretendard', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 14px;                     /* 메타 그룹 — Team Project보다 작게 */
+    font-weight: 500;                    /* Medium */
     letter-spacing: 0.01em;
     line-height: 1;
+    color: #9AA0B4;                      /* 보조정보 톤 (.fp-type와 한 그룹) */
 }
 #featured .fp-status::before {
     width: 7px;
@@ -5568,12 +5602,12 @@ body, html {
 #featured .fp-status::after { content: none; }
 /* 출시예정(soon) — '대기' 앰버 점 (회색 아님, soon/progress/live 점색 3분리) */
 #featured .fp-status.soon {
-    color: rgba(255,255,255,0.62);
-    font-weight: 400;
+    color: #9AA0B4;
+    font-weight: 500;
 }
 #featured .fp-status.soon::before {
-    background: #f5b740;                          /* 앰버 — 예정/대기 */
-    box-shadow: 0 0 6px rgba(245, 183, 64, 0.5);
+    background: #ff4d4d;                          /* 레드 — 예정/대기 */
+    box-shadow: 0 0 6px rgba(255, 77, 77, 0.5);
 }
 /* 진행중(progress) — '작업중' 블루 점 (soon/live 와 명확히 다른 색) */
 #featured .fp-status.progress {
@@ -5584,9 +5618,10 @@ body, html {
     background: #5aa9ff;                          /* 블루 — 진행/작업중 */
     box-shadow: 0 0 6px rgba(90, 169, 255, 0.55);
 }
-/* 출시완료 — 강점이라 또렷한 그린(의미색)은 보존, 단 fw는 .soon과 통일(600) */
+/* 출시완료 — 글자는 출시예정(.soon)과 fz/fw/fc 완전 동일. 의미 구분은 점 색(그린)으로만 */
 #featured .fp-status.live {
-    color: #7df0c4;
+    color: #9AA0B4;                  /* = .soon 글자색 */
+    font-weight: 500;                /* = .soon 굵기 */
 }
 #featured .fp-status.live::before {
     width: 6px;
