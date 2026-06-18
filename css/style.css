@@ -1405,7 +1405,8 @@ body, html {
     padding: 0;
     overflow: hidden;
 }
-#notalk .nt-phone img {
+#notalk .nt-phone img,
+#notalk .nt-phone video {
     display: block;
     width: 100%;
     height: 100%;
@@ -1544,6 +1545,68 @@ body, html {
     flex-direction: column;
     justify-content: center;
     padding: var(--slide-pad-y) var(--slide-pad);
+}
+
+/* ── 노톡 동행 시연 영상 (우측 fixed sticky) ──
+   Problem/Design/Structure(IA) 스크롤 동안만 노출(JS 토글). body 직속이라 slide overflow에 안 잘림 */
+#nt-stick,
+#today-stick {
+    position: fixed;
+    top: 50%;
+    right: 36px;
+    transform: translateY(-50%) translateX(28px);
+    width: 290px;
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#nt-stick.on,
+#today-stick.on {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+#nt-stick .nt-stick-phone,
+#today-stick .nt-stick-phone {
+    width: 290px;
+    aspect-ratio: 456 / 940;
+    border-radius: 30px;
+    border: 8px solid #11151f;
+    background: #11151f;
+    box-shadow: 0 30px 70px rgba(36, 60, 159, 0.22);
+    overflow: hidden;
+}
+#today-stick .nt-stick-phone {
+    box-shadow: 0 30px 70px rgba(109, 40, 217, 0.22);   /* 오늘뽁 바이올렛 톤 */
+}
+#nt-stick .nt-stick-phone video,
+#today-stick .nt-stick-phone video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    object-fit: cover;
+    object-position: top center;
+    background: #fff;
+}
+/* 넓은 화면: 콘텐츠가 영상 아래로 안 들어가게 우측 여백 확보 */
+@media (min-width: 1200px) {
+    #nt-problem,
+    #nt-opportunity,
+    #nt-structure,
+    #today-concept,
+    #today-making {
+        padding-right: calc(var(--slide-pad) + 340px);
+    }
+}
+/* 좁은 화면: 동행 영상 숨김(레이아웃 원복) */
+@media (max-width: 1199px) {
+    #nt-stick,
+    #today-stick { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #nt-stick,
+    #today-stick { transition: none; }
 }
 .nt-detail .nt-eyebrow {
     font-family: 'Work Sans', sans-serif;
@@ -2162,6 +2225,96 @@ body, html {
     object-fit: contain;
     object-position: top center;
 }
+/* 실제 동작 증거 — 모임 만들기 플로우 시연 영상 (Experience Flow 다이어그램 아래) */
+#nt-structure .nt-demo {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 56px;
+    flex-wrap: wrap;          /* 좁은 화면에선 세로로 쌓임 */
+}
+#nt-structure .nt-demo-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+#nt-structure .nt-demo-cap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--proj, #5566f0);
+}
+#nt-structure .nt-demo-cap .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: 0 0 8px;
+}
+#nt-structure .nt-demo-phone {
+    position: relative;
+    width: min(100%, 380px);
+    aspect-ratio: 448 / 940;
+    border-radius: 32px;
+    border: 8px solid #11151f;
+    background: #11151f;
+    box-shadow: 0 24px 50px rgba(36, 60, 159, 0.16);
+    overflow: hidden;
+}
+#nt-structure .nt-demo-phone video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    object-position: top center;
+    background: #fff;
+}
+/* 재생 전: 영상 위 검정 불투명 오버레이 (재생 중엔 사라짐) */
+#nt-structure .nt-demo-phone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.46);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+#nt-structure .nt-demo-phone.playing::after { opacity: 0; }
+/* 재생 버튼 — 검정 동그라미 + 흰색 재생 아이콘. 클릭 시 재생, 재생 중엔 숨김 */
+#nt-structure .nt-demo-play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.72);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    z-index: 2;
+}
+#nt-structure .nt-demo-play svg { width: 28px; height: 28px; margin-left: 3px; }
+#nt-structure .nt-demo-play:hover { background: rgba(0, 0, 0, 0.85); transform: scale(1.06); }
+#nt-structure .nt-demo-play:focus-visible { outline: 3px solid rgba(255, 255, 255, 0.7); outline-offset: 3px; }
+#nt-structure .nt-demo-phone.playing .nt-demo-play {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+}
 #nt-structure .svc-arrow {
     flex: 0 0 44px;
     display: flex;
@@ -2358,7 +2511,8 @@ body, html {
     box-shadow: 0 54px 96px rgba(109, 40, 217, 0.22);   /* 차분하게 떠 보이게 — 바이올렛 톤 */
     position: relative; padding: 0; overflow: hidden;
 }
-#today .nt-phone img {
+#today .nt-phone img,
+#today .nt-phone video {
     display: block; width: 100%; height: 100%; border-radius: 15px;
     object-fit: cover; object-position: top center; background: #fff;
 }

@@ -269,7 +269,10 @@
 
             <div class="nt-right reveal">
                 <div class="nt-phone">
-                    <img src="images/notalkmain.png" alt="노톡 메인 화면">
+                    <video class="nt-hero-video" autoplay muted loop playsinline preload="metadata" poster="images/notalkmain.png" aria-label="노톡 앱 시연 — 홈 화면">
+                        <source src="videos/notalk_hero.mp4" type="video/mp4">
+                        <img src="images/notalkmain.png" alt="노톡 메인 화면">
+                    </video>
                 </div>
             </div>
         </section>
@@ -297,7 +300,7 @@
                     <span class="pm-c1">심리적 부담</span>
                     <span class="pm-c2">기존 모임 <em>AS-IS</em></span>
                     <span class="pm-arr"></span>
-                    <span class="pm-c3">노톡의 전환 <em>TO-BE</em></span>
+                    <span class="pm-c3">노톡 <em>TO-BE</em></span>
                 </div>
 
                 <div class="pm-row reveal">
@@ -509,35 +512,63 @@
             <div class="ps-block ps-flow reveal">
                 <div class="ps-block-head">
                     <p class="ps-block-tit">Experience Flow</p>
-                    <p class="ps-block-cap">탐색에서 자동 종료까지, 참여자는 부담 없는 4단계를 거칩니다.</p>
+                    <p class="ps-block-cap">모임을 만드는 사람과 참여하는 사람, 양쪽 흐름을 실제 동작 화면으로 보여줍니다.</p>
                 </div>
 
+            <!-- [숨김] 정적 Experience Flow 4단계 — 실제 동작 영상으로 대체(아래 nt-demo). 복원하려면 이 주석 블록 해제.
             <div class="svc-track">
             <div class="svc-steps">
                 <div class="svc-step reveal">
                     <span class="sn">01</span>
                     <span class="st">관계 부담 없이 탐색</span>
-                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/01 관계부담없이탐색.png" alt="관계 부담 없이 탐색 화면"></div>
+                    <div class="svc-phone img-slot"><img src="images/01 관계부담없이탐색.png" alt="관계 부담 없이 탐색 화면"></div>
                 </div>
                 <div class="svc-arrow reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
                 <div class="svc-step reveal">
                     <span class="sn">02</span>
                     <span class="st">오프라인 모임 참여</span>
-                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/02 오프라임모임참여.png" alt="오프라인 모임 참여 화면"></div>
+                    <div class="svc-phone img-slot"><img src="images/02 오프라임모임참여.png" alt="오프라인 모임 참여 화면"></div>
                 </div>
                 <div class="svc-arrow reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
                 <div class="svc-step reveal">
                     <span class="sn">03</span>
                     <span class="st">목적 중심 소통</span>
-                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/03 목적중심소통.png" alt="목적 중심 소통 화면"></div>
+                    <div class="svc-phone img-slot"><img src="images/03 목적중심소통.png" alt="목적 중심 소통 화면"></div>
                 </div>
                 <div class="svc-arrow reveal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
                 <div class="svc-step reveal">
                     <span class="sn">04</span>
                     <span class="st">모임 종료 후 자동종료</span>
-                    <!-- 이미지: 앱 화면 --><div class="svc-phone img-slot"><img src="images/04 모임후 자동종료.png" alt="모임 종료 후 자동종료 화면"></div>
+                    <div class="svc-phone img-slot"><img src="images/04 모임후 자동종료.png" alt="모임 종료 후 자동종료 화면"></div>
                 </div>
             </div>
+            </div>
+            -->
+
+            <!-- 실제 동작 증거: 생성자/참여자 2트랙 시연 영상 -->
+            <div class="nt-demo nt-demo-2track reveal">
+                <div class="nt-demo-track">
+                    <p class="nt-demo-cap"><span class="dot"></span>1 · 모임 생성자 흐름</p>
+                    <div class="nt-demo-phone">
+                        <video muted loop playsinline preload="metadata" aria-label="노톡 모임 생성자 흐름 — 모임 만들기 시연">
+                            <source src="videos/notalk_flow.mp4" type="video/mp4">
+                        </video>
+                        <button class="nt-demo-play" type="button" aria-label="모임 생성자 흐름 영상 재생">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="nt-demo-track">
+                    <p class="nt-demo-cap"><span class="dot"></span>2 · 모임 참여자 흐름</p>
+                    <div class="nt-demo-phone">
+                        <video muted loop playsinline preload="metadata" aria-label="노톡 모임 참여자 흐름 — 탐색·참여·채팅 시연">
+                            <source src="videos/notalk_join.mp4" type="video/mp4">
+                        </video>
+                        <button class="nt-demo-play" type="button" aria-label="모임 참여자 흐름 영상 재생">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
             </div>
         </section>
@@ -589,7 +620,10 @@
 
             <div class="nt-right reveal">
                 <div class="nt-phone">
-                    <img src="images/오늘뽁/메인1.png" alt="오늘뽁 앱 홈 화면">
+                    <video class="nt-hero-video" autoplay muted loop playsinline preload="metadata" poster="images/오늘뽁/메인1.png" aria-label="오늘뽁 앱 시연 — 온보딩·홈">
+                        <source src="videos/oneulbbok_hero.mp4" type="video/mp4">
+                        <img src="images/오늘뽁/메인1.png" alt="오늘뽁 앱 홈 화면">
+                    </video>
                 </div>
             </div>
         </section>
@@ -1223,6 +1257,24 @@
         </nav>
     </aside>
 
+    <!-- 노톡 케이스 동행 시연 영상 — Problem/Design/Structure 섹션 스크롤 동안 우측 sticky로 따라옴 -->
+    <div id="nt-stick" aria-hidden="true">
+        <div class="nt-stick-phone">
+            <video muted loop playsinline preload="metadata" poster="images/notalkmain.png" aria-label="노톡 앱 전체 시연 영상">
+                <source src="videos/notalk_full.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- 오늘뽁 케이스 동행 시연 영상 — Concept/Making Process 섹션 스크롤 동안 우측 sticky로 따라옴 -->
+    <div id="today-stick" aria-hidden="true">
+        <div class="nt-stick-phone">
+            <video muted loop playsinline preload="metadata" poster="images/오늘뽁/메인1.png" aria-label="오늘뽁 앱 플레이 시연 영상">
+                <source src="videos/oneulbbok_full.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <script>
     // 1. Lenis 초기화 (부드러운 스크롤)
     const lenis = new Lenis();
@@ -1491,6 +1543,74 @@
             }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
             sections.forEach((s) => secObserver.observe(s));
         }
+    })();
+
+    // ── 시연 영상 재생 제어 ──
+    (function () {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!('IntersectionObserver' in window)) return;
+        // 히어로: 화면 안이면 이어서 재생, 밖이면 정지
+        document.querySelectorAll('.nt-hero-video').forEach((v) => {
+            if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+            new IntersectionObserver((es) => es.forEach((e) => {
+                e.isIntersecting ? v.play().catch(() => {}) : v.pause();
+            }), { threshold: 0.25 }).observe(v);
+        });
+        // 2트랙 데모: 자동재생 X — 재생버튼 클릭 시에만 재생. 화면 밖이면 정지(버튼 다시 노출)
+        document.querySelectorAll('.nt-demo-track .nt-demo-phone').forEach((phone) => {
+            const v = phone.querySelector('video');
+            const btn = phone.querySelector('.nt-demo-play');
+            if (!v) return;
+            v.pause();
+            const start = () => { v.play().then(() => phone.classList.add('playing')).catch(() => {}); };
+            const stop = () => { v.pause(); phone.classList.remove('playing'); };
+            if (btn) btn.addEventListener('click', start);
+            v.addEventListener('click', () => { if (!v.paused) stop(); });  // 재생 중 클릭 → 일시정지
+            new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) stop(); }),
+                { threshold: 0.1 }).observe(phone);
+        });
+    })();
+
+    // ── 케이스 동행 시연 영상: 지정 섹션 스크롤 동안 우측 sticky, 연속재생 ──
+    (function () {
+        if (!('IntersectionObserver' in window)) return;
+        const wide = window.matchMedia('(min-width: 1200px)');
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const setup = (panelId, selectors, hideSel) => {
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+            const vid = panel.querySelector('video');
+            const triggers = selectors.map((s) => document.querySelector(s)).filter(Boolean);
+            if (!triggers.length) return;
+            const visible = new Set();
+            let blocked = false;   // 다음 케이스 섹션이 화면 절반 넘어오면 숨김
+            const sync = () => {
+                const on = wide.matches && visible.size > 0 && !blocked;
+                panel.classList.toggle('on', on);
+                panel.setAttribute('aria-hidden', on ? 'false' : 'true');
+                if (vid) { if (on && !reduce) { vid.play().catch(() => {}); } else { vid.pause(); } }  // 이어서 연속재생
+            };
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); });
+                sync();
+            }, { rootMargin: '-12% 0px -12% 0px', threshold: 0.01 });
+            triggers.forEach((t) => io.observe(t));
+            const hideEl = hideSel && document.querySelector(hideSel);
+            if (hideEl) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach((e) => {
+                        const vh = (e.rootBounds && e.rootBounds.height) || window.innerHeight;
+                        blocked = e.isIntersecting && e.boundingClientRect.top < vh * 0.5;  // 다음 섹션 상단이 화면 중앙 위로
+                    });
+                    sync();
+                }, { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] }).observe(hideEl);
+            }
+            wide.addEventListener('change', sync);
+        };
+        // 노톡: Problem/Design/Structure(Experience Flow까지) — 오늘뽁(#today) 진입하면 숨김
+        setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today');
+        // 오늘뽁: Concept/Making Process까지 — 다음 섹션(#today-screens) 진입하면 숨김
+        setup('today-stick', ['#today-concept', '#today-making'], '#today-screens');
     })();
 
 </script>
