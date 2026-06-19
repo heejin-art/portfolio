@@ -202,7 +202,7 @@ body, html {
 }
 .sec-num {
     font-family: 'Work Sans', sans-serif;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -214,9 +214,9 @@ body, html {
 }
 .sec-label {
     font-family: 'Work Sans', sans-serif;
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: 0.42em;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.40em;
     color: var(--ink);
 }
 .slide.dark .sec-label { color: #f3f6ff; }
@@ -685,8 +685,8 @@ body, html {
 
 /* ---------- 02 CAREER JOURNEY ---------- */
 :is(#career, #uxui, #skills) .career-head {
-    font-size: 46px;
-    font-weight: 800;
+    font-size: 52px;
+    font-weight: 700;
     letter-spacing: -0.015em;
     margin: 44px 0 18px;
 }
@@ -1018,7 +1018,7 @@ body, html {
     margin-bottom: 20px;
 }
 #notalk .nt-eyebrow b {
-    font-size: 38px;
+    font-size: 32px;
     line-height: 1;
     letter-spacing: 0.02em;
     background: var(--metallic);
@@ -1371,8 +1371,8 @@ body, html {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 9px;
-    max-width: 760px;
+    gap: 8px;
+    max-width: none;            /* 760 제한 풀어 8칩 한 줄(칼럼 860px 안) — 좁아지면 자동 줄바꿈 */
 }
 #notalk .nt-tools .tl-label {
     font-family: 'Work Sans', sans-serif;
@@ -1387,7 +1387,8 @@ body, html {
     align-items: center;
     justify-content: center;
     min-height: 36px;
-    padding: 7px 14px;
+    padding: 7px 8px;                /* 14→8: 8칩 한 줄로 압축(폰트 16px 유지) */
+    white-space: nowrap;             /* 칩 내부 텍스트 줄바꿈 방지 */
     border-radius: 8px;
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
@@ -1591,8 +1592,8 @@ body, html {
 #nt-stick .nt-stick-phone::after {
     content: "";
     position: absolute;
-    inset: 0;                        /* overflow:hidden가 라운드로 클립 → 모서리까지 완전히 덮음 */
-    background: rgba(0, 0, 0, 0.95);  /* 거의 완전 가림 */
+    inset: 0;                        /* overflow:hidden가 라운드로 클립 → 모서리까지 덮음 */
+    background: rgba(0, 0, 0, 0.58);  /* 반투명 딤 — 영상이 비치되 시선은 죽임(통검정 X) */
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -1642,8 +1643,8 @@ body, html {
 }
 .nt-detail .nt-eyebrow b { color: var(--proj-deep); font-weight: 700; margin-right: 6px; }
 .nt-detail .nt-sectitle {
-    font-size: 46px;
-    font-weight: 800;
+    font-size: 52px;
+    font-weight: 700;
     letter-spacing: -0.015em;
     margin-bottom: 14px;
 }
@@ -1714,6 +1715,8 @@ body, html {
     flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 14px;
+    position: relative;
+    z-index: 30;           /* 툴팁이 아래 표·인사이트 박스에 가려지지 않게 헤더를 위로 */
 }
 #nt-problem .prob-head .nt-badge { margin-bottom: 0; }
 /* 36.9% — stat-box 큰 패널 대체. 헤더 우측 작은 근거 칩(툴팁에 리서치/출처 보존) */
@@ -2040,8 +2043,8 @@ body, html {
 }
 #nt-opportunity .opp-item .olab svg { width: 17px; height: 17px; }
 #nt-opportunity .opp-item .otit {
-    font-size: 25px;
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: 700;
     margin-bottom: 11px;
     color: var(--ink);
     word-break: keep-all;
@@ -2356,12 +2359,12 @@ body, html {
     font-weight: 600;
     letter-spacing: -0.01em;
     color: var(--proj, #5566f0);
-    transform-origin: left center;
+    transform-origin: center center;   /* 가운데 기준 → 좌우상하 균등 확대(오른쪽 쏠림 방지) */
     transition: transform 0.3s ease, font-weight 0.3s ease;
 }
 /* 재생 중인 트랙 라벨 확대 강조 */
 #nt-structure .nt-demo-track.playing .nt-demo-cap {
-    transform: scale(1.22);
+    transform: scale(1.45);
     font-weight: 800;
 }
 #nt-structure .nt-demo-cap .dot {
@@ -2475,7 +2478,7 @@ body, html {
     color: rgba(26, 34, 56, 0.42); margin-bottom: 20px;
 }
 #today .nt-eyebrow b {
-    font-size: 38px; line-height: 1; letter-spacing: 0.02em;
+    font-size: 32px; line-height: 1; letter-spacing: 0.02em;
     /* eyebrow 숫자는 앰버 그라데이션으로 (메탈릭 대신 케이스색 일치) */
     background: linear-gradient(118deg, var(--proj-deep), var(--proj));
     -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -2699,7 +2702,7 @@ body, html {
     border-left: 4px solid var(--proj);
 }
 #today-concept .tc-lead {
-    font-size: 26px; font-weight: 800; line-height: 1.5; color: var(--ink);
+    font-size: 26px; font-weight: 700; line-height: 1.5; color: var(--ink);
     margin-bottom: 16px; word-break: keep-all; text-wrap: pretty;
 }
 #today-concept .tc-lead b { color: var(--proj-deep); }
@@ -2742,7 +2745,7 @@ body, html {
     letter-spacing: 0.12em; color: var(--proj-deep); margin-bottom: 6px;
 }
 #today-making .mk-tit {
-    font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 10px;
+    font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 10px;
 }
 #today-making .mk-desc {
     font-size: 16px; line-height: 1.65; color: var(--ink-soft);
@@ -2916,7 +2919,7 @@ body, html {
     color: rgba(26, 34, 56, 0.42); margin-bottom: 20px;
 }
 #kkushong .nt-eyebrow b {
-    font-size: 38px; line-height: 1; letter-spacing: 0.02em;
+    font-size: 32px; line-height: 1; letter-spacing: 0.02em;
     background: linear-gradient(118deg, var(--proj-deep), var(--proj));
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
@@ -3018,13 +3021,15 @@ body, html {
 }
 #kkushong .nt-right { flex: 0 0 500px; display: flex; justify-content: center; align-items: center; position: relative; }
 #kkushong .nt-phone {
-    width: 440px; height: 752px; border-radius: 26px;   /* 영상(448:778) 비율에 맞춰 꽉 차게 */
+    width: 421px; height: 752px; border-radius: 26px;   /* 영상(414:752) 비율에 정확히 맞춤 → 여백 0 */
     background: #11151f; border: 8px solid #11151f;
     box-shadow: 0 54px 96px rgba(31, 143, 86, 0.22);
     position: relative; padding: 0; overflow: hidden;
 }
 #kkushong .nt-phone img,
-#kkushong .nt-phone video { display: block; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; object-position: top center; background: #11151f; }
+#kkushong .nt-phone video { display: block; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; object-position: center; background: #11151f; }
+/* 어떤 비율·캐시 상황에서도 여백 0 보장 — 4% 오버필(가운데 기준) */
+#kkushong .nt-phone video { transform: scale(1.04); transform-origin: center center; }
 /* 빈 폰 목업 placeholder — 사용자 이미지 대기 */
 #kkushong .kk-phone-empty { display: flex; align-items: center; justify-content: center; }
 #kkushong .kk-phone-empty::after {
@@ -3055,7 +3060,7 @@ body, html {
     box-shadow: 0 8px 18px rgba(31, 143, 86, 0.26);
 }
 #kk-concept .kk-hero-line {
-    font-size: 32px; font-weight: 800; line-height: 1.4; color: var(--ink);
+    font-size: 32px; font-weight: 600; line-height: 1.4; color: var(--ink);
     margin-bottom: 14px; word-break: keep-all; text-wrap: pretty;
 }
 #kk-concept .kk-hero-line b { color: var(--proj-deep); }
@@ -3070,9 +3075,9 @@ body, html {
     box-shadow: 0 14px 34px rgba(31, 143, 86, 0.07);
     border-left: 4px solid var(--proj);
 }
-#kk-problem .tc-lead { font-size: 26px; font-weight: 800; line-height: 1.5; color: var(--ink); margin-bottom: 16px; word-break: keep-all; text-wrap: pretty; }
+#kk-problem .tc-lead { font-size: 26px; font-weight: 700; line-height: 1.5; color: var(--ink); margin-bottom: 16px; word-break: keep-all; text-wrap: pretty; }
 #kk-problem .tc-lead b { color: var(--proj-deep); }
-#kk-problem .tc-body { font-size: 19px; line-height: 1.8; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+#kk-problem .tc-body { font-size: 20px; line-height: 1.8; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
 #kk-problem .tc-body b { color: var(--proj-deep); font-weight: 800; }
 
 /* ── 끄숑 Design Intent — 노톡 opp-grid 재사용 (그린 스코프로 자동 해석) ── */
@@ -3087,7 +3092,9 @@ body, html {
 #kk-intent .opp-item .oh { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 #kk-intent .opp-item .oi {
     font-family: 'Work Sans', sans-serif; font-size: 14px; font-weight: 800;
-    color: #fff; background: linear-gradient(120deg, var(--proj-deep), var(--proj));
+    color: var(--proj-deep);                          /* 카드 번호 = 아웃라인(틴트) → 섹션 배지(채움)와 위계 분리 */
+    background: rgba(31, 143, 86, 0.08);
+    border: 1.5px solid rgba(31, 143, 86, 0.32);
     width: 30px; height: 30px; border-radius: 8px;
     display: inline-flex; align-items: center; justify-content: center;
 }
@@ -3097,8 +3104,8 @@ body, html {
     letter-spacing: 0.04em; color: var(--proj-deep);
 }
 #kk-intent .opp-item .olab svg { width: 17px; height: 17px; }
-#kk-intent .opp-item .otit { font-size: 21px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
-#kk-intent .opp-item .odesc { font-size: 16px; line-height: 1.65; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+#kk-intent .opp-item .otit { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+#kk-intent .opp-item .odesc { font-size: 17px; line-height: 1.65; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
 
 /* ── 끄숑 Core Mechanism — ★ 로직 다이어그램 (클라이맥스) ── */
 #kk-mechanism .nt-badge { margin-bottom: 34px; }
@@ -3125,8 +3132,8 @@ body, html {
     font-family: 'Work Sans', sans-serif; font-size: 14px; font-weight: 800;
     letter-spacing: 0.12em; color: var(--proj-deep); margin-bottom: 6px;
 }
-#kk-mechanism .kk-fs-tit { font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
-#kk-mechanism .kk-fs-desc { font-size: 15px; line-height: 1.55; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+#kk-mechanism .kk-fs-tit { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+#kk-mechanism .kk-fs-desc { font-size: 17px; line-height: 1.55; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
 #kk-mechanism .kk-flow-arrow {
     flex: 0 0 40px; display: flex; align-items: center; justify-content: center;
     color: var(--proj-deep);
@@ -3152,7 +3159,7 @@ body, html {
     font-size: 21px; font-weight: 700; line-height: 1.55; color: var(--ink);
     margin-bottom: 14px; word-break: keep-all; text-wrap: pretty;
 }
-#kk-mechanism .kk-tone-note { font-size: 16px; line-height: 1.65; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+#kk-mechanism .kk-tone-note { font-size: 17px; line-height: 1.65; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
 
 /* ── 끄숑 Screens — 노톡 svc-* 재사용 + 그린 ── */
 #kk-screens .svc-steps { display: flex; align-items: stretch; gap: 10px; }
@@ -3227,7 +3234,7 @@ body, html {
 }
 #kk-roadmap .kk-road-step.is-now .kk-rs-state { color: var(--proj-deep); }
 #kk-roadmap .kk-road-step.is-next .kk-rs-state { color: var(--ink-soft); opacity: 0.7; }
-#kk-roadmap .kk-rs-tit { font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+#kk-roadmap .kk-rs-tit { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
 #kk-roadmap .kk-rs-desc { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-width: 260px; word-break: keep-all; text-wrap: pretty; }
 
 
@@ -4320,18 +4327,22 @@ body, html {
     display: inline-block;
     padding: 0;
     border: 0;
-    background: none;
     box-shadow: none;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
-    color: var(--blue);
     letter-spacing: 0.04em;
     margin-bottom: 16px;
-    -webkit-text-fill-color: currentColor;
+    background: var(--metallic);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 #featured .fp-title {
     font-size: 66px;
+    font-weight: 700;
     line-height: 0.98;
     color: var(--ink);
     margin-bottom: 26px;
@@ -5954,6 +5965,10 @@ body, html {
 #uxui-2 .uxd-case {
     margin-top: 56px;
 }
+/* 큰 설명(섹션 인트로) 다음 첫 프로젝트는 더 띄워 '여기서 본론 시작' 호흡을 준다 */
+#uxui .career-sub + .uxd-case {
+    margin-top: 112px;
+}
 :is(#uxui, #uxui-2) .uxd-head,
 #uxui-2 .uxd-head {
     display: flex;
@@ -5980,13 +5995,35 @@ body, html {
     font-weight: 500;
     color: var(--ink-soft);
 }
-/* 팀·역할 메타 — 케이스 head 아래, 사이트 공통 아이콘+라벨 톤과 통일 */
+/* 메타 — 라벨·값 정렬(경력직 스펙표 톤). 칩 제거, 강조는 '리드' 한 곳만 */
 :is(#uxui, #uxui-2) .uxd-meta {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 9px 11px;
-    margin: -14px 0 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 2px 0 24px;
+}
+:is(#uxui, #uxui-2) .uxd-mrow {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+}
+:is(#uxui, #uxui-2) .uxd-mrow .lbl {
+    flex: 0 0 auto;
+    min-width: 46px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+:is(#uxui, #uxui-2) .uxd-mrow .val {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 500;
+}
+:is(#uxui, #uxui-2) .uxd-lead {
+    color: var(--acc-deep);
+    font-weight: 700;
 }
 :is(#uxui, #uxui-2) .uxd-mtag {
     display: inline-flex; align-items: center; gap: 7px;
@@ -6112,11 +6149,16 @@ body, html {
     :is(#uxui, #uxui-2) .uxd-sum-grid { grid-template-columns: 1fr; }
 }
 :is(#uxui, #uxui-2) .uxd-rich .uxd-tag {
-    background: rgba(237, 111, 28, 0.10);
-    color: var(--acc-deep);
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-weight: 600;
+    background: none;
+    color: var(--ink-soft);
+    padding: 0;
+    font-weight: 500;
+}
+:is(#uxui, #uxui-2) .uxd-rich .uxd-tag + .uxd-tag::before {
+    content: "·";
+    margin-right: 10px;
+    color: var(--ink-soft);
+    opacity: 0.55;
 }
 :is(#uxui, #uxui-2) .uxd-problem {
     max-width: none;          /* 한 줄로 보이게(넓은 화면) */
@@ -6181,6 +6223,8 @@ body, html {
 :is(#uxui, #uxui-2) .uxd-mobile:focus-visible { outline: 3px solid rgba(237, 111, 28, 0.5); outline-offset: 4px; border-radius: 18px; }
 :is(#uxui, #uxui-2) .uxd-scroll-track { display: block; }
 :is(#uxui, #uxui-2) .uxd-scroll-track img { display: block; width: 100%; height: auto; }
+/* 울프람 AFTER 모바일: 상단 여백이 남아 시작 위치를 살짝 위로(내용을 위로 끌어올림) */
+#uxui .uxd-mobrow figure.uxd-mobshot:last-of-type .uxd-scroll-track { transform: translateY(-34px); }
 /* 상시 '전체 보기' 유도 — WEB 캡 프레임과 동일 */
 :is(#uxui, #uxui-2) .uxd-mobile-frame::after {
     content: "⤢ 전체 보기";
@@ -6709,11 +6753,26 @@ body, html {
     border-top: 1px solid rgba(63, 88, 197, 0.20);
 }
 #contact .contact-info {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 56px;
-    margin: 46px 0;
+    display: grid;
+    grid-template-columns: auto 1px auto;
+    align-items: center;
+    column-gap: 44px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 36px auto;
+}
+#contact .ci-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(63, 88, 197, 0.20);
+}
+@media (max-width: 560px) {
+    #contact .contact-info {
+        grid-template-columns: auto;
+        row-gap: 22px;
+        justify-items: start;
+    }
+    #contact .ci-divider { width: 100%; height: 1px; align-self: auto; }
 }
 #contact .contact-item {
     display: inline-flex;
@@ -6725,21 +6784,18 @@ body, html {
 #contact .contact-item:hover { transform: translateY(-2px); }
 #contact .ci-ico {
     display: flex; align-items: center; justify-content: center;
-    width: 50px; height: 50px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, var(--brand-deep), var(--brand));
-    color: #fff;
+    width: 26px; height: 26px;
+    color: var(--brand);
     flex: 0 0 auto;
-    box-shadow: 0 10px 22px -12px rgba(63, 88, 197, 0.7);
 }
-#contact .ci-ico svg { width: 23px; height: 23px; }
+#contact .ci-ico svg { width: 22px; height: 22px; stroke-width: 1.6; }
 #contact .ci-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.3; }
 #contact .ci-label {
     font-family: 'Work Sans', sans-serif;
-    font-size: 14px; font-weight: 600; letter-spacing: 0.06em;
+    font-size: 16px; font-weight: 500; letter-spacing: 0.06em;
     color: var(--ink-soft);
 }
-#contact .ci-val { font-size: 19px; font-weight: 700; color: var(--ink); }
+#contact .ci-val { font-size: 19px; font-weight: 600; color: var(--ink); }
 #contact .contact-item:hover .ci-val { color: var(--brand-deep); }
 #contact .contact-foot {
     margin-top: 42px;
