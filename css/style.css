@@ -1370,9 +1370,10 @@ body, html {
 #notalk .nt-tools {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;          /* 무조건 한 줄 (2줄 금지) */
     gap: 8px;
-    max-width: none;            /* 760 제한 풀어 8칩 한 줄(칼럼 860px 안) — 좁아지면 자동 줄바꿈 */
+    max-width: none;
+    overflow-x: auto;           /* 좁은 화면에선 가로 스크롤(줄바꿈 대신) */
 }
 #notalk .nt-tools .tl-label {
     font-family: 'Work Sans', sans-serif;
@@ -2605,14 +2606,14 @@ body, html {
 #today .nt-info .lbl { font-size: 16px; font-weight: 600; letter-spacing: 0.01em; color: var(--ink-soft); }
 #today .nt-info .val { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.45; }
 /* Tools */
-#today .nt-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; max-width: 760px; }
+#today .nt-tools { display: flex; align-items: center; flex-wrap: nowrap; gap: 8px; max-width: none; overflow-x: auto; }
 #today .nt-tools .tl-label {
     font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 700;
     letter-spacing: 0.14em; color: rgba(89, 97, 122, 0.7); margin-right: 8px;
 }
 #today .tool-chip {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 36px; padding: 7px 14px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; white-space: nowrap;
+    min-height: 36px; padding: 7px 10px; border-radius: 8px;
     font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 700;
     color: var(--ink-soft); background: rgba(255,255,255,0.5);
     border: 1px solid rgba(36, 60, 159, 0.10); box-shadow: none;
@@ -3007,29 +3008,29 @@ body, html {
 #kkushong .nt-info .ic svg { width: 17px; height: 17px; color: var(--proj-deep); display: block; }
 #kkushong .nt-info .lbl { font-size: 16px; font-weight: 600; letter-spacing: 0.01em; color: var(--ink-soft); }
 #kkushong .nt-info .val { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.45; }
-#kkushong .nt-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; max-width: 760px; }
+#kkushong .nt-tools { display: flex; align-items: center; flex-wrap: nowrap; gap: 8px; max-width: none; overflow-x: auto; }
 #kkushong .nt-tools .tl-label {
     font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 700;
     letter-spacing: 0.14em; color: rgba(89, 97, 122, 0.7); margin-right: 8px;
 }
 #kkushong .tool-chip {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 36px; padding: 7px 14px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; white-space: nowrap;
+    min-height: 36px; padding: 7px 10px; border-radius: 8px;
     font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 700;
     color: var(--ink-soft); background: rgba(255,255,255,0.5);
     border: 1px solid rgba(36, 60, 159, 0.10);
 }
 #kkushong .nt-right { flex: 0 0 500px; display: flex; justify-content: center; align-items: center; position: relative; }
 #kkushong .nt-phone {
-    width: 421px; height: 752px; border-radius: 26px;   /* 영상(414:752) 비율에 정확히 맞춤 → 여백 0 */
+    width: 392px; height: 752px; border-radius: 26px;   /* 영상(366:716) 비율에 정확히 맞춤 → 여백 0 */
     background: #11151f; border: 8px solid #11151f;
     box-shadow: 0 54px 96px rgba(31, 143, 86, 0.22);
     position: relative; padding: 0; overflow: hidden;
 }
 #kkushong .nt-phone img,
 #kkushong .nt-phone video { display: block; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; object-position: center; background: #11151f; }
-/* 어떤 비율·캐시 상황에서도 여백 0 보장 — 4% 오버필(가운데 기준) */
-#kkushong .nt-phone video { transform: scale(1.04); transform-origin: center center; }
+/* 비율 정확히 맞춤 + 미세 오버필로 서브픽셀 여백까지 제거 */
+#kkushong .nt-phone video { transform: scale(1.03); transform-origin: center center; }
 /* 빈 폰 목업 placeholder — 사용자 이미지 대기 */
 #kkushong .kk-phone-empty { display: flex; align-items: center; justify-content: center; }
 #kkushong .kk-phone-empty::after {
