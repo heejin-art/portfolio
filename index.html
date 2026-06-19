@@ -14,6 +14,7 @@
 
     <div class="main-container">
         <section id="top" class="intro-section">
+            <div class="intro-black" aria-hidden="true"></div>
             <div class="text-container">
                 <p class="job-title">Product Designer · PM</p>
                 <h1 class="main-name" id="mainName">WOO HEE JIN</h1>
@@ -88,6 +89,37 @@
                 <div class="about-right">
                     <h2 class="about-head reveal">아이디어를 서비스로 구체화합니다.</h2>
                     <p class="about-sub reveal">서비스 기획과 UX 설계로 사용자가 진짜 겪는 문제부터 정의하고,<br>디자인·개발·출시까지 AI를 도구 삼아 직접 만들어 냅니다.</p>
+                    <div class="about-career reveal" aria-label="경력 및 이력 요약">
+                        <div class="about-career-head">
+                            <span>총 5년 실무 경험</span>
+                        </div>
+                        <div class="about-career-list" aria-label="주요 경력 요약">
+                            <div class="about-career-line">
+                                <span class="about-career-period">2024.10 – 2025.11</span>
+                                <strong>미스터교자 천호점 · 사장</strong>
+                                <p>매장 운영 총괄, 매출/비용 관리, 고객 응대, 직원 교육</p>
+                            </div>
+                            <div class="about-career-line">
+                                <span class="about-career-period">2023.09 – 2024.06</span>
+                                <strong>인터스텔라 · 서비스 기획/영업</strong>
+                                <p>입점 영업, BM 개발, 서비스 기획/운영, 매거진 콘텐츠 기획</p>
+                            </div>
+                            <div class="about-career-line">
+                                <span class="about-career-period">2022.08 – 2023.08</span>
+                                <strong>집닥 · 서비스 운영/고객관리</strong>
+                                <p>업체 등록/DB 관리, 고객·파트너사 CS, AS 접수/처리</p>
+                            </div>
+                            <div class="about-career-line">
+                                <span class="about-career-period">2020.12 – 2022.04</span>
+                                <strong>한샘 대리점 · 대리</strong>
+                                <p>인테리어 상담, 설계 제안, 자재 발주, 시공 일정/현장 관리</p>
+                            </div>
+                        </div>
+                        <div class="about-career-focus">
+                            <span>Now</span>
+                            <p>현재는 AI 활용 반응형 웹 UI/UX 제작 정규과정을 수강하며 제품 기획과 UI/UX 역량을 확장하고 있습니다.</p>
+                        </div>
+                    </div>
                     <div class="about-tools reveal">
                     <span class="about-tools-label">사용 도구</span>
                     <div class="tool-cat">
@@ -1460,44 +1492,56 @@
            });
 
     // 4. 메인 스크롤 애니메이션 (Intro)
+    let introSnapLock = false;
     const mainTl = gsap.timeline({
         scrollTrigger: {
             trigger: ".intro-section",
             start: "top top",
-            end: "+=400%",
-            scrub: 1.5,
+            end: "+=260%",
+            scrub: 0.45,
             pin: true,
-            anticipatePin: 1
+            anticipatePin: 1,
+            onLeave: () => {
+                if (introSnapLock) return;
+                const target = document.getElementById('highlights');
+                if (!target) return;
+                introSnapLock = true;
+                requestAnimationFrame(() => {
+                    const landOffset = window.innerWidth >= 901 ? 90 : 36;
+                    if (typeof lenis !== 'undefined' && lenis.scrollTo) {
+                        lenis.scrollTo(target, { offset: landOffset, duration: 0, immediate: true, force: true });
+                    } else {
+                        window.scrollTo({ top: target.offsetTop + landOffset, behavior: 'auto' });
+                    }
+                    ScrollTrigger.update();
+                    setTimeout(() => { introSnapLock = false; }, 120);
+                });
+            }
         }
     });
 
     mainTl
         .to(".job-title", { opacity: 0, y: -30, duration: 0.8 })
-        .to("body", { backgroundColor: "#000", duration: 1.2 }, "typeGate")
-        .to(".intro-section", { backgroundColor: "#000", backgroundImage: "none", duration: 1.2 }, "typeGate")
-        .to(".main-name", {
-            fontSize: window.innerWidth <= 560 ? "46px" : window.innerWidth <= 900 ? "72px" : window.innerWidth <= 1280 ? "120px" : "180px",
-            letterSpacing: "0.08em",
-            filter: "drop-shadow(0 16px 28px rgba(86, 126, 255, 0.32))",
-            duration: 1.4,
-            ease: "power3.inOut"
-        }, "typeGate")
-        .to(".main-name .char", {
+        .to(".intro-black", { opacity: 1, duration: 1.2, ease: "none" }, "typeGate")
+        .set(".main-name", {
+            letterSpacing: "0.08em"
+        }, "typeGate+=0.05")
+        .set(".main-name .char", {
             backgroundImage: "linear-gradient(118deg, #243c9f 0%, #698dff 14%, #eef5ff 27%, #80c7ff 38%, #3f58c5 52%, #1f348c 66%, #cad8ff 82%, #536fe0 100%)",
             color: "transparent",
             webkitTextStroke: "0.7px rgba(255,255,255,0.28)",
-            textShadow: "0 1px 0 rgba(255,255,255,0.55), 0 2px 8px rgba(129,183,255,0.22), 0 16px 30px rgba(31,52,140,0.24)",
-            animation: "metallic-shimmer 5.5s ease-in-out infinite alternate",
-            duration: 1.1,
-            ease: "power3.inOut"
+            textShadow: "0 1px 0 rgba(255,255,255,0.55), 0 2px 8px rgba(129,183,255,0.22), 0 16px 30px rgba(31,52,140,0.24)"
+        }, "typeGate+=0.05")
+        .to(".main-name", {
+            scale: window.innerWidth <= 560 ? 0.58 : window.innerWidth <= 900 ? 0.9 : window.innerWidth <= 1280 ? 1.5 : 2.25,
+            duration: 1.4,
+            ease: "none"
         }, "typeGate")
         .to(".main-name", {
             scale: window.innerWidth <= 560 ? 3.2 : window.innerWidth <= 900 ? 4.5 : 8,
-            letterSpacing: "0.16em",
-            filter: "blur(2px)",
             opacity: 0,
             duration: 1.6,
-            ease: "power2.in"
+            ease: "none"
         }, "typeGate+=1.35");
 
     // 5. 콘텐츠 섹션 스크롤 진입 애니메이션
@@ -1515,6 +1559,20 @@
             }
         });
     });
+
+    // 5-1. 커버 직후 00 성과 페이지를 아주 잠깐 고정해 빠른 스크롤에도 눈에 들어오게 한다.
+    (() => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (window.innerWidth < 901 || reduceMotion) return;
+        ScrollTrigger.create({
+            trigger: "#highlights",
+            start: "top+=90 top",
+            end: "+=55%",
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1
+        });
+    })();
 
     // 6. [제거됨] FEATURED 카드 클릭 → 상세 이동 핸들러.
     //    플로팅 목차 FAB 로 케이스 점프가 일원화되어, FEATURED 카드는
@@ -1743,17 +1801,26 @@
         if (!('IntersectionObserver' in window)) return;
         const wide = window.matchMedia('(min-width: 1200px)');
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const setup = (panelId, selectors, hideSel, homeSel) => {
+        const setup = (panelId, selectors, hideSel, homeSel, startSel) => {
             const panel = document.getElementById(panelId);
             if (!panel) return;
             const vid = panel.querySelector('video');
             const triggers = selectors.map((s) => document.querySelector(s)).filter(Boolean);
             if (!triggers.length) return;
+            const startEl = (startSel && document.querySelector(startSel)) || triggers[0];
             const visible = new Set();
             let blocked = false;   // 다음 케이스 섹션이 화면 절반 넘어오면 숨김
             let homeBlocked = false;   // 홈 히어로(Executive Summary)가 아직 보이면 숨김 — 히어로 영상과 겹침 방지
+            let startReached = false;   // 첫 상세 섹션의 1/3 지점부터 sticky 노출
+            const checkStart = () => {
+                if (!startEl) { startReached = true; return; }
+                const r = startEl.getBoundingClientRect();
+                const threshold = window.innerHeight * 0.66;
+                startReached = r.top + (r.height * 0.33) <= threshold && r.bottom > window.innerHeight * 0.12;
+            };
             const sync = () => {
-                const on = wide.matches && visible.size > 0 && !blocked && !homeBlocked;
+                checkStart();
+                const on = wide.matches && visible.size > 0 && startReached && !blocked && (!homeBlocked || startReached);
                 panel.classList.toggle('on', on);
                 panel.setAttribute('aria-hidden', on ? 'false' : 'true');
                 if (vid) { if (on && !reduce && !panel.classList.contains('dimmed')) { vid.play().catch(() => {}); } else { vid.pause(); } }  // 이어서 연속재생(딤 중엔 정지 유지)
@@ -1775,14 +1842,17 @@
                 new IntersectionObserver((entries) => {
                     entries.forEach((e) => { homeBlocked = e.isIntersecting; });  // 홈 히어로가 화면 상단 절반에 남아있는 동안 sticky 숨김
                     sync();
-                }, { rootMargin: '0px 0px -50% 0px', threshold: 0 }).observe(homeEl);
+                }, { rootMargin: '0px 0px -78% 0px', threshold: 0 }).observe(homeEl);
             }
+            window.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync);
             wide.addEventListener('change', sync);
+            sync();
         };
         // 노톡: Problem/Design/Structure — 홈 히어로(#notalk)가 사라진 뒤 등장, 오늘뽁(#today) 진입하면 숨김
-        setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today', '#notalk');
+        setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today', '#notalk', '#nt-problem');
         // 오늘뽁: Concept부터 — 홈 히어로(#today)가 사라진 뒤 등장, 끄숑 진입하면 완전 숨김
-        setup('today-stick', ['#today-concept', '#today-making', '#today-delivery', '#today-learn'], '#kkushong', '#today');
+        setup('today-stick', ['#today-concept', '#today-making', '#today-delivery', '#today-learn'], '#kkushong', '#today', '#today-concept');
     })();
 
     // ── Design Decisions '택한 것' 미리보기: 호버/포커스 시 실제 화면 팝업(항목 위, 화면 밖이면 상단 고정) ──
@@ -1891,5 +1961,3 @@
 </script>
 </body>
 </html>
-
-
