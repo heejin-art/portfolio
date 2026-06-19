@@ -282,7 +282,7 @@
         <!-- ============ NOTALK · Problem & Insight ============ -->
         <section id="nt-problem" class="slide light nt-detail">
             <p class="nt-eyebrow reveal"><b>01</b>NOTALK · Problem &amp; Insight</p>
-            <h2 class="nt-sectitle reveal">사용자 니즈는 "부담 없는 경험"</h2>
+            <h2 class="nt-sectitle reveal">사용자 니즈는 "부담 없는 만남"</h2>
             <span class="nt-underline reveal"></span>
 
             <p class="nt-tldr reveal">모임을 막는 건 시간이 아니라, 참여에 따라붙는 <b>세 가지 심리적 부담</p>
@@ -858,7 +858,7 @@
 
                 <!-- ▼▼ [사용자 수정] 기여도 — 1인이면 100%, 팀이면 실제값으로 ▼▼ -->
                 <div class="nt-impact reveal">
-                    <span class="pct"><span class="pct-num">[N]<i>%</i></span><span class="pct-cap">기여도</span></span>
+                    <span class="pct"><span class="pct-num">60<i>%</i></span><span class="pct-cap">기여도</span></span>
                     <div class="im-body">
                         <span class="im-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg><span class="im-label">In Progress</span></span>
                         <p class="im-text"><b>컨셉 · 설계 주도</b> — 캐릭터 트레이너 컨셉과 F/T 분기 메커니즘을 설계하고, 현재 개발을 진행 중입니다.</p>
@@ -1743,7 +1743,7 @@
         if (!('IntersectionObserver' in window)) return;
         const wide = window.matchMedia('(min-width: 1200px)');
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const setup = (panelId, selectors, hideSel) => {
+        const setup = (panelId, selectors, hideSel, homeSel) => {
             const panel = document.getElementById(panelId);
             if (!panel) return;
             const vid = panel.querySelector('video');
@@ -1751,8 +1751,9 @@
             if (!triggers.length) return;
             const visible = new Set();
             let blocked = false;   // 다음 케이스 섹션이 화면 절반 넘어오면 숨김
+            let homeBlocked = false;   // 홈 히어로(Executive Summary)가 아직 보이면 숨김 — 히어로 영상과 겹침 방지
             const sync = () => {
-                const on = wide.matches && visible.size > 0 && !blocked;
+                const on = wide.matches && visible.size > 0 && !blocked && !homeBlocked;
                 panel.classList.toggle('on', on);
                 panel.setAttribute('aria-hidden', on ? 'false' : 'true');
                 if (vid) { if (on && !reduce && !panel.classList.contains('dimmed')) { vid.play().catch(() => {}); } else { vid.pause(); } }  // 이어서 연속재생(딤 중엔 정지 유지)
@@ -1769,12 +1770,19 @@
                     sync();
                 }, { rootMargin: '0px 0px -5% 0px', threshold: 0 }).observe(hideEl);
             }
+            const homeEl = homeSel && document.querySelector(homeSel);
+            if (homeEl) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { homeBlocked = e.isIntersecting; });  // 홈 히어로가 화면 상단 절반에 남아있는 동안 sticky 숨김
+                    sync();
+                }, { rootMargin: '0px 0px -50% 0px', threshold: 0 }).observe(homeEl);
+            }
             wide.addEventListener('change', sync);
         };
-        // 노톡: Problem/Design/Structure(Experience Flow까지) — 오늘뽁(#today) 진입하면 숨김
-        setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today');
-        // 오늘뽁: Concept부터 Making/Delivery/Decisions에서 보이고(Screens & Experience에선 트리거 없어 자동 숨김), 끄숑 진입하면 완전 숨김
-        setup('today-stick', ['#today-concept', '#today-making', '#today-delivery', '#today-learn'], '#kkushong');
+        // 노톡: Problem/Design/Structure — 홈 히어로(#notalk)가 사라진 뒤 등장, 오늘뽁(#today) 진입하면 숨김
+        setup('nt-stick', ['#nt-problem', '#nt-opportunity', '#nt-structure'], '#today', '#notalk');
+        // 오늘뽁: Concept부터 — 홈 히어로(#today)가 사라진 뒤 등장, 끄숑 진입하면 완전 숨김
+        setup('today-stick', ['#today-concept', '#today-making', '#today-delivery', '#today-learn'], '#kkushong', '#today');
     })();
 
     // ── Design Decisions '택한 것' 미리보기: 호버/포커스 시 실제 화면 팝업(항목 위, 화면 밖이면 상단 고정) ──
