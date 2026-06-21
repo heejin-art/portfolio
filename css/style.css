@@ -6961,3 +6961,137 @@ body, html {
     color: var(--ink-soft);
     opacity: 0.7;
 }
+
+/* =========================================================
+   FEATURED — Light 무드 전환 (전체 포트폴리오 .slide.light 와 통일)
+   기존 다크 챕터커버 → 라이트. 챕터 구분은 프로젝트별 검정 커버(.proj-cover)가 담당.
+   파일 최하단 단일 블록 — 위 모든 #featured 배경/텍스트 색을 덮음.
+   ========================================================= */
+#featured {
+    background:
+        radial-gradient(circle at 82% 16%, rgba(128, 176, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 16% 26%, rgba(120, 150, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 50% 92%, rgba(194, 211, 255, 0.28), transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, #f5f8ff 50%, #eef3fb 100%);
+    color: var(--ink);
+}
+/* 좌측 타이틀 — 번호=메탈릭(유지), 제목=잉크, 서브=잉크소프트 */
+#featured .fp-title {
+    color: var(--ink);
+    -webkit-text-fill-color: var(--ink);
+    background: none;
+    filter: none;
+    text-shadow: none;
+}
+#featured .fp-sub { color: var(--ink-soft); }
+#featured .fp-divider { background: linear-gradient(90deg, var(--blue), var(--blue-soft)); }
+/* 항목 상단 헤어라인 — 라이트 위 브랜드 블루로 또렷하게 */
+#featured .fp-item::before {
+    background: linear-gradient(90deg, rgba(86, 126, 255, 0.55), rgba(86, 126, 255, 0));
+}
+/* 앱 이름 — 잉크(검정 계열), 아이콘 그림자 라이트 톤 */
+#featured .fp-name {
+    color: var(--ink);
+    -webkit-text-fill-color: var(--ink);
+}
+#featured .fp-icon img { filter: drop-shadow(0 14px 26px rgba(42, 74, 150, 0.18)); }
+/* 타임라인 노드 점 — 검정 링 제거(라이트 배경), 흰 링 + 점 색 글로우만 */
+#featured .fp-node {
+    box-shadow:
+        0 0 0 4px #ffffff,
+        0 0 10px rgba(var(--fp-accent-rgb), 0.40);
+}
+/* 타입 라벨(Team/Personal) — 색 제거, 회색 통일 */
+#featured .fp-type.team,
+#featured .fp-type.personal,
+#featured .fp-type.team.green { color: var(--ink-soft); }
+/* 출시 상태 — 글자는 회색, 점만 색: 예정=빨강 / 완료=초록 + 은은한 글로우 펄스 */
+#featured .fp-status.soon,
+#featured .fp-status.live { color: var(--ink-soft); }
+#featured .fp-status.soon::before {
+    width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%;
+    background: #ff4d4d;
+    animation: fpDotPulseRed 2.4s ease-in-out infinite;
+}
+#featured .fp-status.live::before {
+    width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%;
+    background: #2ecc8f;
+    animation: fpDotPulseGreen 2.4s ease-in-out infinite;
+}
+@keyframes fpDotPulseRed {
+    0%, 100% { box-shadow: 0 0 4px 0 rgba(255, 77, 77, 0.55); }
+    50%      { box-shadow: 0 0 10px 2px rgba(255, 77, 77, 0.38); }
+}
+@keyframes fpDotPulseGreen {
+    0%, 100% { box-shadow: 0 0 4px 0 rgba(46, 204, 143, 0.60); }
+    50%      { box-shadow: 0 0 11px 2px rgba(46, 204, 143, 0.42); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #featured .fp-status.soon::before { animation: none; box-shadow: 0 0 7px rgba(255, 77, 77, 0.5); }
+    #featured .fp-status.live::before { animation: none; box-shadow: 0 0 7px rgba(46, 204, 143, 0.55); }
+}
+
+/* =========================================================
+   PROJECT COVER — 프로젝트별 검정 챕터 표지 (노톡 / 오늘뽁 / 끄숑 구분)
+   각 프로젝트 상세 앞에 풀스크린 검정 커버로 "장(章)" 전환을 명확히.
+   ========================================================= */
+.proj-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(var(--pc-rgb), 0.16), transparent 52%),
+        linear-gradient(160deg, #0b0b0d 0%, #060607 54%, #000000 100%);
+    color: #fff;
+}
+.proj-cover .pc-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.proj-cover .pc-eyebrow {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 0.30em;
+    color: var(--pc-accent);
+}
+.proj-cover .pc-name {
+    font-size: 108px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #fff;
+}
+.proj-cover .pc-line {
+    width: 64px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--pc-accent), rgba(var(--pc-rgb), 0.10));
+}
+.proj-cover .pc-en {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+/* 프로젝트별 액센트 (FEATURED 노드 색과 정합: 노톡=블루 / 오늘뽁=바이올렛 / 끄숑=그린) */
+.pc-notalk   { --pc-accent: #8b9bff; --pc-rgb: 85, 102, 240; }
+.pc-today    { --pc-accent: #b39bff; --pc-rgb: 139, 92, 246; }
+.pc-kkushong { --pc-accent: #5fe0c2; --pc-rgb: 67, 214, 180; }
+
+@media (max-width: 900px) {
+    .proj-cover .pc-name { font-size: 76px; }
+}
+@media (max-width: 560px) {
+    .proj-cover .pc-name { font-size: 56px; }
+    .proj-cover .pc-eyebrow { font-size: 20px; letter-spacing: 0.26em; }
+    .proj-cover .pc-en { font-size: 16px; }
+}
