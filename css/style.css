@@ -411,20 +411,24 @@ body, html {
     color: var(--ink-soft);
     word-break: keep-all;
 }
+/* Now 콜아웃 — 위 경력 라인과 동일한 3칼럼 그리드로 정렬(기간/회사명/설명 시작점 일치).
+   border-left(0.25rem) + padding-left(0.25rem) = 라인의 padding-left(0.5rem)와 같은 시작 x */
 #about .about-career-focus {
     display: grid;
-    grid-template-columns: 3.75rem 1fr;
-    gap: 0.875rem;
+    grid-template-columns: 8.25rem 15.5rem 1fr;
+    gap: 1.25rem;
     align-items: center;
     margin-top: 0.625rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1rem 0.75rem 0.25rem;
     border-radius: 0.5rem;
     background: rgba(86, 126, 255, 0.07);
     border-left: 0.25rem solid var(--brand);   /* 카드 내 유일 강조: 현재(Now) 콜아웃 */
 }
-#about .about-career-focus > span {
+/* Now 라벨 — 기간 칼럼 안에서 가운데 정렬 */
+#about .about-career-focus .focus-now {
     display: inline-flex;
     align-items: center;
+    justify-self: center;
     gap: 0.375rem;
     font-family: 'Work Sans', sans-serif;
     font-size: 1.0625rem;
@@ -432,7 +436,7 @@ body, html {
     letter-spacing: 0.08em;
     color: var(--brand);
 }
-#about .about-career-focus > span::before {
+#about .about-career-focus .focus-now::before {
     content: '';
     width: 0.5rem;
     height: 0.5rem;
@@ -446,29 +450,23 @@ body, html {
     70%      { box-shadow: 0 0 0 0.5rem rgba(86, 126, 255, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-    #about .about-career-focus > span::before { animation: none; box-shadow: 0 0 0.375rem rgba(86, 126, 255, 0.5); }
+    #about .about-career-focus .focus-now::before { animation: none; box-shadow: 0 0 0.375rem rgba(86, 126, 255, 0.5); }
 }
-#about .about-career-focus p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.45;
-    color: var(--ink-soft);
-    word-break: keep-all;
-}
-#about .about-career-focus p strong {
-    display: inline;
-    margin-bottom: 0;
+/* 회사명(CROWNY AI) — 위 회사명 칼럼과 동일 시작점 */
+#about .about-career-focus strong {
     font-size: 1.1875rem;
     font-weight: 800;
     line-height: 1.35;
     color: var(--ink);
+    white-space: nowrap;
 }
-/* 제목 옆 한 줄 설명 — 위 경력 라인과 동일 톤(구분선 없이 간격만, 회색 본문) */
-#about .about-career-focus p .focus-desc {
-    margin-left: 2.5rem;
+/* 직무 설명 — 위 업무 설명 칼럼과 동일 시작점 */
+#about .about-career-focus .focus-desc {
     font-size: 1rem;
     font-weight: 500;
+    line-height: 1.45;
     color: var(--ink-soft);
+    word-break: keep-all;
 }
 /* 경력 뱃지(예: 사장) — 은은한 알약형(소프트 틴트, 안 튀게) */
 #about .career-badge {
@@ -567,6 +565,7 @@ body, html {
         grid-template-columns: 1fr;
         gap: 0.375rem;
     }
+    #about .about-career-focus .focus-now { justify-self: start; }
 }
 @media (max-width: 640px) {
     #about .tool-cat-label { flex-basis: 100%; padding-top: 0; }
@@ -576,7 +575,8 @@ body, html {
     #about .about-career-period,
     #about .about-career-line strong,
     #about .about-career-line p,
-    #about .about-career-focus p {
+    #about .about-career-focus strong,
+    #about .about-career-focus .focus-desc {
         font-size: 0.8125rem;
     }
 }
